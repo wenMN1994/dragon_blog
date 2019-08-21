@@ -1,0 +1,197 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="front/common/head :: commonHead('首页-'+ ${@config.getKey('sys.user.netName')} +'个人博客')"></head>
+<body>
+<!--top begin-->
+<div th:replace="front/common/common :: head"></div>
+
+<div th:replace="front/common/common :: search"></div>
+<!--top end-->
+<article>
+    <!--lbox begin-->
+    <div class="lbox">
+        <!--banbox begin-->
+        <div class="banbox">
+            <div class="banner">
+                <div id="banner" class="fader">
+                    <li class="slide" th:each="carouselMap:${carouselMaps}">
+                        <a th:target="${(carouselMap.target!='1')?'_blank':''}"
+                           th:href="${'/f/carouselMap/'+carouselMap.carouselId+'?url='+carouselMap.url}">
+                            <img th:src="${carouselMap.imgUrl}">
+                            <span th:text="${carouselMap.subTitle}"></span>
+                        </a>
+                    </li>
+                    <div class="fader_controls">
+                        <div class="page prev" data-target="prev"></div>
+                        <div class="page next" data-target="next"></div>
+                        <ul class="pager_list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--banbox end-->
+        <!--headline begin-->
+        <div class="headline">
+            <ul>
+                <li><a href="/" title="为什么说10月24日是程序员的节日？"><img src="Front-End/images/h1.jpg"
+                                                                alt="为什么说10月24日是程序员的节日？"><span>为什么说10月24日是程序员的节日？</span></a>
+                </li>
+                <li><a href="/" title="个人网站做好了，百度不收录怎么办？来，看看他们怎么做的"><img src="Front-End/images/h2.jpg"
+                                                                         alt="个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。"><span>个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。</span></a>
+                </li>
+            </ul>
+        </div>
+        <!--headline end-->
+        <div class="clearblank"></div>
+        <!--最新课程 Start-->
+        <div class="kecheng whitebg">
+            <h2 class="htitle">
+                <small class="hnav"><a href="/my_blog/repository">更多 <i class="el-th"></i></a></small>
+                <i class="el-tasks"></i>
+                最新课程
+                <small> Latest Courses </small>
+            </h2>
+            <ul>
+                <li th:each="repository:${repositoryList}">
+                    <div class="arcimg ">
+                        <a th:href="${'/f/article/'+repository.blogId+'.html'}" target="_blank">
+                            <img th:src="${repository.headerImg}" th:alt="${repository.title}"
+                                 th:title="${repository.title}">
+                        </a>
+                    </div>
+                    <div class="arc-right">
+                        <h4 class="blue-text">
+                            <a th:href="${'/f/article/'+repository.blogId+'.html'}" th:text="${repository.title}" target="_blank"></a>
+                        </h4>
+                        <p th:text="${ repository.summary }"></p>
+                        <ul>
+                            <li>
+                                <a th:title="${ '发表于' + #dates.format(repository.createTime, 'yyyy-MM-dd HH:mm') }" target="_blank">
+                                    <i class="el-time"></i>
+                                    <span th:text="${ #dates.format(repository.createTime, 'yyyy-MM-dd HH:mm') }"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a th:title="${ repository.click + '次浏览'}" style="float: right">
+                                    <i class="el-fire"></i>
+                                    <span th:text="${ repository.click }"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--最新课程 End-->
+
+        <!--最新源码 Start-->
+        <div class="kecheng whitebg">
+            <h2 class="htitle">
+                <small class="hnav"><a href="/my_blog/sourcecode">更多 <i class="el-th"></i></a></small>
+                <i class="el-tasks"></i>
+                最新源码
+                <small> Source Code </small>
+            </h2>
+            <ul>
+                <li th:each="sourceCode:${sourceCodeList}">
+                    <div class="arcimg ">
+                        <a th:href="${'/f/article/'+sourceCode.blogId+'.html'}" target="_blank">
+                            <img th:src="${sourceCode.headerImg}" th:alt="${sourceCode.title}"
+                                 th:title="${sourceCode.title}">
+                        </a>
+                    </div>
+                    <div class="arc-right">
+                        <h4 class="blue-text">
+                            <a th:href="${'/f/article/'+sourceCode.blogId+'.html'}" th:text="${sourceCode.title}" target="_blank"></a>
+                        </h4>
+                        <p th:text="${ sourceCode.summary }"></p>
+                        <ul>
+                            <li>
+                                <a th:title="${ '发表于' + #dates.format(sourceCode.createTime, 'yyyy-MM-dd HH:mm') }" target="_blank">
+                                    <i class="el-time"></i>
+                                    <span th:text="${ #dates.format(sourceCode.createTime, 'yyyy-MM-dd HH:mm') }"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a th:title="${ sourceCode.click + '次浏览'}" style="float: right">
+                                    <i class="el-fire"></i>
+                                    <span th:text="${ sourceCode.click }"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--最新源码 End-->
+        <div class="ad whitebg"><a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=l1qstn8f"><img src="Front-End/images/longad.jpg"></a></div>
+        <!--最新博文 start-->
+        <div th:replace="front/common/common :: bloglist"></div>
+        <!--最新博文 end-->
+        <!--bloglist end-->
+    </div>
+    <div class="rbox">
+        <div class="card">
+            <h2 th:text="${@config.getKey('sys.user.netName')} + '的名片'"></h2>
+            <p th:text="${'网名：' + @config.getKey('sys.user.netName')}"></p>
+            <p th:text="${'职业：' + @config.getKey('sys.user.occupation')}"></p>
+            <p th:text="${'现居：' + @config.getKey('sys.user.address')}"></p>
+            <p th:text="${'Email：'+ @config.getKey('sys.user.NeteaseMail')}"></p>
+            <ul class="linkmore">
+                <li>
+                    <a href="/index" target="_blank" class="iconfont icon-zhuye" title="后台管理"></a>
+                </li>
+                <li>
+                    <a th:href="${@config.getKey('sys.user.github')}" target="_blank" class="iconfont icon-github" title="我的GitHub"></a>
+                </li>
+                <li>
+                    <a th:href="'http://wpa.qq.com/msgrd?v=3&uin='+ ${@config.getKey('sys.user.qq')} + '&site=qq&menu=yes'" target="_blank" class="iconfont icon-qq" title="QQ联系我"></a>
+                </li>
+                <li id="weixin">
+                    <a href="" class="iconfont icon-weixin" title="关注我的微信"></a>
+                    <i><img th:src="${@config.getKey('sys.user.wechat')}"></i>
+                </li>
+            </ul>
+        </div>
+        <!--网站公告 start-->
+        <div th:replace="front/common/common :: website_notice"></div>
+        <!--网站公告 end-->
+        <!--点击排行 begin-->
+        <div th:replace="front/common/common :: paihang"></div>
+        <!--点击排行 end-->
+        <!--站长推荐 begin-->
+        <div th:replace="front/common/common :: tuijian"></div>
+        <!--站长推荐 end-->
+        <!--广告节点3 begin-->
+        <div th:replace="front/common/common :: ad3"></div>
+        <!--广告节点3 end-->
+        <!--标签云 begin-->
+        <div th:replace="front/common/common :: label"></div>
+        <!--标签云 end-->
+        <!--猜你喜欢 begin-->
+        <div th:replace="front/common/common :: love"></div>
+        <!--猜你喜欢 end-->
+        <!--广告节点4 begin-->
+        <div th:replace="front/common/common :: ad4"></div>
+        <!--广告节点4 end-->
+        <!--站点统计 begin-->
+        <div th:replace="front/common/common :: tongji"></div>
+        <!--站点统计 end-->
+        <!--友情链接 start-->
+        <div th:replace="front/common/common :: friendly_link"></div>
+        <!--友情链接 end-->
+    </div>
+</article>
+
+<!--footer begin-->
+<div th:replace="front/common/common :: footer"></div>
+<!--footer end-->
+
+<!--右侧弹出框 start-->
+<div class="toolbar-open"></div>
+<div th:replace="front/common/common :: toolbar"></div>
+<!--右侧弹出框 end-->
+
+</body>
+</html>

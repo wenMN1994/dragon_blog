@@ -1,0 +1,444 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="front/common/head :: commonAboutHead('关于我-'+ ${@config.getKey('sys.user.netName')} +'个人博客')"></head>
+<style>
+    header { height: 50px; }
+</style>
+<body>
+<!--top begin-->
+<div th:replace="front/common/common :: head"></div>
+
+<div th:replace="front/common/common :: search"></div>
+<!--top end-->
+<article>
+    <div class="whitebg">
+        <div class="column Fm" id="maincontent">
+            <div class="box mk top_wrap" id="basedetail">
+                <div class="head" id="Basic">
+                    <div class="face">
+                        <img src="Front-End/images/image.php" width="85" height="104" alt="头像">
+                    </div>
+                    <div class="name ">DragonWen</div>
+                    <p class="at">现居住天桥底 │ 2年工作经验 │ 男 │ 24 岁 (1994/09/05) │ 观望有好机会会考虑</p>
+                    <div class="tab">
+                        <span class="email icons at" title="18475536452@163.com">18475536452@163.com</span>
+                        <span class="tel icons">18129954693</span>
+                    </div>
+                    <div class="abox">
+                        <div class="mbox" onclick="showMoreClickEvent(this)">
+                            <span class="icons">更多展开</span>
+                            <em class="icons"></em>
+                        </div>
+                        <div class="all">
+                            <div class="e e2 ef">
+                                <label>户口/国籍</label><i>：</i>
+                                <div>梅州</div>
+                            </div>
+                            <div class="e e2">
+                                <label>婚姻状态</label><i>：</i>
+                                <div>未婚</div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--<span class="ed_icon_blue icons" id="basedetail_edit" onclick="editButtonClick(this)"></span>-->
+            </div>
+            <div class="box m1 top_wrap" id="salary">
+                <div class="hd">
+                    <strong class="icons"><em class="e0 icons"></em>目前年收入</strong>
+                    <span class="f16">20万元</span>
+                    <span class="f12">（包含基本工资、补贴、奖金、股权收益等）</span>
+                </div>
+                <!--<span class="ed_icon_blue icons" id="salary_edit" onclick="editButtonClick(this)"></span>-->
+            </div>
+            <div class="box mk top_wrap" id="intention">
+                <div class="hd" style="">
+                    <strong class="icons" id="Career"><em class="e1 icons"></em>求职意向</strong>
+                </div>
+                <div style="">
+                    <div class="bd">
+                        <div class="con">
+
+                            <div class="e e3">
+                                <label>期望薪资</label><i>：</i>
+                                <div>10000-14999元/月</div>
+                            </div>
+                            <div class="e e3">
+                                <label>地点</label><i>：</i>
+                                <div>
+                                    <span class="ong">深圳</span>                </div>
+                            </div>
+                            <div class="e e3 ef">
+                                <label>职能/职位</label><i>：</i>
+                                <div>
+                                    <span class="ong">软件工程师</span><span class="ong">&nbsp;&nbsp;Java开发工程师</span>                </div>
+                            </div>
+                            <div class="e e3">
+                                <label>行业</label><i>：</i>
+                                <div>
+                                    <span class="ong">计算机软件</span>                </div>
+                            </div>
+                            <div class="e e2">
+                                <label>到岗时间</label><i>：</i>
+                                <div>待定</div>
+                            </div>
+                            <div class="e e2">
+                                <label>工作类型</label><i>：</i>
+                                <div>全职</div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--<span class="ed_icon_blue icons" id="intention_edit" onclick="editButtonClick(this)"></span>-->
+            </div>
+            <div class="box mk">
+                <div class="hd" style="">
+                    <strong class="icons"><em class="e2 icons"></em>工作经验            </strong>
+                    <!--<a id="work_new" onclick="newButtonClick(this);" class="add icons">新增工作</a>-->
+                </div>
+                <div style="">
+                    <div class="bd" id="work_view_265285749">
+                        <div class="con edit ebox">
+                            <div class="sp">
+                                <span>2017/1-至今</span>
+                                <strong class="w280 at" title="海福乐（深圳）贸易有限公司">海福乐（深圳）贸易有限公司</strong>
+                                <strong class="fbox">
+                                    <span class="zhi at" title="软件工程师">软件工程师</span>
+                                    <em>
+                                    </em>
+                                </strong>
+                            </div>
+                            <p class="pp at" title="贸易/进出口  |  50-150人  |  外资（欧美）  |  IT   Dept">
+                                贸易/进出口  |  50-150人  |  外资（欧美）  |  IT   Dept        </p>
+                            <div class="e">
+                                <label>工作描述</label><i>：</i>
+                                <div>
+                                    1、根据业务需求参与功能模块分析设计。<br>2、参与java web验货管理系统研发中涉及到的技术框架（SSM）选型及设计与实现。<br>3、分析并解决软件开发过程中的问题。<br>4、参与项目需求和技术方案的讨论。<br>5、负责集团内部网站的开发与维护；<br>6、完成直属上级交办的其他相关工作。            </div>
+                            </div>
+                            <div class="clear"></div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="work_edit_265285749" onclick="editButtonClick(this)"></em><em class="del icons" id="work_delete_265285749" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                    <div class="bd" id="work_view_226093918">
+                        <div class="con edit ">
+                            <div class="sp">
+                                <span>2016/6-2016/11</span>
+                                <strong class="w280 at" title="广东金赋科技股份有限公司">广东金赋科技股份有限公司</strong>
+                                <strong class="fbox">
+                                    <span class="zhi at" title="软件工程师">软件工程师</span>
+                                    <em>
+                                    </em>
+                                </strong>
+                            </div>
+                            <p class="pp at" title="计算机软件  |  150-500人  |  上市公司  |  软件研发部">
+                                计算机软件  |  150-500人  |  上市公司  |  软件研发部        </p>
+                            <div class="e">
+                                <label>工作描述</label><i>：</i>
+                                <div>
+                                    1、参与自助终端远程运维系统需求和技术方案的讨论。<br>2、参与自助终端远程运维系统设备查看和耗材管理功能的开发、测试和性能优化。<br>3、完成上级交办的其他相关工作。            </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="abox">
+                                <div class="mbox" onclick="showMoreClickEvent(this)">
+                                    <span class="icons">更多展开</span>
+                                    <em class="icons"></em>
+                                </div>
+                                <div class="all">
+                                    <p class="pp at" title="离职原因：顶岗实习结束">
+                                        离职原因：顶岗实习结束                </p>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="work_edit_226093918" onclick="editButtonClick(this)"></em><em class="del icons" id="work_delete_226093918" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box mk">
+                <div class="hd" style="">
+                    <strong class="icons"><em class="e3 icons"></em>项目经验            </strong>
+                    <!--<a id="project_new" onclick="newButtonClick(this);" class="add icons">新增项目</a>-->
+                </div>
+                <div style="">
+                    <div class="bd" id="project_view_46482168">
+                        <div class="con edit">
+                            <div class="sp">
+                                <span>2016/6-2016/11</span>
+                                <strong class="fbox guan">
+                                    <span class="at" title="自助终端远程运维系统">自助终端远程运维系统</span>
+                                </strong>
+                            </div>
+                            <div class="e">
+                                <label>所属公司</label><i>：</i>
+                                <div>广东金赋科技股份有限公司</div>
+                            </div>
+                            <div class="e">
+                                <label>项目描述</label><i>：</i>
+                                <div>金赋研发的自助终端远程运维系统运用集中化管理模式，实时监控自助设备的运行情况，达到远程查障排障的效果，实现系统性管理所有自助终端。帮助客户、运维部门解决自助设备急剧扩张引发的设备管理困难和潜在的成本危机。<br>该系统主要包括设备地理位置分布监控与展示模块、设备状态监控和展示模块、设备状态告警通知模块、设备业务运行效果监控与展示，设备业务运行效率监控与展示模块、智能设备远程控制，智能检测，智能维修保养模块，设备资产故障报告，设备运维工作流管理和预警模块,无线连接通信管理模块等。</div>
+                            </div>
+                            <div class="e">
+                                <label>责任描述</label><i>：</i>
+                                <div>根据需求完成【自助终端远程运维系统】的设备查看和耗材管理功能的开发及性能优化。</div>
+                            </div>
+                            <div class="clear"></div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="project_edit_46482168" onclick="editButtonClick(this)"></em><em class="del icons" id="project_delete_46482168" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box mk">
+                <div class="hd" style="">
+                    <strong class="icons"><em class="e4 icons"></em>教育经历            </strong>
+                    <!--<a id="education_new" onclick="newButtonClick(this);" class="add icons">新增教育</a>-->
+                </div>
+                <div style="">
+                    <div class="bd">
+                        <div class="con edit" id="education_view_133278893">
+                            <div class="sp">
+                                <span>2014/9-2017/7</span>
+                                <strong class="fbox">
+                                    <span class="at" title="佛山职业技术学院">佛山职业技术学院</span>
+                                    <input type="hidden" id="education_verify_133278893" value="0"><em></em>
+                                </strong>
+                                <strong class="w140 at" title="物联网应用技术">物联网应用技术</strong>
+                                <span class="cl3 w140 at">大专</span>
+                            </div>
+                            <div class="clear"></div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="education_edit_133278893" onclick="editButtonClick(this)"></em><em class="del icons" id="education_delete_133278893" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box mk">
+                <div class="hd" style=""><strong class="icons" id="Graduate"><em class="e5 icons"></em>在校情况            </strong></div>
+                <div class="tit" style="">
+                    <span>校内荣誉</span>
+                    <!--<a id="schoolaward_new" onclick="newButtonClick(this);" class="add icons">新增荣誉</a>-->
+                </div>
+                <div id="schoolaward">
+                    <div class="bd" id="schoolaward_view_52096063">
+                        <div class="con edit">
+                            <div class="sp">
+                                <span>2016/4</span>
+                                <strong class="w180 at" title="佛山职业技术学院二等奖学金">佛山职业技术学院二等奖学金</strong>
+                            </div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="schoolaward_edit_52096063" onclick="editButtonClick(this)"></em><em class="del icons" id="schoolaward_delete_52096063" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                    <div class="bd" id="schoolaward_view_52096052">
+                        <div class="con edit">
+                            <div class="sp">
+                                <span>2015/6</span>
+                                <strong class="w180 at" title="佛山职业技术学院优秀团干部">佛山职业技术学院优秀团干部</strong>
+                            </div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="schoolaward_edit_52096052" onclick="editButtonClick(this)"></em><em class="del icons" id="schoolaward_delete_52096052" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                    <div class="bd" id="schoolaward_view_52096049">
+                        <div class="con edit">
+                            <div class="sp">
+                                <span>2015/4</span>
+                                <strong class="w180 at" title="佛山职业技术学院三等奖学金">佛山职业技术学院三等奖学金</strong>
+                            </div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="schoolaward_edit_52096049" onclick="editButtonClick(this)"></em><em class="del icons" id="schoolaward_delete_52096049" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="tit">
+                    <span>校内职务</span>
+                    <!--<a id="schooljob_new" onclick="newButtonClick(this);" class="add icons">新增职务</a>-->
+                </div>
+                <div id="schooljob">
+                    <div class="bd" id="schooljob_view_50643335">
+                        <div class="con edit">
+                            <div class="sp">
+                                <span>2014/9-2017/6</span>
+                                <strong class="w490 at" title="团支书">团支书</strong>
+                            </div>
+                            <div class="clear"></div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="schooljob_edit_50643335" onclick="editButtonClick(this)"></em><em class="del icons" id="schooljob_delete_50643335" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box mk">
+                <div class="hd" style="">
+                    <strong class="icons" id="Skills"><em class="e6 icons"></em>技能特长            </strong><span class="f12">（包含IT技能、语言能力、证书、成绩、培训经历）</span>
+                </div>
+                <div class="tit" style="">
+                    <span>技能/语言</span>
+                    <!--<a id="skilllanguage_new" onclick="newButtonClick(this);" class="add icons">新增技能/语言</a>-->
+                </div>
+                <div id="skilllanguage">
+                    <div class="bd" id="skilllanguage_view_155798079">
+                        <div class="con edit">
+                            <div class="cell lh">
+                                <strong class="at" title="Web前端">Web前端</strong>
+                                <span><i>良好</i></span>
+                                <em class="fork icons"></em>
+                            </div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="skilllanguage_edit_155798079" onclick="editButtonClick(this)"></em><em class="del icons" id="skilllanguage_delete_155798079" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                    <div class="bd" id="skilllanguage_view_155798108">
+                        <div class="con edit">
+                            <div class="cell lh">
+                                <strong class="at" title="JavaScript">JavaScript</strong>
+                                <span><i>良好</i></span>
+                                <em class="fork icons"></em>
+                            </div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="skilllanguage_edit_155798108" onclick="editButtonClick(this)"></em><em class="del icons" id="skilllanguage_delete_155798108" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                    <div class="bd" id="skilllanguage_view_155798115">
+                        <div class="con edit">
+                            <div class="cell lh">
+                                <strong class="at" title="HTML5">HTML5</strong>
+                                <span><i>良好</i></span>
+                                <em class="fork icons"></em>
+                            </div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="skilllanguage_edit_155798115" onclick="editButtonClick(this)"></em><em class="del icons" id="skilllanguage_delete_155798115" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                    <div class="bd" id="skilllanguage_view_155798129">
+                        <div class="con edit">
+                            <div class="cell sl">
+                                <strong class="at" title="MySQL">MySQL</strong>
+                                <span><i>熟练</i></span>
+                                <em class="fork icons"></em>
+                            </div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="skilllanguage_edit_155798129" onclick="editButtonClick(this)"></em><em class="del icons" id="skilllanguage_delete_155798129" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                    <div class="bd" id="skilllanguage_view_155798140">
+                        <div class="con edit">
+                            <div class="cell sl">
+                                <strong class="at" title="Java">Java</strong>
+                                <span><i>熟练</i></span>
+                                <em class="fork icons"></em>
+                            </div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="skilllanguage_edit_155798140" onclick="editButtonClick(this)"></em><em class="del icons" id="skilllanguage_delete_155798140" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                    <div class="bd" id="skilllanguage_view_155798265">
+                        <div class="con edit">
+                            <div class="cell lh">
+                                <strong class="at" title="SQL Server">SQL Server</strong>
+                                <span><i>良好</i></span>
+                                <em class="fork icons"></em>
+                            </div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="skilllanguage_edit_155798265" onclick="editButtonClick(this)"></em><em class="del icons" id="skilllanguage_delete_155798265" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                    <div class="bd" id="skilllanguage_view_155798274">
+                        <div class="con edit">
+                            <div class="cell lh">
+                                <strong class="at" title="C#.NET">C#.NET</strong>
+                                <span><i>良好</i></span>
+                                <em class="fork icons"></em>
+                            </div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="skilllanguage_edit_155798274" onclick="editButtonClick(this)"></em><em class="del icons" id="skilllanguage_delete_155798274" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                    <div class="bd" id="skilllanguage_view_155798278">
+                        <div class="con edit">
+                            <div class="cell yb">
+                                <strong class="at" title="Linux">Linux</strong>
+                                <span><i>一般</i></span>
+                                <em class="fork icons"></em>
+                            </div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="skilllanguage_edit_155798278" onclick="editButtonClick(this)"></em><em class="del icons" id="skilllanguage_delete_155798278" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="tit">
+                    <span>证书</span>
+                    <!--<a id="skillcertification_new" onclick="newButtonClick(this);" class="add icons">新增证书</a>-->
+                </div>
+                <div id="skillcertification">
+                    <div class="bd" id="skillcertification_view_100681066">
+                        <div class="con edit">
+                            <div class="sp">
+                                <span>2016/6</span>
+                                <strong class="fbox "><span class="at" title="物联网系统工程师">物联网系统工程师</span>
+                                    <input type="hidden" id="skillcertification_verify_100681066" value="0">
+                                </strong>
+                            </div>
+                            <!--<span class="ed_icon"><em class="edi icons" id="skillcertification_edit_100681066" onclick="editButtonClick(this)"></em><em class="del icons" id="skillcertification_delete_100681066" onclick="deleteButtonClick(this)"></em></span>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="tit">
+                    <span>培训经历</span>
+                    <!--<a id="skilltrain_new" onclick="newButtonClick(this);" class="add icons">新增培训</a>-->
+                </div>
+                <div id="skilltrain">
+                    <div class="none icons" id="skilltrain_empty">完善培训经历，展现更多专业技能，让HR更了解你！</div>
+                </div>
+            </div>
+            <div class="box mk">
+                <div class="hd"><strong class="icons" id="Additional"><em class="e7 icons"></em>附加信息</strong></div>
+                <div class="tit" id="additionattach_title">
+                    <span>附件</span>
+                    <!--<a id="additionattach_new" onclick="newButtonClick(this);" class="add icons">新增附件</a>-->
+                </div>
+                <div id="additionattach">
+                    <div class="none icons" id="additionattach_empty">完善附件信息，展现专业能力，让HR更了解你！</div>
+                </div>
+                <div class="tit" id="additionother_title">
+                    <span>其他</span>
+                    <!--<a id="additionother_new" onclick="newButtonClick(this);" class="add icons">新增其他</a>-->
+                </div>
+                <div id="additionother">
+                    <div class="bd" id="additionother_view_23368680">
+                        <div class="con edit">
+                            <div class="e">
+                                <label>主题</label><i>：</i>
+                                <strong class="at">个人评价</strong>
+                            </div>
+                            <div class="e">
+                                <label>主题描述</label>
+                                <i>：</i>
+                                <div>克服困难: 不用百度是第一原则,在遇到技术问题时我往往会去Stack Overflow上寻找答案。但通常很多问题 并不一定已经被人解决,所以熟练地阅读源码、在线手册、规范甚至 REPL的环境自己做实验才是最终解决问题的办法。相信事实的结果,自己动手去做。<br>我的劣势: 非科班出身没有科班同学对算法的熟练掌握,但我决定死磕技术,弥补不足。</div>
+                            </div>
+                            <div class="clear"></div>
+                            <!--<span class="ed_icon">-->
+								<!--<em class="edi icons" id="additionother_edit_23368680" onclick="editButtonClick(this)"></em><em class="del icons" id="additionother_delete_23368680" onclick="deleteButtonClick(this)"></em>-->
+							<!--</span>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!--footer begin-->
+<div th:replace="front/common/common :: footer"></div>
+<!--footer end-->
+
+</body>
+<script>
+    function showMoreClickEvent(p_oEvent) {
+        if($('.main').hasClass('eng')){
+            if(($(p_oEvent).hasClass('on'))){
+                $(p_oEvent).removeClass('on').children('span').html('More').next().css('display','none').parent().next().css('display','none');
+            }else{
+                $(p_oEvent).addClass('on').children('span').html('Hide').next().css('display','block').parent().next().css('display','block');
+            }
+        }else{
+            if( ($(p_oEvent).hasClass('on')) && (!$(p_oEvent).parent().parent().hasClass('m1')) ){
+                $(p_oEvent).removeClass('on').children('span').html('更多展开').next().css('display','none').parent().next().css('display','none');
+            }else if( (!$(p_oEvent).hasClass('on')) && (!$(p_oEvent).parent().parent().hasClass('m1')) ){
+                $(p_oEvent).addClass('on').children('span').html('更多收起').next().css('display','block').parent().next().css('display','block');
+            }else if( ($(p_oEvent).hasClass('on')) && ($(p_oEvent).parent().parent().hasClass('m1')) ){
+                $(p_oEvent).removeClass('on').children('em').css('display','none').parent().next().css('display','none');
+            }else{
+                $(p_oEvent).addClass('on').children('em').css('display','block').parent().next().css('display','block');
+            }
+        }
+    }
+</script>
+</html>
