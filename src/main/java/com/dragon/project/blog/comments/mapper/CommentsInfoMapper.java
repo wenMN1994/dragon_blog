@@ -54,4 +54,11 @@ public interface CommentsInfoMapper {
      * @return
      */
     int commentsInfoCount();
+
+    /**
+     * 查询所有评论
+     * @param commentsInfo
+     * @return 评论信息列表
+     */
+    List<CommentsInfo> selectCommentsInfoList(CommentsInfo commentsInfo);
 }

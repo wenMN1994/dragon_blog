@@ -28,4 +28,17 @@ public interface CommentsReplyMapper {
      */
     List<CommentsReply> selectCommentsReplyByCommentId(@Param("commentId") Integer commentId);
 
+    /**
+     * 查询回复列表
+     * @param commentsReply
+     * @return
+     */
+    List<CommentsReply> selectCommentsReplyList(CommentsReply commentsReply);
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    List<CommentsReply> selectCommentsReplyListById(Integer id);
 }

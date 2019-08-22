@@ -2,6 +2,8 @@ package com.dragon.project.blog.comments.service;
 
 import com.dragon.project.blog.comments.domain.CommentsReply;
 
+import java.util.List;
+
 /**
  * @author：Dragon Wen
  * @email：18475536452@163.com
@@ -17,4 +19,18 @@ public interface CommentsReplyService {
      * @return
      */
     int insertCommentReply(CommentsReply commentsReply);
+
+    /**
+     * 查询回复列表
+     * @param commentsReply
+     * @return
+     */
+    List<CommentsReply> selectCommentsReplyList(CommentsReply commentsReply);
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    List<CommentsReply> selectCommentsReplyListById(Integer id);
 }

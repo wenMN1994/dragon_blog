@@ -21,14 +21,49 @@
     content, create_time, update_time
   </sql>
 
+  <select id="selectCommentsReplyListById" parameterType="CommentsReply" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bg_comments_reply
+    <where>
+      <if test="_parameter != null and _parameter != ''">
+        AND comment_id = #{_parameter}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectCommentsReplyList" parameterType="CommentsReply" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bg_comments_reply
+    <where>
+      <if test="commentId != null and commentId != ''">
+        AND comment_id = #{commentId}
+      </if>
+      <if test="fromQq != null and fromQq != ''">
+        AND from_qq = #{fromQq}
+      </if>
+      <if test="fromName != null and fromName != ''">
+        AND from_name = #{fromName}
+      </if>
+      <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+        AND date_format(create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+      </if>
+      <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+        AND date_format(create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+      </if>
+    </where>
+  </select>
+
   <select id="selectCommentsReplyByCommentId" resultType="com.dragon.project.blog.comments.domain.CommentsReply">
     select
     <include refid="Base_Column_List" />
     from bg_comments_reply
-    where
-    <if test="commentId != null">
-      comment_id = #{commentId}
-    </if>
+    <where>
+      <if test="commentId != null">
+        comment_id = #{commentId}
+      </if>
+    </where>
     order by create_time
   </select>
 

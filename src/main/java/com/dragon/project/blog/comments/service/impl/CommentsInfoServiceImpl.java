@@ -61,4 +61,9 @@ public class CommentsInfoServiceImpl implements CommentsInfoService {
     public int commentsInfoCount() {
         return commentsInfoMapper.commentsInfoCount();
     }
+
+    @Override
+    public List<CommentsInfo> selectCommentsInfoList(CommentsInfo commentsInfo) {
+        return commentsInfoMapper.selectCommentsInfoList(commentsInfo);
+    }
 }
