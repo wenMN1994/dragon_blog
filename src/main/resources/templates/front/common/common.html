@@ -64,18 +64,17 @@
         <small> Website Notice</small>
     </h2>
     <ul>
-        <li th:each="notice:${notices}" th:id="${'notice-' + notice.noticeId}" th:onclick="showNotice([[${notice.noticeTitle}]], [[${notice.noticeType}]], [[${notice.noticeContent}]])">
-            <a th:text="${notice.noticeTitle}"></a>
+        <li th:each="notice:${notices}" th:id="${'notice-' + notice.noticeId}" th:onclick="showNotice([[${notice.noticeTitle}]], [[${notice.noticeContent}]])">
+            <a th:text="${notice.noticeContent}"></a>
         </li>
     </ul>
     <script>
-        function showNotice(noticeTitle,noticeType,noticeContent) {
+        function showNotice(noticeTitle,noticeContent) {
             layer.open({
-                title: '通知公告',
-                type: 1,
-                skin: 'layui-layer-rim', //加上边框
-                area: ['420px', '240px'], //宽高
-                content: noticeTitle
+                title: noticeTitle,
+                shadeClose: true,
+                icon: 6,
+                content: noticeContent
             });
         }
     </script>
