@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @modified By：
  * @version: 1.0.0
  */
+@Api("评论管理")
 @Controller
 @RequestMapping("/blog/comments")
-@Api("评论管理")
 public class CommentsController extends BaseController {
     private static Logger logger = LoggerFactory.getLogger(CommentsController.class);
 
     private String prefix = "blog/comments";
 
-    @GetMapping("/")
+    @GetMapping()
     @ApiOperation("访问评论管理页面")
     public String comments() {
         return prefix + "/comments";
