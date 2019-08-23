@@ -288,7 +288,7 @@
             <div>
                 <div>
                     <div class="top-title">
-                        <span>3条评论</span>
+                        <span th:text="${ commentCounts + '条评论'}">3条评论</span>
                         <a class="author-only">只看作者</a>
                         <a class="close-btn" style="display: none;">关闭评论</a>
                         <div class="pull-right">
@@ -297,7 +297,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="comment" th:each="commentsInfo:${commentsInfoList}">
+                <div class="comment" th:each="commentsInfo,commentsInfoStat:${commentsInfoList}">
                     <div>
                         <div class="author">
                             <div class="v-tooltip-container" style="z-index: 0;">
@@ -308,7 +308,7 @@
                             <div class="info">
                                 <a href="" target="_blank" class="name" th:text="${commentsInfo.fromName}"></a>
                                 <div class="meta">
-                                    <span th:text="${'1楼 &middot; ' + #dates.format(commentsInfo.createTime, 'yyyy-MM-dd HH:mm')}">1楼 &middot; 2018.12.08 21:09</span>
+                                    <span th:text="${commentsInfoStat.count + '楼 &middot; ' + #dates.format(commentsInfo.createTime, 'yyyy-MM-dd HH:mm')}">1楼 &middot; 2018.12.08 21:09</span>
                                 </div>
                             </div>
                         </div>
