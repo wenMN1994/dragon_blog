@@ -1,15 +1,20 @@
 package com.dragon.project.blog.comments.controller;
 
+import com.dragon.framework.aspectj.lang.annotation.Log;
+import com.dragon.framework.aspectj.lang.enums.BusinessType;
 import com.dragon.framework.web.controller.BaseController;
+import com.dragon.framework.web.domain.AjaxResult;
 import com.dragon.framework.web.page.TableDataInfo;
 import com.dragon.project.blog.comments.domain.CommentsReply;
 import com.dragon.project.blog.comments.service.CommentsReplyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,5 +53,13 @@ public class ReplyController extends BaseController {
         startPage();
         List<CommentsReply> commentsReplyList = commentsReplyService.selectCommentsReplyList(commentsReply);
         return getDataTable(commentsReplyList);
+    }
+
+    @Log(title = "回复管理", businessType = BusinessType.DELETE)
+    @RequiresPermissions("system:dict:remove")
+    @DeleteMapping("/remove")
+    @ResponseBody
+    public AjaxResult remove(String ids) {
+        return toAjax(commentsReplyService.deleteCommentsReplyByIds(ids));
     }
 }

@@ -24,9 +24,9 @@ public interface CommentsReplyMapper {
     /**
      * 根据评论主表ID查询回复内容
      * @param commentId
-     * @return
+     * @return List<CommentsReply>
      */
-    List<CommentsReply> selectCommentsReplyByCommentId(@Param("commentId") Integer commentId);
+    List<CommentsReply> selectCommentsReplyListByCommentId(@Param("commentId") Integer commentId);
 
     /**
      * 查询回复列表
@@ -36,9 +36,16 @@ public interface CommentsReplyMapper {
     List<CommentsReply> selectCommentsReplyList(CommentsReply commentsReply);
 
     /**
-     *
-     * @param id
+     * 根据评论ID统计回复总数
+     * @param commentId
      * @return
      */
-    List<CommentsReply> selectCommentsReplyListById(Integer id);
+    int countCommentsReplyByCommentId(Integer commentId);
+
+    /**
+     * 批量删除回复信息
+     * @param ids 需要删除的数据
+     * @return
+     */
+    int deleteCommentsReplyByIds(String[] ids);
 }

@@ -1,5 +1,7 @@
 package com.dragon.project.blog.comments.service.impl;
 
+import com.dragon.common.exception.BusinessException;
+import com.dragon.common.utils.text.Convert;
 import com.dragon.project.blog.comments.domain.CommentsInfo;
 import com.dragon.project.blog.comments.domain.CommentsReply;
 import com.dragon.project.blog.comments.mapper.CommentsInfoMapper;
@@ -36,7 +38,7 @@ public class CommentsInfoServiceImpl implements CommentsInfoService {
     public List<CommentsInfo> selectCommentsInfoByOwnerId(Integer ownerId) {
         List<CommentsInfo> commentsInfoList = commentsInfoMapper.selectCommentsInfoByOwnerId(ownerId);
         for (int i = 0; i < commentsInfoList.size(); i++) {
-            List<CommentsReply> commentsReplyList = commentsReplyMapper.selectCommentsReplyByCommentId(commentsInfoList.get(i).getId());
+            List<CommentsReply> commentsReplyList = commentsReplyMapper.selectCommentsReplyListByCommentId(commentsInfoList.get(i).getId());
             commentsInfoList.get(i).setCommentsReplyList(commentsReplyList);
         }
         return commentsInfoList;
@@ -65,5 +67,18 @@ public class CommentsInfoServiceImpl implements CommentsInfoService {
     @Override
     public List<CommentsInfo> selectCommentsInfoList(CommentsInfo commentsInfo) {
         return commentsInfoMapper.selectCommentsInfoList(commentsInfo);
+    }
+
+    @Override
+    public int deleteCommentsInfoByIds(String ids) throws BusinessException {
+        Integer[] CommentsInfoIds = Convert.toIntArray(ids);
+        for (Integer commentsInfoId : CommentsInfoIds) {
+            CommentsInfo commentsInfo = commentsInfoMapper.selectCommentsInfoById(commentsInfoId);
+            if (commentsReplyMapper.countCommentsReplyByCommentId(commentsInfo.getId()) > 0) {
+                throw new BusinessException(String.format("《%1$s》评论存在回复信息,不能删除", commentsInfo.getContent()));
+            }
+        }
+
+        return commentsInfoMapper.deleteCommentsInfoByIds(CommentsInfoIds);
     }
 }

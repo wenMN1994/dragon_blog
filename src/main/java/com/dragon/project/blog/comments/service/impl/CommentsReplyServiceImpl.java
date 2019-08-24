@@ -1,5 +1,6 @@
 package com.dragon.project.blog.comments.service.impl;
 
+import com.dragon.common.utils.text.Convert;
 import com.dragon.project.blog.comments.domain.CommentsReply;
 import com.dragon.project.blog.comments.mapper.CommentsReplyMapper;
 import com.dragon.project.blog.comments.service.CommentsReplyService;
@@ -33,7 +34,7 @@ public class CommentsReplyServiceImpl implements CommentsReplyService {
     }
 
     @Override
-    public List<CommentsReply> selectCommentsReplyListById(Integer id) {
-        return commentsReplyMapper.selectCommentsReplyListById(id);
+    public int deleteCommentsReplyByIds(String ids) {
+        return commentsReplyMapper.deleteCommentsReplyByIds(Convert.toStrArray(ids));
     }
 }

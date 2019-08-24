@@ -28,9 +28,9 @@ public interface CommentsReplyService {
     List<CommentsReply> selectCommentsReplyList(CommentsReply commentsReply);
 
     /**
-     *
-     * @param id
+     * 批量删除回复信息
+     * @param ids 需要删除的数据
      * @return
      */
-    List<CommentsReply> selectCommentsReplyListById(Integer id);
+    int deleteCommentsReplyByIds(String ids);
 }

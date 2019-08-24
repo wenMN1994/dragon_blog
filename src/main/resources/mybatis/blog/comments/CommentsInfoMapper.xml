@@ -175,5 +175,12 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <delete id="deleteCommentsInfoByIds" parameterType="Integer">
+    delete from bg_comments_info where id in
+    <foreach collection="array" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
+
   <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
 </mapper>

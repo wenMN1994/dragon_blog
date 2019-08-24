@@ -61,4 +61,11 @@ public interface CommentsInfoMapper {
      * @return 评论信息列表
      */
     List<CommentsInfo> selectCommentsInfoList(CommentsInfo commentsInfo);
+
+    /**
+     * 批量删除评论信息
+     * @param ids
+     * @return
+     */
+    int deleteCommentsInfoByIds(Integer[] ids);
 }
