@@ -188,10 +188,10 @@
         select blog_id, title,update_time from bg_blog order by  update_time  desc limit #{i}
     </select>
     <select id="selectNewestUpdateRepository" resultType="com.dragon.project.blog.blog.domain.Blog">
-        select blog_id,title,summary, click,create_time,header_img,module from bg_blog where module=2 order by weight desc limit #{i}
+        select blog_id,title,summary, click,create_time,header_img,module from bg_blog where module=2 order by create_time desc limit #{i}
     </select>
     <select id="selectNewestUpdateSourceCode" resultType="com.dragon.project.blog.blog.domain.Blog">
-        select blog_id,title,summary, click,create_time,header_img,module from bg_blog where module=3 order by weight desc limit #{i}
+        select blog_id,title,summary, click,create_time,header_img,module from bg_blog where module=3 order by create_time desc limit #{i}
     </select>
     <select id="selectBlogRankingList" resultType="com.dragon.project.blog.blog.domain.Blog">
         select blog_id,title,click from bg_blog order by click desc limit #{i}
