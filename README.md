@@ -1,7 +1,9 @@
 ### my_blog 是基于SpringBoot2搭建的个人博客系统。
 ### 前端演示链接 http://www.dragonwen.top/
 ### 后台管理演示链接 http://www.dragonwen.top/login
-#### 账号：admin/test  
+#### 管理员账号：admin
+#### 密码：admin123
+#### 测试账号：test
 #### 密码：123456
 
 ## 如需Gradle版本请移步 https://github.com/wenMN1994/my_blog

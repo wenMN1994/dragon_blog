@@ -15,6 +15,7 @@ import com.dragon.project.blog.comments.service.CommentsReplyService;
 import com.dragon.project.blog.tag.domain.Tag;
 import com.dragon.project.blog.tag.service.TagService;
 import com.dragon.project.front.service.HomeService;
+import com.dragon.project.link.domain.Link;
 import com.dragon.project.link.service.LinkService;
 import com.dragon.project.system.carouselMap.service.CarouselMapService;
 import com.dragon.project.system.notice.service.INoticeService;
@@ -272,6 +273,26 @@ public class HomeController extends BaseController {
         //增加点击量
         linkService.incrementLinkClickById(id);
         return redirect(ref);
+    }
+
+    /**
+     * 友链申请窗口
+     * @return
+     */
+    @VLog(title = "友链申请窗口")
+    @GetMapping("/f/displayLinkWindow")
+    public String displayLinkWindow(){
+        return "front/link/link";
+    }
+
+    /**
+     * 申请友链
+     */
+    @PostMapping("/f/applyLink")
+    @ResponseBody
+    public AjaxResult applyLink(Link link) {
+        linkService.applyLink(link);
+        return AjaxResult.success();
     }
 
     /**

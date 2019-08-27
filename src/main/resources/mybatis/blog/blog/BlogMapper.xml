@@ -106,7 +106,7 @@
 
     <select id="selectBlogList" resultType="com.dragon.project.blog.blog.domain.Blog">
         select blog_id, category_id, title, summary, status,
-        weight, support, header_img, module,
+        weight, support, click, header_img, module,
         create_by, create_time, update_by, update_time
         from bg_blog
         <where>

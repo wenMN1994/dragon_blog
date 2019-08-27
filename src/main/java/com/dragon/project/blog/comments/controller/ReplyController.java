@@ -41,12 +41,14 @@ public class ReplyController extends BaseController {
     private CommentsReplyService commentsReplyService;
 
     @GetMapping()
+    @RequiresPermissions("blog:comment:view")
     @ApiOperation("访问评论管理页面")
     public String comments() {
         return prefix + "/reply";
     }
 
     @GetMapping("/list")
+    @RequiresPermissions("blog:comment:list")
     @ApiOperation("查询评论信息")
     @ResponseBody
     public TableDataInfo list(CommentsReply commentsReply) {
@@ -56,7 +58,7 @@ public class ReplyController extends BaseController {
     }
 
     @Log(title = "回复管理", businessType = BusinessType.DELETE)
-    @RequiresPermissions("system:dict:remove")
+    @RequiresPermissions("blog:comment:remove")
     @DeleteMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids) {

@@ -9,6 +9,7 @@ import com.dragon.project.blog.comments.domain.CommentsInfo;
 import com.dragon.project.blog.comments.service.CommentsInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +39,14 @@ public class CommentsController extends BaseController {
     private CommentsInfoService commentsInfoService;
 
     @GetMapping()
+    @RequiresPermissions("blog:comment:view")
     @ApiOperation("访问评论管理页面")
     public String comments() {
         return prefix + "/comments";
     }
 
     @GetMapping("/list")
+    @RequiresPermissions("blog:comment:list")
     @ApiOperation("查询评论信息")
     @ResponseBody
     public TableDataInfo list(CommentsInfo commentsInfo) {
@@ -56,12 +59,15 @@ public class CommentsController extends BaseController {
      * 查询回复详细
      */
     @GetMapping("/reply/{id}")
+    @RequiresPermissions("blog:comment:list")
+    @Log(title = "回复详细列表", businessType = BusinessType.DELETE)
     public String detail(@PathVariable("id") Integer id, ModelMap modelMap) {
         modelMap.put("commentId", id);
         return "blog/comments/reply";
     }
 
     @DeleteMapping("/remove")
+    @RequiresPermissions("blog:comment:remove")
     @Log(title = "评论管理", businessType = BusinessType.DELETE)
     @ResponseBody
     public AjaxResult remove(String ids) {

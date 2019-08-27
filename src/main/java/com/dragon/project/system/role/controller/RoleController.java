@@ -1,5 +1,6 @@
 package com.dragon.project.system.role.controller;
 
+import com.dragon.common.constant.UserConstants;
 import com.dragon.common.utils.poi.ExcelUtil;
 import com.dragon.framework.aspectj.lang.annotation.Log;
 import com.dragon.framework.aspectj.lang.enums.BusinessType;
@@ -12,6 +13,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -93,7 +95,15 @@ public class RoleController extends BaseController {
     @Log(title = "角色管理", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(Role role) {
+    public AjaxResult editSave(@Validated Role role) {
+        if (UserConstants.ROLE_NAME_NOT_UNIQUE.equals(roleService.checkRoleNameUnique(role)))
+        {
+            return error("修改角色'" + role.getRoleName() + "'失败，角色名称已存在");
+        }
+        else if (UserConstants.ROLE_KEY_NOT_UNIQUE.equals(roleService.checkRoleKeyUnique(role)))
+        {
+            return error("修改角色'" + role.getRoleName() + "'失败，角色权限已存在");
+        }
         return toAjax(roleService.updateRole(role));
     }
 

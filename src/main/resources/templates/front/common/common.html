@@ -223,7 +223,7 @@
         <li><b>主题模板</b>：<a href="http://www.yangqq.com" target="_blank">《今夕何夕》</a></li>
         <li><b>文章统计</b>：<a href="/my_blog/archives" target="_blank" th:text="${ articleCounts }">395</a>篇文章</li>
         <li><b>文章评论</b>：[[${ articleCounts }]]条</li>
-        <li><b>统计数据</b>：<a href="/">百度统计</a></li>
+        <li><b>统计数据</b>：<a href="https://tongji.baidu.com/web/welcome/ico?s=d374c33f7505121ff9a4420a86517aac" target="_blank">百度统计</a></li>
         <li><b>微信公众号</b>：扫描二维码，关注我</li>
         <img src="Front-End/images/wxgzh.jpg" class="tongji_gzh">
     </ul>
@@ -234,7 +234,7 @@
 <div class="links whitebg" th:fragment="friendly_link">
     <h2 class="htitle">
         <span class="sqlink">
-            <a href="/"><i class="el-plus"></i> 申请</a>
+            <a href="javascript:void(0)" id="show-apply-links-windows"><i class="el-plus"></i> 申请</a>
         </span>
         <i class="el-paper-clip"></i>
         友情链接
@@ -246,6 +246,18 @@
                target="_blank" th:title="${link.title}" th:text="${link.title}"></a>
         </li>
     </ul>
+    <script>
+        $(".sqlink").on("click", "#show-apply-links-windows", function () {
+            layer.open({
+                type: 2,
+                title: '友情链接申请',
+                shadeClose: true,
+                shade: false,
+                area: ['700px', '600px'],
+                content: ['f/displayLinkWindow ', 'yes']
+            });
+        })
+    </script>
 </div>
 <!--友情链接 end-->
 
