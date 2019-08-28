@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dragon.project.ad.mapper.BgAdMapper">
+
+    <resultMap type="BgAd" id="BgAdResult">
+        <result property="adId"    column="ad_id"    />
+        <result property="adName"    column="ad_name"    />
+        <result property="adImg"    column="ad_img"    />
+        <result property="adurl"    column="adURL"    />
+        <result property="adStartDate"    column="ad_start_date"    />
+        <result property="adEndDate"    column="ad_end_date"    />
+        <result property="adClickNum"    column="ad_click_num"    />
+        <result property="positionType"    column="position_type"    />
+        <result property="dataFlag"    column="data_flag"    />
+        <result property="deleteFlag"    column="delete_flag"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectBgAdVo">
+        select ad_id, ad_name, ad_img, adURL, ad_start_date, ad_end_date, ad_click_num, position_type, data_flag, delete_flag, create_time, update_time from bg_ad
+    </sql>
+
+    <select id="selectBgAdList" parameterType="BgAd" resultMap="BgAdResult">
+        <include refid="selectBgAdVo"/>
+        <where>
+            <if test="adName != null  and adName != ''"> and ad_name like concat('%', #{adName}, '%')</if>
+            <if test="adImg != null  and adImg != ''"> and ad_img = #{adImg}</if>
+            <if test="adurl != null  and adurl != ''"> and adURL = #{adurl}</if>
+            <if test="adStartDate != null "> and ad_start_date = #{adStartDate}</if>
+            <if test="adEndDate != null "> and ad_end_date = #{adEndDate}</if>
+            <if test="adClickNum != null "> and ad_click_num = #{adClickNum}</if>
+            <if test="positionType != null  and positionType != ''"> and position_type = #{positionType}</if>
+            <if test="dataFlag != null "> and data_flag = #{dataFlag}</if>
+            <if test="deleteFlag != null  and deleteFlag != ''"> and delete_flag = #{deleteFlag}</if>
+        </where>
+    </select>
+
+    <select id="selectBgAdById" parameterType="Long" resultMap="BgAdResult">
+        <include refid="selectBgAdVo"/>
+        where ad_id = #{adId}
+    </select>
+
+    <insert id="insertBgAd" parameterType="BgAd" useGeneratedKeys="true" keyProperty="adId">
+        insert into bg_ad
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="adName != null  and adName != ''">ad_name,</if>
+            <if test="adImg != null  and adImg != ''">ad_img,</if>
+            <if test="adurl != null  and adurl != ''">adURL,</if>
+            <if test="adStartDate != null ">ad_start_date,</if>
+            <if test="adEndDate != null ">ad_end_date,</if>
+            <if test="adClickNum != null ">ad_click_num,</if>
+            <if test="positionType != null  and positionType != ''">position_type,</if>
+            <if test="dataFlag != null ">data_flag,</if>
+            <if test="deleteFlag != null  and deleteFlag != ''">delete_flag,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateTime != null ">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="adName != null  and adName != ''">#{adName},</if>
+            <if test="adImg != null  and adImg != ''">#{adImg},</if>
+            <if test="adurl != null  and adurl != ''">#{adurl},</if>
+            <if test="adStartDate != null ">#{adStartDate},</if>
+            <if test="adEndDate != null ">#{adEndDate},</if>
+            <if test="adClickNum != null ">#{adClickNum},</if>
+            <if test="positionType != null  and positionType != ''">#{positionType},</if>
+            <if test="dataFlag != null ">#{dataFlag},</if>
+            <if test="deleteFlag != null  and deleteFlag != ''">#{deleteFlag},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+        </trim>
+    </insert>
+
+    <update id="updateBgAd" parameterType="BgAd">
+        update bg_ad
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="adName != null  and adName != ''">ad_name = #{adName},</if>
+            <if test="adImg != null  and adImg != ''">ad_img = #{adImg},</if>
+            <if test="adurl != null  and adurl != ''">adURL = #{adurl},</if>
+            <if test="adStartDate != null ">ad_start_date = #{adStartDate},</if>
+            <if test="adEndDate != null ">ad_end_date = #{adEndDate},</if>
+            <if test="adClickNum != null ">ad_click_num = #{adClickNum},</if>
+            <if test="positionType != null  and positionType != ''">position_type = #{positionType},</if>
+            <if test="dataFlag != null ">data_flag = #{dataFlag},</if>
+            <if test="deleteFlag != null  and deleteFlag != ''">delete_flag = #{deleteFlag},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+        </trim>
+        where ad_id = #{adId}
+    </update>
+
+    <delete id="deleteBgAdById" parameterType="Long">
+        delete from bg_ad where ad_id = #{adId}
+    </delete>
+
+    <delete id="deleteBgAdByIds" parameterType="String">
+        delete from bg_ad where ad_id in
+        <foreach item="adId" collection="array" open="(" separator="," close=")">
+            #{adId}
+        </foreach>
+    </delete>
+
+</mapper>
