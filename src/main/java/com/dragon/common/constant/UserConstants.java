@@ -73,6 +73,12 @@ public class UserConstants {
     public final static String MENU_NAME_NOT_UNIQUE = "1";
 
     /**
+     * 广告位置代码是否唯一的返回结果码
+     */
+    public static final String AD_DATA_FLAG__UNIQUE = "0";
+    public static final String AD_DATA_FLAG_NOT_UNIQUE = "1";
+
+    /**
      * 字典类型是否唯一的返回结果码
      */
     public final static String DICT_TYPE_UNIQUE = "0";

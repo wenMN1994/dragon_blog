@@ -169,6 +169,7 @@ a.viewmore { display: block; right: 10px; bottom: 20px; position: absolute; padd
 .linkmore li { width: 25%; float: left }
 .linkmore li a { height: 53px; display: block; overflow: hidden; box-shadow: 0px 1px 0px rgba(255,255,255,.1), inset 0px 1px 1px rgba(0,0,0,.7); border-radius: 50%; margin: 0 5px; }
 .linkmore li a:hover { opacity: 0.5; }
+
 a.iconfont.icon-zhuye {color: #ef5509;font-size: 36px;background: url(../images/c01.png) no-repeat center ;}
 a.iconfont.icon-github { color: #FF991A; font-size: 28px;    background: url(../images/c02.png) no-repeat center ; }
 a.iconfont.icon-qq { color: #1296DB;    background: url(../images/c03.png) no-repeat center; }
@@ -966,3 +967,10 @@ body.reader-night-mode .comment-list .tool-group a:hover {
 .comment-list .sub-comment-list .add-comment-btn i {
     margin-right: 5px
 }
+
+/*申请友情链接窗口*/
+.link-edit{padding:25px 0;}
+.form-in{margin-bottom:80px;}
+.input-prepend{width:100%;height:35px;margin:15px 0;font-size:12px;}
+.input-prepend i{width:35px;height:100%;background:rgba(255,255,255,0.8);border:1px solid #ccc;box-sizing:border-box;border-right:none;line-height:35px;text-align:center;margin:0;float:left;}
+.input-prepend input{height:100%;margin:0;padding:0;float:left;box-sizing:border-box;width:90%;line-height:35px;}

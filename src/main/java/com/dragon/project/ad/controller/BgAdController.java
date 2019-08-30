@@ -119,4 +119,14 @@ public class BgAdController extends BaseController
     {
         return toAjax(bgAdService.deleteBgAdByIds(ids));
     }
+
+    /**
+     * 校验广告位置是否已有广告
+     */
+    @PostMapping("/checkDataFlagUnique")
+    @ResponseBody
+    public String checkMenuNameUnique(BgAd bgAd)
+    {
+        return bgAdService.checkDataFlagUnique(bgAd);
+    }
 }

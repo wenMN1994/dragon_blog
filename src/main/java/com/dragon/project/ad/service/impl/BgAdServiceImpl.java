@@ -1,6 +1,8 @@
 package com.dragon.project.ad.service.impl;
 
+import com.dragon.common.constant.UserConstants;
 import com.dragon.common.utils.DateUtils;
+import com.dragon.common.utils.StringUtils;
 import com.dragon.common.utils.text.Convert;
 import com.dragon.project.ad.domain.BgAd;
 import com.dragon.project.ad.mapper.BgAdMapper;
@@ -93,5 +95,19 @@ public class BgAdServiceImpl implements IBgAdService
     public int deleteBgAdById(Long adId)
     {
         return bgAdMapper.deleteBgAdById(adId);
+    }
+
+    @Override
+    public String checkDataFlagUnique(BgAd bgAd) {
+        BgAd info = bgAdMapper.selectAdByDataFlag(bgAd.getDataFlag());
+        if (StringUtils.isNotNull(info)) {
+            return UserConstants.AD_DATA_FLAG_NOT_UNIQUE;
+        }
+        return UserConstants.AD_DATA_FLAG__UNIQUE;
+    }
+
+    @Override
+    public BgAd selectAdByDataFlag(Integer dataFlag) {
+        return bgAdMapper.selectAdByDataFlag(dataFlag);
     }
 }

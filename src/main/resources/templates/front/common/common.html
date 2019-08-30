@@ -9,7 +9,7 @@
 <header class="topnav" id="header" th:fragment="head">
     <div class="navbox">
         <h2 id="mnavh"><span class="navicon"></span></h2>
-        <div class="logo"><a href="http://dragonwen.wicp.vip/" target="_blank" th:text="${@config.getKey('sys.user.netName')} + '个人博客'"></a></div>
+        <div class="logo"><a th:href="${@config.getKey('sys.user.url')}" target="_blank" th:text="${@config.getKey('sys.user.netName')} + '个人博客'"></a></div>
         <nav>
             <ul id="starlist">
                 <li><a href="/my_blog">首页</a></li>
@@ -88,8 +88,12 @@
         点击排行
         <small> Click Leaderboard</small>
     </h2>
-    <section class="topnews imgscale"><a href="/"><img
-            src="Front-End/images/h1.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
+    <section class="topnews imgscale">
+        <a href="javascript:void(0);">
+            <img src="Front-End/images/h1.jpg">
+            <span></span>
+        </a>
+    </section>
 
     <ul class="paihang-ul" style="display: block;">
         <li th:each="blog:${blogRanking}">
@@ -109,9 +113,9 @@
         <small> Recommended Station</small>
     </h2>
     <section class="topnews imgscale">
-        <a href="/">
+        <a href="javascript:void(0);">
             <img src="Front-End/images/h2.jpg">
-            <span>6条网页设计配色原则,让你秒变配色高手</span>
+            <span></span>
         </a>
     </section>
     <ul>
@@ -142,13 +146,13 @@
 </div>
 <!--站长推荐 end-->
 
-<!--广告节点3 begin-->
-<div class="ad whitebg imgscale" th:fragment="ad3">
+<!--广告节点4 begin-->
+<div class="ad whitebg imgscale" th:fragment="ad4">
     <ul>
-        <a href="/"><img src="Front-End/images/ad.jpg"></a>
+        <a target="_blank" th:href="${@ad.getAdUrl(4) == 'null' ? 'javascript:void(0)' : @ad.getAdUrl(4)}" th:title="${@ad.getAdName(4) == 'null' ? '广告招租' : @ad.getAdName(4)}"><img th:src="${@ad.getAdImg(4) == 'null' ? 'Front-End/images/ad.jpg' : @ad.getAdImg(4)}" th:alt="${@ad.getAdName(4) == 'null' ? '广告招租' : @ad.getAdName(4)}"></a>
     </ul>
 </div>
-<!--广告节点3 end-->
+<!--广告节点4 end-->
 
 <!--标签云 begin-->
 <div class="whitebg cloud" th:fragment="label">
@@ -202,13 +206,13 @@
 </div>
 <!--猜你喜欢 end-->
 
-<!--广告节点4 begin-->
-<div class="ad whitebg imgscale" th:fragment="ad4">
+<!--广告节点5 begin-->
+<div class="ad whitebg imgscale" th:fragment="ad5">
     <ul>
-        <a href="/"><img src="Front-End/images/ad.jpg"></a>
+        <a target="_blank" th:href="${@ad.getAdUrl(5) == 'null' ? 'javascript:void(0)' : @ad.getAdUrl(5)}" th:title="${@ad.getAdName(5) == 'null' ? '广告招租' : @ad.getAdName(5)}"><img th:src="${@ad.getAdImg(5) == 'null' ? 'Front-End/images/ad.jpg' : @ad.getAdImg(5)}" th:alt="${@ad.getAdName(5) == 'null' ? '广告招租' : @ad.getAdName(5)}"></a>
     </ul>
 </div>
-<!--广告节点4 end-->
+<!--广告节点5 end-->
 
 <!--站点统计 begin-->
 <div class="whitebg tongji" th:fragment="tongji">
@@ -222,7 +226,7 @@
         <li><b>网站程序</b>：博客管理系统</li>
         <li><b>主题模板</b>：<a href="http://www.yangqq.com" target="_blank">《今夕何夕》</a></li>
         <li><b>文章统计</b>：<a href="/my_blog/archives" target="_blank" th:text="${ articleCounts }">395</a>篇文章</li>
-        <li><b>文章评论</b>：[[${ articleCounts }]]条</li>
+        <li><b>文章评论</b>：[[${ commentCounts }]]条</li>
         <li><b>统计数据</b>：<a href="https://tongji.baidu.com/web/welcome/ico?s=d374c33f7505121ff9a4420a86517aac" target="_blank">百度统计</a></li>
         <li><b>微信公众号</b>：扫描二维码，关注我</li>
         <img src="Front-End/images/wxgzh.jpg" class="tongji_gzh">
@@ -314,7 +318,7 @@
                         <div class="author">
                             <div class="v-tooltip-container" style="z-index: 0;">
                                 <div class="v-tooltip-content">
-                                    <a href="" target="_blank" class="avatar"><img th:id="${'avatar-' + commentsInfo.id}" th:src="${commentsInfo.fromAvatar}" /></a>
+                                    <a href="javascript:void(0)" target="_blank" class="avatar"><img th:id="${'avatar-' + commentsInfo.id}" th:src="${commentsInfo.fromAvatar}" /></a>
                                 </div>
                             </div>
                             <div class="info">
@@ -404,7 +408,7 @@
                 </a>
             </p>
             <p>Copyright ©
-                <a href="http://dragonwen.top/" target="_blank">www.dragonwen.top</a> All Rights Reserved.
+                <a th:href="${@config.getKey('sys.user.url')}" target="_blank" th:text="${@config.getKey('sys.user.url')}">www.dragonwen.top</a> All Rights Reserved.
                 备案号：
                 <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备11002373号-1</a>
             </p>
@@ -422,13 +426,13 @@
             <li><i class="side-icon-user"></i>
                 <section>
                     <div class="userinfo">
-                        <form name="login" method="post" action="https://www.yangqq.com/qingyulan/[!--news.url--]e/member/doaction.php">
+                        <form name="login" method="post" action="javascript:void(0);">
                             <input type="hidden" name="enews" value="login">
                             <input type="hidden" name="ecmsfrom" value="9">
                             <input name="username" type="text" class="inputText" size="16" placeholder="用户名">
                             <input name="password" type="password" class="inputText" size="16" placeholder="密码">
                             <input type="submit" name="Submit" value="登陆" class="inputsub-dl">
-                            <a href="https://www.yangqq.com/qingyulan/[!--news.url--]e/member/register/index.php?tobind=0&amp;groupid=1" class="inputsub-zc">注册</a>
+                            <a href="javascript:void(0);" class="inputsub-zc">注册</a>
                         </form>
                         <!--登陆后状态-->
                         <!--<div class="clear"></div>
@@ -440,7 +444,7 @@
             </li>
             <li><i class="side-icon-qq"></i>
                 <section class="qq-section">
-                    <div class="qqinfo"><a href="https://jq.qq.com/?_wv=1027&amp;k=5EH6xZg">前端设计交流群①</a><a href="https://jq.qq.com/?_wv=1027&amp;k=52fM36y">前端设计交流群②</a><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=476847113&amp;site=qq&amp;menu=yes">站长QQ</a></div>
+                    <div class="qqinfo"><a href="https://jq.qq.com/?_wv=1027&amp;k=5EH6xZg">前端设计交流群①</a><a href="https://jq.qq.com/?_wv=1027&amp;k=52fM36y">前端设计交流群②</a><a th:href="'http://wpa.qq.com/msgrd?v=3&uin='+ ${@config.getKey('sys.user.qq')} + '&site=qq&menu=yes'">站长QQ</a></div>
                 </section>
             </li>
             <li><i class="side-icon-weixin"></i>

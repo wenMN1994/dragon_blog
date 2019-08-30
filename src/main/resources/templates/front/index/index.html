@@ -34,11 +34,17 @@
         <!--headline begin-->
         <div class="headline">
             <ul>
-                <li><a href="/" title="为什么说10月24日是程序员的节日？"><img src="Front-End/images/h1.jpg"
-                                                                alt="为什么说10月24日是程序员的节日？"><span>为什么说10月24日是程序员的节日？</span></a>
+                <li>
+                    <a th:href="${@ad.getAdUrl(1) == 'null' ? 'javascript:void(0)' : @ad.getAdUrl(1)}" th:title="${@ad.getAdName(1) == 'null' ? 'Love House Boy' : @ad.getAdName(1)}" target="_blank">
+                        <img th:src="${@ad.getAdImg(1) == 'null' ? 'Front-End/images/boy.png' : @ad.getAdImg(1)}" th:alt="${@ad.getAdName(1) == 'null' ? 'Love House Boy' : @ad.getAdName(1)}">
+                        <span th:text="${@ad.getAdName(1) == 'null' ? 'Love House Boy' : @ad.getAdName(1)}"></span>
+                    </a>
                 </li>
-                <li><a href="/" title="个人网站做好了，百度不收录怎么办？来，看看他们怎么做的"><img src="Front-End/images/h2.jpg"
-                                                                         alt="个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。"><span>个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。</span></a>
+                <li>
+                    <a th:href="${@ad.getAdUrl(2) == 'null' ? 'javascript:void(0)' : @ad.getAdUrl(2)}" th:title="${@ad.getAdName(2) == 'null' ? 'Love House Girl' : @ad.getAdName(2)}" target="_blank">
+                        <img th:src="${@ad.getAdImg(2) == 'null' ? 'Front-End/images/girl.png' : @ad.getAdImg(2)}" th:alt="${@ad.getAdName(2) == 'null' ? 'Love House Girl' : @ad.getAdName(2)}">
+                        <span th:text="${@ad.getAdName(2) == 'null' ? 'Love House Girl' : @ad.getAdName(2)}"></span>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -125,7 +131,13 @@
             </ul>
         </div>
         <!--最新源码 End-->
-        <div class="ad whitebg"><a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=l1qstn8f"><img src="Front-End/images/longad.jpg"></a></div>
+
+        <!--广告位3 Start-->
+        <div class="ad whitebg">
+            <a target="_blank" th:href="${@ad.getAdUrl(3) == 'null' ? 'javascript:void(0)' : @ad.getAdUrl(3)}" th:title="${@ad.getAdName(3) == 'null' ? '广告招租' : @ad.getAdName(3)}"><img th:src="${@ad.getAdImg(3) == 'null' ? 'Front-End/images/longad.png' : @ad.getAdImg(3)}" th:alt="${@ad.getAdName(3) == 'null' ? '广告招租' : @ad.getAdName(3)}"></a>
+        </div>
+        <!--广告位3 End-->
+
         <!--最新博文 start-->
         <div th:replace="front/common/common :: bloglist"></div>
         <!--最新博文 end-->
@@ -163,18 +175,18 @@
         <!--站长推荐 begin-->
         <div th:replace="front/common/common :: tuijian"></div>
         <!--站长推荐 end-->
-        <!--广告节点3 begin-->
-        <div th:replace="front/common/common :: ad3"></div>
-        <!--广告节点3 end-->
+        <!--广告节点4 begin-->
+        <div th:replace="front/common/common :: ad4"></div>
+        <!--广告节点4 end-->
         <!--标签云 begin-->
         <div th:replace="front/common/common :: label"></div>
         <!--标签云 end-->
         <!--猜你喜欢 begin-->
         <div th:replace="front/common/common :: love"></div>
         <!--猜你喜欢 end-->
-        <!--广告节点4 begin-->
-        <div th:replace="front/common/common :: ad4"></div>
-        <!--广告节点4 end-->
+        <!--广告节点5 begin-->
+        <div th:replace="front/common/common :: ad5"></div>
+        <!--广告节点5 end-->
         <!--站点统计 begin-->
         <div th:replace="front/common/common :: tongji"></div>
         <!--站点统计 end-->

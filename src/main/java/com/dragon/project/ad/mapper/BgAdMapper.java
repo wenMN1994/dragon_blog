@@ -1,6 +1,7 @@
 package com.dragon.project.ad.mapper;
 
 import com.dragon.project.ad.domain.BgAd;
+
 import java.util.List;
 
 /**
@@ -58,4 +59,11 @@ public interface BgAdMapper
      * @return 结果
      */
     public int deleteBgAdByIds(String[] adIds);
+
+    /**
+     * 根据广告位置代码查询广告内容
+     * @param dataFlag
+     * @return
+     */
+    BgAd selectAdByDataFlag(Integer dataFlag);
 }

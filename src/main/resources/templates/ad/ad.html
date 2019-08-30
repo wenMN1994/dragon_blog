@@ -18,7 +18,7 @@
                             </li>
                             <li>
                                 <p>广告类型：</p>
-                                <select name="positionType" th:with="type=${@dict.getType('ad_ad_type')}">
+                                <select name="adType" th:with="type=${@dict.getType('ad_ad_type')}">
                                     <option value="">所有</option>
                                     <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
                                 </select>
@@ -98,7 +98,7 @@
                     title : '广告点击数'
                 },
                 {
-                    field : 'positionType', 
+                    field : 'adType',
                     title : '广告类型'
                 },
                 {

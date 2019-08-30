@@ -58,4 +58,19 @@ public interface IBgAdService
      * @return 结果
      */
     public int deleteBgAdById(Long adId);
+
+    /**
+     * 校验广告位置是否已有广告
+     *
+     * @param bgAd 广告信息
+     * @return 结果
+     */
+    String checkDataFlagUnique(BgAd bgAd);
+
+    /**
+     * 根据广告位置代码查询广告内容
+     * @param dataFlag 广告位置代码
+     * @return 结果
+     */
+    BgAd selectAdByDataFlag(Integer dataFlag);
 }

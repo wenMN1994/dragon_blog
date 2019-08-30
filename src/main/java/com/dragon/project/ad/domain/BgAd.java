@@ -45,15 +45,11 @@ public class BgAd extends BaseEntity
 
     /** 广告类型 */
     @Excel(name = "广告类型")
-    private String positionType;
+    private String adType;
 
     /** 广告位置代码 */
     @Excel(name = "广告位置代码")
     private Integer dataFlag;
-
-    /** 删除标志 -1:删除 1:有效 */
-    @Excel(name = "删除标志 -1:删除 1:有效")
-    private String deleteFlag;
 
     public void setAdId(Long adId) 
     {
@@ -118,14 +114,14 @@ public class BgAd extends BaseEntity
     {
         return adClickNum;
     }
-    public void setPositionType(String positionType) 
+    public void setAdType(String adType)
     {
-        this.positionType = positionType;
+        this.adType = adType;
     }
 
-    public String getPositionType() 
+    public String getAdType()
     {
-        return positionType;
+        return adType;
     }
     public void setDataFlag(Integer dataFlag) 
     {
@@ -135,15 +131,6 @@ public class BgAd extends BaseEntity
     public Integer getDataFlag() 
     {
         return dataFlag;
-    }
-    public void setDeleteFlag(String deleteFlag) 
-    {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public String getDeleteFlag() 
-    {
-        return deleteFlag;
     }
 
     @Override
@@ -156,9 +143,8 @@ public class BgAd extends BaseEntity
             .append("adStartDate", getAdStartDate())
             .append("adEndDate", getAdEndDate())
             .append("adClickNum", getAdClickNum())
-            .append("positionType", getPositionType())
+            .append("adType", getAdType())
             .append("dataFlag", getDataFlag())
-            .append("deleteFlag", getDeleteFlag())
             .append("createTime", getCreateTime())
             .append("updateTime", getUpdateTime())
             .toString();
