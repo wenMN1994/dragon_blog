@@ -37,13 +37,11 @@
                 <li>
                     <a th:href="${@ad.getAdUrl(1) == 'null' ? 'javascript:void(0)' : @ad.getAdUrl(1)}" th:title="${@ad.getAdName(1) == 'null' ? 'Love House Boy' : @ad.getAdName(1)}" target="_blank">
                         <img th:src="${@ad.getAdImg(1) == 'null' ? 'Front-End/images/boy.png' : @ad.getAdImg(1)}" th:alt="${@ad.getAdName(1) == 'null' ? 'Love House Boy' : @ad.getAdName(1)}">
-                        <span th:text="${@ad.getAdName(1) == 'null' ? 'Love House Boy' : @ad.getAdName(1)}"></span>
                     </a>
                 </li>
                 <li>
                     <a th:href="${@ad.getAdUrl(2) == 'null' ? 'javascript:void(0)' : @ad.getAdUrl(2)}" th:title="${@ad.getAdName(2) == 'null' ? 'Love House Girl' : @ad.getAdName(2)}" target="_blank">
                         <img th:src="${@ad.getAdImg(2) == 'null' ? 'Front-End/images/girl.png' : @ad.getAdImg(2)}" th:alt="${@ad.getAdName(2) == 'null' ? 'Love House Girl' : @ad.getAdName(2)}">
-                        <span th:text="${@ad.getAdName(2) == 'null' ? 'Love House Girl' : @ad.getAdName(2)}"></span>
                     </a>
                 </li>
             </ul>
