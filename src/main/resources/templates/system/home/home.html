@@ -10,6 +10,24 @@
     <link href="../static/admin/css/font-awesome.min.css" th:href="@{/admin/css/font-awesome.min.css}" rel="stylesheet"/>
     <link href="../static/admin/css/main/animate.min.css" th:href="@{/admin/css/main/animate.min.css}" rel="stylesheet"/>
     <link href="../static/admin/css/main/style.min862f.css" th:href="@{/admin/css/main/style.min862f.css}" rel="stylesheet"/>
+    <style>
+        .overview-1{
+            background-image: -webkit-linear-gradient( 0deg, rgb(91,160,248) 0%, rgb(70,64,255) 100%);
+            color:#ffffff;
+        }
+        .overview-2{
+            background-image: -webkit-linear-gradient( 0deg, rgb(183,160,249) 0%, rgb(154,133,252) 56%, rgb(124,105,255) 100%);
+            color:#ffffff;
+        }
+        .overview-3{
+            background-image: -webkit-linear-gradient( 0deg, rgb(255,138,133) 0%, rgb(255,117,134) 56%, rgb(255,96,134) 100%);
+            color:#ffffff;
+        }
+        .overview-4{
+            background-image: -webkit-linear-gradient( 0deg, rgb(0,223,254) 0%, rgb(1,190,250) 56%, rgb(2,156,245) 100%);
+            color:#ffffff;
+        }
+    </style>
 </head>
 
 <body class="gray-bg">
@@ -32,7 +50,7 @@
                     <div class="ibox-content">
                         <div class="row">
                             <div class="col-lg-3">
-                                <div class="widget lazur-bg p-lg text-center">
+                                <div class="widget p-lg text-center overview-1">
                                     <div class="m-b-md">
                                         <i class="fa  fa-list-ul  fa-4x"></i>
                                         <h1 class="m-xs" th:text="${total}">47</h1>
@@ -43,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-3">
-                                <div class="widget navy-bg p-lg text-center">
+                                <div class="widget p-lg text-center overview-2">
                                     <div class="m-b-md">
                                         <i class="fa  fa-check  fa-4x"></i>
                                         <h1 class="m-xs" th:text="${published}">47</h1>
@@ -54,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-3">
-                                <div class="widget yellow-bg p-lg text-center">
+                                <div class="widget p-lg text-center overview-3">
                                     <div class="m-b-md">
                                         <i class="fa fa-chain-broken fa-4x"></i>
                                         <h1 class="m-xs" th:text="${draft}">47</h1>
@@ -65,7 +83,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-3">
-                                <div class="widget red-bg p-lg text-center">
+                                <div class="widget red-bg p-lg text-center overview-4">
                                     <div class="m-b-md">
                                         <i class="fa fa-trash fa-4x"></i>
                                         <h1 class="m-xs" th:text="${garbage}">47</h1>

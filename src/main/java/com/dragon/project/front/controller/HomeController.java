@@ -214,7 +214,7 @@ public class HomeController extends BaseController {
         Blog blog = new Blog();
         blog.setModule("3");
         PageHelper.startPage(pageNum == null ? 1 : pageNum, 15, "create_time desc");
-        model.addAttribute("blogs", new PageInfo<>(homeService.selectFrontBlogList(blog)));
+        model.addAttribute("sourcecode", new PageInfo<>(homeService.selectFrontBlogList(blog)));
         return "front/sourcecode/sourcecode";
     }
 
@@ -231,7 +231,7 @@ public class HomeController extends BaseController {
         Blog blog = new Blog();
         blog.setModule("2");
         PageHelper.startPage(pageNum == null ? 1 : pageNum, 15, "create_time desc");
-        model.addAttribute("blogs", new PageInfo<>(homeService.selectFrontBlogList(blog)));
+        model.addAttribute("repository", new PageInfo<>(homeService.selectFrontBlogList(blog)));
         return "front/repository/repository";
     }
 

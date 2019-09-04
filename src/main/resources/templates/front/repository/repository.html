@@ -21,7 +21,7 @@
                 <small> Latest Courses</small>
             </h2>
             <ul>
-                <li th:each="blog:${blogs.list}">
+                <li th:each="blog:${repository.list}">
                     <h3 class="blogtitle">
                         <a th:href="${'/f/article/'+blog.blogId+'.html'}" target="_blank" th:title="${blog.title}" th:text="${blog.title}"></a>
                     </h3>
@@ -52,7 +52,7 @@
                     </p>
                     <a th:href="${'/f/article/'+blog.blogId+'.html'}" class="viewmore" target="_blank">阅读更多</a>
                 </li>
-                <div th:replace="front/common/navigation :: navigation-index(${blogs})"></div>
+                <div th:replace="front/common/navigation :: navigation-repository(${repository})"></div>
             </ul>
         </div>
         <!--最新课程 end-->
