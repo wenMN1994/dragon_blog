@@ -747,7 +747,7 @@ hr {width:90%;margin: 20px auto; border: 0;border-top: 1px solid #eeeeee;border-
     display: inline-block
 }
 
-.comment-list .comment-wrap .comment-delete, .comment-list .comment-wrap .report {
+/*.comment-list .comment-wrap .comment-delete, .comment-list .comment-wrap .report {
     float: right;
     margin: 12px 0 0 10px;
     display: none
@@ -755,7 +755,7 @@ hr {width:90%;margin: 20px auto; border: 0;border-top: 1px solid #eeeeee;border-
 
 .comment-list .comment-wrap:hover .comment-delete, .comment-list .comment-wrap:hover .report {
     display: inherit
-}
+}*/
 
 .comment-list p {
     margin: 10px 0;
@@ -916,7 +916,7 @@ body.reader-night-mode .comment-list .tool-group a:hover {
     border: none
 }
 
-.comment-list .sub-comment .report {
+/*.comment-list .sub-comment .report {
     float: right;
     margin: 1px 0 0 10px;
     display: none
@@ -924,7 +924,7 @@ body.reader-night-mode .comment-list .tool-group a:hover {
 
 .comment-list .sub-comment:hover .report {
     display: inherit
-}
+}*/
 
 .comment-list .sub-tool-group {
     font-size: 12px;

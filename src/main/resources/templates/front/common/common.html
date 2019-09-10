@@ -318,11 +318,11 @@
                         <div class="author">
                             <div class="v-tooltip-container" style="z-index: 0;">
                                 <div class="v-tooltip-content">
-                                    <a href="javascript:void(0)" target="_blank" class="avatar"><img th:id="${'avatar-' + commentsInfo.id}" th:src="${commentsInfo.fromAvatar}" /></a>
+                                    <a target="_blank" class="avatar"><img th:id="${'avatar-' + commentsInfo.id}" th:src="${commentsInfo.fromAvatar}" /></a>
                                 </div>
                             </div>
                             <div class="info">
-                                <a href="" target="_blank" class="name" th:text="${commentsInfo.fromName}"></a>
+                                <a target="_blank" class="name" th:text="${commentsInfo.fromName}"></a>
                                 <div class="meta">
                                     <span th:text="${commentsInfoStat.count + '楼 &middot; ' + #dates.format(commentsInfo.createTime, 'yyyy-MM-dd HH:mm')}">1楼 &middot; 2018.12.08 21:09</span>
                                 </div>
@@ -336,7 +336,7 @@
                                     <span th:id="${'likeNumText-' + commentsInfo.id}" th:text="${commentsInfo.likeNum + '赞'}">赞</span>
                                 </a>
                                 <a th:onclick="showReply([[${commentsInfo.id}]], [[${commentsInfo.fromId}]], [[${commentsInfo.fromName}]], [[${commentsInfo.fromAvatar}]])"><i class="iconfont el-comment"></i> <span>回复</span></a>
-                                <a class="report"><span>举报</span></a>
+<!--                                <a class="report"><span>举报</span></a>-->
                             </div>
                         </div>
                     </div>
@@ -345,18 +345,18 @@
                             <p></p>
                             <div class="v-tooltip-container" style="z-index: 0;">
                                 <div class="v-tooltip-content">
-                                    <a href="" target="_blank" th:text="${commentsReply.fromName}">星辉哥哥</a>：
+                                    <a target="_blank" th:text="${commentsReply.fromName}">星辉哥哥</a>：
                                 </div>
                             </div>
                             <span>
-                                <a href="" class="maleskine-author" target="_blank" th:text="${'@' + commentsReply.toName}">@欣然妈妈</a>
+                                <a class="maleskine-author" target="_blank" th:text="${'@' + commentsReply.toName}">@欣然妈妈</a>
                                 [[${' ' + commentsReply.content}]]
                             </span>
                             <p></p>
                             <div class="sub-tool-group">
                                 <span th:text="${#dates.format(commentsReply.createTime, 'yyyy-MM-dd HH:mm')}">2018.12.08 21:17</span>
                                 <a class="" th:onclick="showReply([[${commentsInfo.id}]], [[${commentsReply.fromId}]], [[${commentsReply.fromName}]], [[${commentsReply.fromAvatar}]])"><i class="iconfont el-comment"></i> <span>回复</span></a>
-                                <a class="report"><span>举报</span></a>
+<!--                                <a class="report"><span>举报</span></a>-->
                             </div>
                         </div>
                         <div class="sub-comment more-comment">
