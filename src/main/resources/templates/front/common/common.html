@@ -511,7 +511,7 @@
             </p>
             <a th:href="${'/f/article/'+blog.blogId+'.html'}" class="viewmore" target="_blank">阅读更多</a>
         </li>
-        <div th:replace="front/common/navigation :: navigation-index(${blogs})"></div>
+        <div th:replace="front/common/navigation :: navigation-blog(${blogs})"></div>
     </ul>
 </div>
 <!--最新博文 end-->
