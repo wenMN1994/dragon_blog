@@ -1,6 +1,6 @@
 ### my_blog 是基于SpringBoot2搭建的个人博客系统。
-### 前端演示(域名备案中，服务暂停)链接 http://www.dragonwen.cn/
-### 后台管理演示(域名备案中，服务暂停)链接 http://www.dragonwen.cn/login
+### 前端演示链接 http://www.dragonwen.cn/
+### 后台管理演示链接 http://www.dragonwen.cn/login
 #### 管理员账号：admin
 #### 密码：admin123
 #### 测试账号：test
