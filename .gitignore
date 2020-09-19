@@ -1,8 +1,8 @@
 .idea
 target
 
-/dragon-blog-admin/node_modules/
-/dragon-blog-admin/package-lock.json
-/dragon-blog-admin/dist
+/blog-admin-web/node_modules/
+/blog-admin-web/package-lock.json
+/blog-admin-web/dist
 
 dragon_blog.iml
