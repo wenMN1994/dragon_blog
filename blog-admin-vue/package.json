@@ -1,7 +1,7 @@
 {
-  "name": "renren-fast-vue",
+  "name": "blog-admin-vue",
   "version": "1.2.2",
-  "description": "renren-fast-vue基于vue、element-ui构建开发，实现renren-fast后台管理前端功能，提供一套更优的前端解决方案。",
+  "description": "blog-admin-vue基于vue、element-ui构建开发，实现博客后台管理前端功能，提供一套更优的前端解决方案。",
   "author": "daxiong.yang <daxiong.yang@qq.com>",
   "private": true,
   "scripts": {
@@ -17,6 +17,7 @@
     "axios": "0.18.1",
     "babel-plugin-component": "0.10.1",
     "babel-polyfill": "6.26.0",
+    "echarts": "^4.9.0",
     "element-ui": "2.8.2",
     "gulp": "3.9.1",
     "gulp-concat": "2.6.1",
@@ -30,6 +31,7 @@
     "svg-sprite-loader": "3.7.3",
     "vue": "2.5.16",
     "vue-cookie": "1.1.4",
+    "vue-count-to": "^1.0.13",
     "vue-router": "3.0.1",
     "vuex": "3.0.1"
   },
