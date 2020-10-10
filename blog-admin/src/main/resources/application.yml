@@ -10,6 +10,8 @@ server:
     context-path: /blog-admin
 
 spring:
+  application:
+    name: blog-admin
   # 环境 dev|test|prod
   profiles:
     active: dev
