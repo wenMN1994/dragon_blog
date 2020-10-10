@@ -1,7 +1,7 @@
 package com.dragon;
 
-import com.dragon.modules.sys.entity.SysUserEntity;
-import com.dragon.common.utils.RedisUtils;
+import com.dragon.admin.modules.sys.entity.SysUserEntity;
+import com.dragon.admin.common.utils.RedisUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;

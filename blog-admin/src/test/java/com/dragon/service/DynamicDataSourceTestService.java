@@ -8,9 +8,9 @@
 
 package com.dragon.service;
 
-import com.dragon.datasource.annotation.DataSource;
-import com.dragon.modules.sys.dao.SysUserDao;
-import com.dragon.modules.sys.entity.SysUserEntity;
+import com.dragon.admin.datasource.annotation.DataSource;
+import com.dragon.admin.modules.sys.dao.SysUserDao;
+import com.dragon.admin.modules.sys.entity.SysUserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
