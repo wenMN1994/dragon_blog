@@ -28,3 +28,4 @@ target
 /blog-admin-web/dist
 
 dragon_blog.iml
+/blog-common/blog-common.iml

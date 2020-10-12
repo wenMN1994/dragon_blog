@@ -26,6 +26,7 @@
     <modules>
         <module>blog-admin</module>
         <module>blog-generator</module>
+        <module>blog-common</module>
     </modules>
 
 
