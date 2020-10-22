@@ -10,7 +10,7 @@ package com.dragon.admin.modules.sys.controller;
 
 import com.dragon.admin.modules.sys.service.SysLogService;
 import com.dragon.admin.common.utils.PageUtils;
-import com.dragon.admin.common.utils.R;
+import com.dragon.common.utils.R;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

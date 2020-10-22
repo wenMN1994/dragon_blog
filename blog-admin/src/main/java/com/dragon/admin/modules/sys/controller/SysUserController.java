@@ -19,7 +19,7 @@ import com.dragon.admin.modules.sys.service.SysUserRoleService;
 import com.dragon.admin.modules.sys.service.SysUserService;
 import com.dragon.admin.common.utils.Constant;
 import com.dragon.admin.common.utils.PageUtils;
-import com.dragon.admin.common.utils.R;
+import com.dragon.common.utils.R;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.Sha256Hash;

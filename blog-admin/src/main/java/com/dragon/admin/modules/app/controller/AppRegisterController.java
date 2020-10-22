@@ -13,7 +13,7 @@ import com.dragon.admin.common.validator.ValidatorUtils;
 import com.dragon.admin.modules.app.entity.UserEntity;
 import com.dragon.admin.modules.app.form.RegisterForm;
 import com.dragon.admin.modules.app.service.UserService;
-import com.dragon.admin.common.utils.R;
+import com.dragon.common.utils.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.codec.digest.DigestUtils;

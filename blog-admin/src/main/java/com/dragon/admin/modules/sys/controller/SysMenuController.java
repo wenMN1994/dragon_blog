@@ -14,7 +14,7 @@ import com.dragon.admin.modules.sys.entity.SysMenuEntity;
 import com.dragon.admin.modules.sys.service.ShiroService;
 import com.dragon.admin.modules.sys.service.SysMenuService;
 import com.dragon.admin.common.utils.Constant;
-import com.dragon.admin.common.utils.R;
+import com.dragon.common.utils.R;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;

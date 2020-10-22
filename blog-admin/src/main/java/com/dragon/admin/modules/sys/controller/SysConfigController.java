@@ -13,7 +13,7 @@ import com.dragon.admin.common.annotation.SysLog;
 import com.dragon.admin.common.validator.ValidatorUtils;
 import com.dragon.admin.modules.sys.service.SysConfigService;
 import com.dragon.admin.common.utils.PageUtils;
-import com.dragon.admin.common.utils.R;
+import com.dragon.common.utils.R;
 import com.dragon.admin.modules.sys.entity.SysConfigEntity;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;

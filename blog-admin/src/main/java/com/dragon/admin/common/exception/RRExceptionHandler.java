@@ -8,7 +8,7 @@
 
 package com.dragon.admin.common.exception;
 
-import com.dragon.admin.common.utils.R;
+import com.dragon.common.utils.R;
 import org.apache.shiro.authz.AuthorizationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -13,7 +13,7 @@ import com.dragon.admin.modules.sys.entity.SysUserTokenEntity;
 import com.dragon.admin.modules.sys.oauth2.TokenGenerator;
 import com.dragon.admin.modules.sys.service.SysUserTokenService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.dragon.admin.common.utils.R;
+import com.dragon.common.utils.R;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;

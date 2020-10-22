@@ -11,7 +11,7 @@ package com.dragon.admin.modules.job.controller;
 import com.dragon.admin.modules.job.entity.ScheduleJobLogEntity;
 import com.dragon.admin.modules.job.service.ScheduleJobLogService;
 import com.dragon.admin.common.utils.PageUtils;
-import com.dragon.admin.common.utils.R;
+import com.dragon.common.utils.R;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

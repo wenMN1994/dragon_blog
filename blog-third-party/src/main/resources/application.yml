@@ -1,0 +1,21 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: blog-third-party
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+#    alicloud:
+#      access-key: *********
+#      secret-key: *********
+#      oss:
+#        endpoint: *********
+#        bucket: *******
+#      sms:
+#        host: http://dingxintz.market.alicloudapi.com
+#        path: /dx/notifySms
+#        method: POST
+#        appcode: 你自己的AppCode
+#        tplId: 你自己的模板Id

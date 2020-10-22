@@ -12,7 +12,7 @@ package com.dragon.admin.modules.app.controller;
 import com.dragon.admin.modules.app.annotation.Login;
 import com.dragon.admin.modules.app.annotation.LoginUser;
 import com.dragon.admin.modules.app.entity.UserEntity;
-import com.dragon.admin.common.utils.R;
+import com.dragon.common.utils.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;

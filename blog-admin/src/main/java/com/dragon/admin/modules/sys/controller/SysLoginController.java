@@ -13,7 +13,7 @@ import com.dragon.admin.modules.sys.form.SysLoginForm;
 import com.dragon.admin.modules.sys.service.SysCaptchaService;
 import com.dragon.admin.modules.sys.service.SysUserService;
 import com.dragon.admin.modules.sys.service.SysUserTokenService;
-import com.dragon.admin.common.utils.R;
+import com.dragon.common.utils.R;
 import org.apache.commons.io.IOUtils;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
