@@ -15,7 +15,7 @@ import com.dragon.admin.modules.sys.service.SysRoleMenuService;
 import com.dragon.admin.modules.sys.service.SysRoleService;
 import com.dragon.admin.common.utils.Constant;
 import com.dragon.admin.common.utils.PageUtils;
-import com.dragon.common.utils.R;
+import com.dragon.common.utils.Result;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +42,7 @@ public class SysRoleController extends AbstractController {
 	 */
 	@GetMapping("/list")
 	@RequiresPermissions("sys:role:list")
-	public R list(@RequestParam Map<String, Object> params){
+	public Result list(@RequestParam Map<String, Object> params){
 		//如果不是超级管理员，则只查询自己创建的角色列表
 		if(getUserId() != Constant.SUPER_ADMIN){
 			params.put("createUserId", getUserId());
@@ -50,7 +50,7 @@ public class SysRoleController extends AbstractController {
 
 		PageUtils page = sysRoleService.queryPage(params);
 
-		return R.ok().put("page", page);
+		return Result.ok().put("page", page);
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class SysRoleController extends AbstractController {
 	 */
 	@GetMapping("/select")
 	@RequiresPermissions("sys:role:select")
-	public R select(){
+	public Result select(){
 		Map<String, Object> map = new HashMap<>();
 		
 		//如果不是超级管理员，则只查询自己所拥有的角色列表
@@ -67,7 +67,7 @@ public class SysRoleController extends AbstractController {
 		}
 		List<SysRoleEntity> list = (List<SysRoleEntity>) sysRoleService.listByMap(map);
 		
-		return R.ok().put("list", list);
+		return Result.ok().put("list", list);
 	}
 	
 	/**
@@ -75,14 +75,14 @@ public class SysRoleController extends AbstractController {
 	 */
 	@GetMapping("/info/{roleId}")
 	@RequiresPermissions("sys:role:info")
-	public R info(@PathVariable("roleId") Long roleId){
+	public Result info(@PathVariable("roleId") Long roleId){
 		SysRoleEntity role = sysRoleService.getById(roleId);
 		
 		//查询角色对应的菜单
 		List<Long> menuIdList = sysRoleMenuService.queryMenuIdList(roleId);
 		role.setMenuIdList(menuIdList);
 		
-		return R.ok().put("role", role);
+		return Result.ok().put("role", role);
 	}
 	
 	/**
@@ -91,13 +91,13 @@ public class SysRoleController extends AbstractController {
 	@SysLog("保存角色")
 	@PostMapping("/save")
 	@RequiresPermissions("sys:role:save")
-	public R save(@RequestBody SysRoleEntity role){
+	public Result save(@RequestBody SysRoleEntity role){
 		ValidatorUtils.validateEntity(role);
 		
 		role.setCreateUserId(getUserId());
 		sysRoleService.saveRole(role);
 		
-		return R.ok();
+		return Result.ok();
 	}
 	
 	/**
@@ -106,13 +106,13 @@ public class SysRoleController extends AbstractController {
 	@SysLog("修改角色")
 	@PostMapping("/update")
 	@RequiresPermissions("sys:role:update")
-	public R update(@RequestBody SysRoleEntity role){
+	public Result update(@RequestBody SysRoleEntity role){
 		ValidatorUtils.validateEntity(role);
 		
 		role.setCreateUserId(getUserId());
 		sysRoleService.update(role);
 		
-		return R.ok();
+		return Result.ok();
 	}
 	
 	/**
@@ -121,9 +121,9 @@ public class SysRoleController extends AbstractController {
 	@SysLog("删除角色")
 	@PostMapping("/delete")
 	@RequiresPermissions("sys:role:delete")
-	public R delete(@RequestBody Long[] roleIds){
+	public Result delete(@RequestBody Long[] roleIds){
 		sysRoleService.deleteBatch(roleIds);
 		
-		return R.ok();
+		return Result.ok();
 	}
 }

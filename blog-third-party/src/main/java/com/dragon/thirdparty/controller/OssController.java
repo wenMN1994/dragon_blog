@@ -4,7 +4,7 @@ import com.aliyun.oss.OSS;
 import com.aliyun.oss.common.utils.BinaryUtil;
 import com.aliyun.oss.model.MatchMode;
 import com.aliyun.oss.model.PolicyConditions;
-import com.dragon.common.utils.R;
+import com.dragon.common.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +39,7 @@ public class OssController {
     private String bucket; // 请填写您的 bucketname 。
 
     @RequestMapping("/oss/policy")
-    public R policy(){
+    public Result policy(){
 
         String host = "https://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint
         // callbackUrl为 上传回调服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
@@ -76,6 +76,6 @@ public class OssController {
         } finally {
             ossClient.shutdown();
         }
-        return R.ok().put("data", respMap);
+        return Result.ok().put("data", respMap);
     }
 }

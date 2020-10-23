@@ -11,7 +11,7 @@ package com.dragon.admin.modules.job.controller;
 import com.dragon.admin.modules.job.entity.ScheduleJobLogEntity;
 import com.dragon.admin.modules.job.service.ScheduleJobLogService;
 import com.dragon.admin.common.utils.PageUtils;
-import com.dragon.common.utils.R;
+import com.dragon.common.utils.Result;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,19 +37,19 @@ public class ScheduleJobLogController {
 	 */
 	@RequestMapping("/list")
 	@RequiresPermissions("sys:schedule:log")
-	public R list(@RequestParam Map<String, Object> params){
+	public Result list(@RequestParam Map<String, Object> params){
 		PageUtils page = scheduleJobLogService.queryPage(params);
 		
-		return R.ok().put("page", page);
+		return Result.ok().put("page", page);
 	}
 	
 	/**
 	 * 定时任务日志信息
 	 */
 	@RequestMapping("/info/{logId}")
-	public R info(@PathVariable("logId") Long logId){
+	public Result info(@PathVariable("logId") Long logId){
 		ScheduleJobLogEntity log = scheduleJobLogService.getById(logId);
 		
-		return R.ok().put("log", log);
+		return Result.ok().put("log", log);
 	}
 }

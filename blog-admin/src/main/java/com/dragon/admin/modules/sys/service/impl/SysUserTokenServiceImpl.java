@@ -13,7 +13,7 @@ import com.dragon.admin.modules.sys.entity.SysUserTokenEntity;
 import com.dragon.admin.modules.sys.oauth2.TokenGenerator;
 import com.dragon.admin.modules.sys.service.SysUserTokenService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.dragon.common.utils.R;
+import com.dragon.common.utils.Result;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -26,7 +26,7 @@ public class SysUserTokenServiceImpl extends ServiceImpl<SysUserTokenDao, SysUse
 
 
 	@Override
-	public R createToken(long userId) {
+	public Result createToken(long userId) {
 		//生成一个token
 		String token = TokenGenerator.generateValue();
 
@@ -55,9 +55,9 @@ public class SysUserTokenServiceImpl extends ServiceImpl<SysUserTokenDao, SysUse
 			this.updateById(tokenEntity);
 		}
 
-		R r = R.ok().put("token", token).put("expire", EXPIRE);
+		Result result = Result.ok().put("token", token).put("expire", EXPIRE);
 
-		return r;
+		return result;
 	}
 
 	@Override

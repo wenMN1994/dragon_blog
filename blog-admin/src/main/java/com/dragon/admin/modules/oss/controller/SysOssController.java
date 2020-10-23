@@ -17,11 +17,11 @@ import com.dragon.admin.modules.oss.cloud.CloudStorageConfig;
 import com.dragon.admin.modules.oss.cloud.OSSFactory;
 import com.dragon.admin.modules.oss.entity.SysOssEntity;
 import com.dragon.admin.modules.oss.service.SysOssService;
+import com.dragon.common.utils.Result;
 import com.google.gson.Gson;
 import com.dragon.admin.common.utils.ConfigConstant;
 import com.dragon.admin.common.utils.Constant;
 import com.dragon.admin.common.utils.PageUtils;
-import com.dragon.common.utils.R;
 import com.dragon.admin.modules.sys.service.SysConfigService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,10 +52,10 @@ public class SysOssController {
 	 */
 	@GetMapping("/list")
 	@RequiresPermissions("sys:oss:all")
-	public R list(@RequestParam Map<String, Object> params){
+	public Result list(@RequestParam Map<String, Object> params){
 		PageUtils page = sysOssService.queryPage(params);
 
-		return R.ok().put("page", page);
+		return Result.ok().put("page", page);
 	}
 
 
@@ -64,10 +64,10 @@ public class SysOssController {
      */
     @GetMapping("/config")
     @RequiresPermissions("sys:oss:all")
-    public R config(){
+    public Result config(){
         CloudStorageConfig config = sysConfigService.getConfigObject(KEY, CloudStorageConfig.class);
 
-        return R.ok().put("config", config);
+        return Result.ok().put("config", config);
     }
 
 
@@ -76,7 +76,7 @@ public class SysOssController {
 	 */
 	@PostMapping("/saveConfig")
 	@RequiresPermissions("sys:oss:all")
-	public R saveConfig(@RequestBody CloudStorageConfig config){
+	public Result saveConfig(@RequestBody CloudStorageConfig config){
 		//校验类型
 		ValidatorUtils.validateEntity(config);
 
@@ -93,7 +93,7 @@ public class SysOssController {
 
         sysConfigService.updateValueByKey(KEY, new Gson().toJson(config));
 
-		return R.ok();
+		return Result.ok();
 	}
 	
 
@@ -102,7 +102,7 @@ public class SysOssController {
 	 */
 	@PostMapping("/upload")
 	@RequiresPermissions("sys:oss:all")
-	public R upload(@RequestParam("file") MultipartFile file) throws Exception {
+	public Result upload(@RequestParam("file") MultipartFile file) throws Exception {
 		if (file.isEmpty()) {
 			throw new RRException("上传文件不能为空");
 		}
@@ -117,7 +117,7 @@ public class SysOssController {
 		ossEntity.setCreateDate(new Date());
 		sysOssService.save(ossEntity);
 
-		return R.ok().put("url", url);
+		return Result.ok().put("url", url);
 	}
 
 
@@ -126,10 +126,10 @@ public class SysOssController {
 	 */
 	@PostMapping("/delete")
 	@RequiresPermissions("sys:oss:all")
-	public R delete(@RequestBody Long[] ids){
+	public Result delete(@RequestBody Long[] ids){
 		sysOssService.removeByIds(Arrays.asList(ids));
 
-		return R.ok();
+		return Result.ok();
 	}
 
 }

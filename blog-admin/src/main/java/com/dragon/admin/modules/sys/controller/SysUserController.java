@@ -19,7 +19,7 @@ import com.dragon.admin.modules.sys.service.SysUserRoleService;
 import com.dragon.admin.modules.sys.service.SysUserService;
 import com.dragon.admin.common.utils.Constant;
 import com.dragon.admin.common.utils.PageUtils;
-import com.dragon.common.utils.R;
+import com.dragon.common.utils.Result;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.Sha256Hash;
@@ -48,22 +48,22 @@ public class SysUserController extends AbstractController {
 	 */
 	@GetMapping("/list")
 	@RequiresPermissions("sys:user:list")
-	public R list(@RequestParam Map<String, Object> params){
+	public Result list(@RequestParam Map<String, Object> params){
 		//只有超级管理员，才能查看所有管理员列表
 		if(getUserId() != Constant.SUPER_ADMIN){
 			params.put("createUserId", getUserId());
 		}
 		PageUtils page = sysUserService.queryPage(params);
 
-		return R.ok().put("page", page);
+		return Result.ok().put("page", page);
 	}
 	
 	/**
 	 * 获取登录的用户信息
 	 */
 	@GetMapping("/info")
-	public R info(){
-		return R.ok().put("user", getUser());
+	public Result info(){
+		return Result.ok().put("user", getUser());
 	}
 	
 	/**
@@ -71,7 +71,7 @@ public class SysUserController extends AbstractController {
 	 */
 	@SysLog("修改密码")
 	@PostMapping("/password")
-	public R password(@RequestBody PasswordForm form){
+	public Result password(@RequestBody PasswordForm form){
 		Assert.isBlank(form.getNewPassword(), "新密码不为能空");
 		
 		//sha256加密
@@ -82,10 +82,10 @@ public class SysUserController extends AbstractController {
 		//更新密码
 		boolean flag = sysUserService.updatePassword(getUserId(), password, newPassword);
 		if(!flag){
-			return R.error("原密码不正确");
+			return Result.error("原密码不正确");
 		}
 		
-		return R.ok();
+		return Result.ok();
 	}
 	
 	/**
@@ -93,14 +93,14 @@ public class SysUserController extends AbstractController {
 	 */
 	@GetMapping("/info/{userId}")
 	@RequiresPermissions("sys:user:info")
-	public R info(@PathVariable("userId") Long userId){
+	public Result info(@PathVariable("userId") Long userId){
 		SysUserEntity user = sysUserService.getById(userId);
 		
 		//获取用户所属的角色列表
 		List<Long> roleIdList = sysUserRoleService.queryRoleIdList(userId);
 		user.setRoleIdList(roleIdList);
 		
-		return R.ok().put("user", user);
+		return Result.ok().put("user", user);
 	}
 	
 	/**
@@ -109,13 +109,13 @@ public class SysUserController extends AbstractController {
 	@SysLog("保存用户")
 	@PostMapping("/save")
 	@RequiresPermissions("sys:user:save")
-	public R save(@RequestBody SysUserEntity user){
+	public Result save(@RequestBody SysUserEntity user){
 		ValidatorUtils.validateEntity(user, AddGroup.class);
 		
 		user.setCreateUserId(getUserId());
 		sysUserService.saveUser(user);
 		
-		return R.ok();
+		return Result.ok();
 	}
 	
 	/**
@@ -124,13 +124,13 @@ public class SysUserController extends AbstractController {
 	@SysLog("修改用户")
 	@PostMapping("/update")
 	@RequiresPermissions("sys:user:update")
-	public R update(@RequestBody SysUserEntity user){
+	public Result update(@RequestBody SysUserEntity user){
 		ValidatorUtils.validateEntity(user, UpdateGroup.class);
 
 		user.setCreateUserId(getUserId());
 		sysUserService.update(user);
 		
-		return R.ok();
+		return Result.ok();
 	}
 	
 	/**
@@ -139,17 +139,17 @@ public class SysUserController extends AbstractController {
 	@SysLog("删除用户")
 	@PostMapping("/delete")
 	@RequiresPermissions("sys:user:delete")
-	public R delete(@RequestBody Long[] userIds){
+	public Result delete(@RequestBody Long[] userIds){
 		if(ArrayUtils.contains(userIds, 1L)){
-			return R.error("系统管理员不能删除");
+			return Result.error("系统管理员不能删除");
 		}
 		
 		if(ArrayUtils.contains(userIds, getUserId())){
-			return R.error("当前用户不能删除");
+			return Result.error("当前用户不能删除");
 		}
 		
 		sysUserService.deleteBatch(userIds);
 		
-		return R.ok();
+		return Result.ok();
 	}
 }

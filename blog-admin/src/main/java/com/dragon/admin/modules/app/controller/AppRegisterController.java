@@ -13,7 +13,7 @@ import com.dragon.admin.common.validator.ValidatorUtils;
 import com.dragon.admin.modules.app.entity.UserEntity;
 import com.dragon.admin.modules.app.form.RegisterForm;
 import com.dragon.admin.modules.app.service.UserService;
-import com.dragon.common.utils.R;
+import com.dragon.common.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -39,7 +39,7 @@ public class AppRegisterController {
 
     @PostMapping("register")
     @ApiOperation("注册")
-    public R register(@RequestBody RegisterForm form){
+    public Result register(@RequestBody RegisterForm form){
         //表单校验
         ValidatorUtils.validateEntity(form);
 
@@ -50,6 +50,6 @@ public class AppRegisterController {
         user.setCreateTime(new Date());
         userService.save(user);
 
-        return R.ok();
+        return Result.ok();
     }
 }

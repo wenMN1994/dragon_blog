@@ -14,7 +14,7 @@ import com.dragon.admin.modules.sys.entity.SysMenuEntity;
 import com.dragon.admin.modules.sys.service.ShiroService;
 import com.dragon.admin.modules.sys.service.SysMenuService;
 import com.dragon.admin.common.utils.Constant;
-import com.dragon.common.utils.R;
+import com.dragon.common.utils.Result;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +40,10 @@ public class SysMenuController extends AbstractController {
 	 * 导航菜单
 	 */
 	@GetMapping("/nav")
-	public R nav(){
+	public Result nav(){
 		List<SysMenuEntity> menuList = sysMenuService.getUserMenuList(getUserId());
 		Set<String> permissions = shiroService.getUserPermissions(getUserId());
-		return R.ok().put("menuList", menuList).put("permissions", permissions);
+		return Result.ok().put("menuList", menuList).put("permissions", permissions);
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public class SysMenuController extends AbstractController {
 	 */
 	@GetMapping("/select")
 	@RequiresPermissions("sys:menu:select")
-	public R select(){
+	public Result select(){
 		//查询列表数据
 		List<SysMenuEntity> menuList = sysMenuService.queryNotButtonList();
 		
@@ -80,7 +80,7 @@ public class SysMenuController extends AbstractController {
 		root.setOpen(true);
 		menuList.add(root);
 		
-		return R.ok().put("menuList", menuList);
+		return Result.ok().put("menuList", menuList);
 	}
 	
 	/**
@@ -88,9 +88,9 @@ public class SysMenuController extends AbstractController {
 	 */
 	@GetMapping("/info/{menuId}")
 	@RequiresPermissions("sys:menu:info")
-	public R info(@PathVariable("menuId") Long menuId){
+	public Result info(@PathVariable("menuId") Long menuId){
 		SysMenuEntity menu = sysMenuService.getById(menuId);
-		return R.ok().put("menu", menu);
+		return Result.ok().put("menu", menu);
 	}
 	
 	/**
@@ -99,13 +99,13 @@ public class SysMenuController extends AbstractController {
 	@SysLog("保存菜单")
 	@PostMapping("/save")
 	@RequiresPermissions("sys:menu:save")
-	public R save(@RequestBody SysMenuEntity menu){
+	public Result save(@RequestBody SysMenuEntity menu){
 		//数据校验
 		verifyForm(menu);
 		
 		sysMenuService.save(menu);
 		
-		return R.ok();
+		return Result.ok();
 	}
 	
 	/**
@@ -114,13 +114,13 @@ public class SysMenuController extends AbstractController {
 	@SysLog("修改菜单")
 	@PostMapping("/update")
 	@RequiresPermissions("sys:menu:update")
-	public R update(@RequestBody SysMenuEntity menu){
+	public Result update(@RequestBody SysMenuEntity menu){
 		//数据校验
 		verifyForm(menu);
 				
 		sysMenuService.updateById(menu);
 		
-		return R.ok();
+		return Result.ok();
 	}
 	
 	/**
@@ -129,20 +129,20 @@ public class SysMenuController extends AbstractController {
 	@SysLog("删除菜单")
 	@PostMapping("/delete/{menuId}")
 	@RequiresPermissions("sys:menu:delete")
-	public R delete(@PathVariable("menuId") long menuId){
+	public Result delete(@PathVariable("menuId") long menuId){
 		if(menuId <= 31){
-			return R.error("系统菜单，不能删除");
+			return Result.error("系统菜单，不能删除");
 		}
 
 		//判断是否有子菜单或按钮
 		List<SysMenuEntity> menuList = sysMenuService.queryListParentId(menuId);
 		if(menuList.size() > 0){
-			return R.error("请先删除子菜单或按钮");
+			return Result.error("请先删除子菜单或按钮");
 		}
 
 		sysMenuService.delete(menuId);
 
-		return R.ok();
+		return Result.ok();
 	}
 	
 	/**

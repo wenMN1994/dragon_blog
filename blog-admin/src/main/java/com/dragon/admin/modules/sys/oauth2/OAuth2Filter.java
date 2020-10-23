@@ -10,7 +10,7 @@ package com.dragon.admin.modules.sys.oauth2;
 
 import com.google.gson.Gson;
 import com.dragon.admin.common.utils.HttpContextUtils;
-import com.dragon.common.utils.R;
+import com.dragon.common.utils.Result;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpStatus;
 import org.apache.shiro.authc.AuthenticationException;
@@ -61,7 +61,7 @@ public class OAuth2Filter extends AuthenticatingFilter {
             httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
             httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
 
-            String json = new Gson().toJson(R.error(HttpStatus.SC_UNAUTHORIZED, "invalid token"));
+            String json = new Gson().toJson(Result.error(HttpStatus.SC_UNAUTHORIZED, "invalid token"));
 
             httpResponse.getWriter().print(json);
 
@@ -80,9 +80,9 @@ public class OAuth2Filter extends AuthenticatingFilter {
         try {
             //处理登录失败的异常
             Throwable throwable = e.getCause() == null ? e : e.getCause();
-            R r = R.error(HttpStatus.SC_UNAUTHORIZED, throwable.getMessage());
+            Result result = Result.error(HttpStatus.SC_UNAUTHORIZED, throwable.getMessage());
 
-            String json = new Gson().toJson(r);
+            String json = new Gson().toJson(result);
             httpResponse.getWriter().print(json);
         } catch (IOException e1) {
 

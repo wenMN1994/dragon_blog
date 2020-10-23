@@ -13,7 +13,7 @@ import com.dragon.admin.common.validator.ValidatorUtils;
 import com.dragon.admin.modules.app.form.LoginForm;
 import com.dragon.admin.modules.app.service.UserService;
 import com.dragon.admin.modules.app.utils.JwtUtils;
-import com.dragon.common.utils.R;
+import com.dragon.common.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class AppLoginController {
      */
     @PostMapping("login")
     @ApiOperation("登录")
-    public R login(@RequestBody LoginForm form){
+    public Result login(@RequestBody LoginForm form){
         //表单校验
         ValidatorUtils.validateEntity(form);
 
@@ -58,7 +58,7 @@ public class AppLoginController {
         map.put("token", token);
         map.put("expire", jwtUtils.getExpire());
 
-        return R.ok(map);
+        return Result.ok(map);
     }
 
 }

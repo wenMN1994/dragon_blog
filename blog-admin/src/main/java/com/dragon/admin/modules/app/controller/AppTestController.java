@@ -12,7 +12,7 @@ package com.dragon.admin.modules.app.controller;
 import com.dragon.admin.modules.app.annotation.Login;
 import com.dragon.admin.modules.app.annotation.LoginUser;
 import com.dragon.admin.modules.app.entity.UserEntity;
-import com.dragon.common.utils.R;
+import com.dragon.common.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,21 +33,21 @@ public class AppTestController {
     @Login
     @GetMapping("userInfo")
     @ApiOperation("获取用户信息")
-    public R userInfo(@LoginUser UserEntity user){
-        return R.ok().put("user", user);
+    public Result userInfo(@LoginUser UserEntity user){
+        return Result.ok().put("user", user);
     }
 
     @Login
     @GetMapping("userId")
     @ApiOperation("获取用户ID")
-    public R userInfo(@RequestAttribute("userId") Integer userId){
-        return R.ok().put("userId", userId);
+    public Result userInfo(@RequestAttribute("userId") Integer userId){
+        return Result.ok().put("userId", userId);
     }
 
     @GetMapping("notToken")
     @ApiOperation("忽略Token验证测试")
-    public R notToken(){
-        return R.ok().put("msg", "无需token也能访问。。。");
+    public Result notToken(){
+        return Result.ok().put("msg", "无需token也能访问。。。");
     }
 
 }

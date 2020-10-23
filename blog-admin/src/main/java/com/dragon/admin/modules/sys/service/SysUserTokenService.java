@@ -9,7 +9,7 @@
 package com.dragon.admin.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.dragon.common.utils.R;
+import com.dragon.common.utils.Result;
 import com.dragon.admin.modules.sys.entity.SysUserTokenEntity;
 
 /**
@@ -23,7 +23,7 @@ public interface SysUserTokenService extends IService<SysUserTokenEntity> {
 	 * 生成token
 	 * @param userId  用户ID
 	 */
-	R createToken(long userId);
+	Result createToken(long userId);
 
 	/**
 	 * 退出，修改token值
