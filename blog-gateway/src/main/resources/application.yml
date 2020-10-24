@@ -10,6 +10,12 @@ spring:
     # 前端项目 /api
     gateway:
       routes:
+        - id: third_party_route
+          uri: lb://blog-third-party
+          predicates:
+            - Path=/api/thirdparty/**
+          filters:
+            - RewritePath=/api/thirdparty/(?<segment>/?.*), /$\{segment}
         - id: admin_route
           uri: lb://blog-admin
           predicates:

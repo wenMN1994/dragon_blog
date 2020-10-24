@@ -29,23 +29,34 @@ public class OssController {
     @Autowired
     OSS ossClient;
 
+    /**
+     * 请填写您的AccessKeyId
+     */
     @Value("${spring.cloud.alicloud.access-key}")
-    private String accessId; // 请填写您的AccessKeyId。
+    private String accessId;
 
+    /**
+     * 请填写您的 endpoint。
+     */
     @Value("${spring.cloud.alicloud.oss.endpoint}")
-    private String endpoint; // 请填写您的 endpoint。
+    private String endpoint;
 
+    /**
+     * 请填写您的 bucketname
+     */
     @Value("${spring.cloud.alicloud.oss.bucket}")
-    private String bucket; // 请填写您的 bucketname 。
+    private String bucket;
 
     @RequestMapping("/oss/policy")
     public Result policy(){
 
-        String host = "https://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint
+        //host的格式为 bucketname.endpoint
+        String host = "https://" + bucket + "." + endpoint;
         // callbackUrl为 上传回调服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
         // String callbackUrl = "http://88.88.88.88:8888";
         String format = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        String dir = format+"/"; // 用户上传文件时指定的前缀。
+        //用户上传文件时指定的前缀。
+        String dir = format+"/";
 
         Map<String, String> respMap = null;
         try {
