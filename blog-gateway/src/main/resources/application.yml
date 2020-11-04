@@ -16,6 +16,7 @@ spring:
             - Path=/api/thirdparty/**
           filters:
             - RewritePath=/api/thirdparty/(?<segment>/?.*), /$\{segment}
+
         - id: admin_route
           uri: lb://blog-admin
           predicates:
