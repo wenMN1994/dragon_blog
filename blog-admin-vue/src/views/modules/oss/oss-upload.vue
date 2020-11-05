@@ -6,11 +6,15 @@
     :visible.sync="visible">
     <el-upload
       drag
-      :action="url"
-      :before-upload="beforeUploadHandle"
-      :on-success="successHandle"
-      multiple
+      action="http://blog-dragon.oss-cn-shenzhen.aliyuncs.com"
+      :data="dataObj"
+      :before-upload="beforeUpload"
+      :on-success="handleUploadSuccess"
+      :on-preview="handlePreview"
+      :on-remove="handleRemove"
       :file-list="fileList"
+      list-type="picture"
+      multiple
       style="text-align: center;">
       <i class="el-icon-upload"></i>
       <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -20,11 +24,21 @@
 </template>
 
 <script>
+  import { policy } from '@/components/upload/policy'
+  import { getUUID } from '@/utils'
   export default {
     data () {
       return {
+        dataObj: {
+          policy: '',
+          signature: '',
+          key: '',
+          ossaccessKeyId: '',
+          dir: '',
+          host: '',
+          uuid: ''
+        },
         visible: false,
-        url: '',
         num: 0,
         successNum: 0,
         fileList: []
@@ -32,19 +46,41 @@
     },
     methods: {
       init (id) {
-        this.url = this.$http.adornUrl(`/sys/oss/upload?token=${this.$cookie.get('token')}`)
         this.visible = true
       },
+      handleRemove (file, fileList) {
+        this.emitInput(fileList)
+      },
+      handlePreview (file) {
+        console.log(file)
+      },
       // 上传之前
-      beforeUploadHandle (file) {
+      beforeUpload (file) {
         if (file.type !== 'image/jpg' && file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif') {
           this.$message.error('只支持jpg、png、gif格式的图片！')
           return false
         }
         this.num++
+        let _self = this
+        return new Promise((resolve, reject) => {
+          policy()
+            .then(response => {
+              _self.dataObj.policy = response.data.policy
+              _self.dataObj.signature = response.data.signature
+              _self.dataObj.ossaccessKeyId = response.data.accessid
+              _self.dataObj.key = response.data.dir + getUUID() + '_${filename}'
+              _self.dataObj.dir = response.data.dir
+              _self.dataObj.host = response.data.host
+              resolve(true)
+            })
+            .catch(err => {
+              console.log('出错了...', err)
+              reject(new Error(false))
+            })
+        })
       },
       // 上传成功
-      successHandle (response, file, fileList) {
+      handleUploadSuccess (response, file, fileList) {
         this.fileList = fileList
         this.successNum++
         if (response && response.code === 0) {
