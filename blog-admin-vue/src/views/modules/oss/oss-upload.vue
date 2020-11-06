@@ -44,9 +44,25 @@
         fileList: []
       }
     },
+    computed: {
+      fileList () {
+        let fileList = []
+        for (let i = 0; i < this.value.length; i++) {
+          fileList.push({ url: this.value[i] })
+        }
+        return fileList
+      }
+    },
     methods: {
       init (id) {
         this.visible = true
+      },
+      emitInput (fileList) {
+        let value = []
+        for (let i = 0; i < fileList.length; i++) {
+          value.push(fileList[i].url)
+        }
+        this.$emit("input", value)
       },
       handleRemove (file, fileList) {
         this.emitInput(fileList)
@@ -81,7 +97,13 @@
       },
       // 上传成功
       handleUploadSuccess (response, file, fileList) {
-        this.fileList = fileList
+        console.log(fileList)
+        this.fileList.push({
+          name: file.name,
+          // url: this.dataObj.host + "/" + this.dataObj.dir + "/" + file.name； 替换${filename}为真正的文件名
+          url: this.dataObj.host + "/" + this.dataObj.key.replace("${filename}", file.name)
+        })
+        this.emitInput(this.fileList)
         this.successNum++
         if (response && response.code === 0) {
           if (this.num === this.successNum) {
