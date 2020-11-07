@@ -2,7 +2,6 @@
   <div class="mod-oss">
     <el-form :inline="true" :model="dataForm">
       <el-form-item>
-        <el-button type="primary" @click="configHandle()">云存储配置</el-button>
         <el-button type="primary" @click="uploadHandle()">上传文件</el-button>
         <el-button type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
       </el-form-item>
@@ -66,8 +65,6 @@
       :total="totalPage"
       layout="total, sizes, prev, pager, next, jumper">
     </el-pagination>
-    <!-- 弹窗, 云存储配置 -->
-    <config v-if="configVisible" ref="config"></config>
     <!-- 弹窗, 上传文件 -->
     <upload v-if="uploadVisible" ref="upload" @refreshDataList="getDataList"></upload>
   </div>
@@ -133,13 +130,6 @@
       // 多选
       selectionChangeHandle (val) {
         this.dataListSelections = val
-      },
-      // 云存储配置
-      configHandle () {
-        this.configVisible = true
-        this.$nextTick(() => {
-          this.$refs.config.init()
-        })
       },
       // 上传文件
       uploadHandle () {

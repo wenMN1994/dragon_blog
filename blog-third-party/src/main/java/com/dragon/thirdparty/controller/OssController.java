@@ -1,6 +1,9 @@
 package com.dragon.thirdparty.controller;
 
+import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClientBuilder;
+import com.aliyun.oss.OSSException;
 import com.aliyun.oss.common.utils.BinaryUtil;
 import com.aliyun.oss.model.MatchMode;
 import com.aliyun.oss.model.PolicyConditions;
@@ -8,6 +11,7 @@ import com.dragon.common.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
@@ -33,7 +37,13 @@ public class OssController {
      * 请填写您的AccessKeyId
      */
     @Value("${spring.cloud.alicloud.access-key}")
-    private String accessId;
+    private String accessKeyId;
+
+    /**
+     * 请填写您的AccessKeySecret
+     */
+    @Value("${spring.cloud.alicloud.secret-key}")
+    private String accessKeySecret;
 
     /**
      * 请填写您的 endpoint。
@@ -74,7 +84,7 @@ public class OssController {
             String postSignature = ossClient.calculatePostSignature(postPolicy);
 
             respMap = new LinkedHashMap<String, String>();
-            respMap.put("accessid", accessId);
+            respMap.put("accessid", accessKeyId);
             respMap.put("policy", encodedPolicy);
             respMap.put("signature", postSignature);
             respMap.put("dir", dir);
@@ -88,5 +98,24 @@ public class OssController {
             ossClient.shutdown();
         }
         return Result.ok().put("data", respMap);
+    }
+
+    @RequestMapping("/oss/delete")
+    public Result delete(@RequestParam("fileName")String fileName){
+        try {
+            // 创建OSSClient实例。
+            OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+            // 删除文件。如需删除文件夹，请将ObjectName设置为对应的文件夹名称。如果文件夹非空，则需要将文件夹下的所有object删除后才能删除该文件夹。
+            ossClient.deleteObject(bucket, fileName);
+
+        } catch (OSSException e) {
+            e.printStackTrace();
+        } catch (ClientException e) {
+            e.printStackTrace();
+        } finally {
+            // 关闭OSSClient。
+            ossClient.shutdown();
+        }
+        return Result.ok();
     }
 }
