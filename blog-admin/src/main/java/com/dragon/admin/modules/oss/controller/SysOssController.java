@@ -8,6 +8,7 @@
 
 package com.dragon.admin.modules.oss.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.dragon.admin.common.exception.RRException;
 import com.dragon.admin.common.validator.ValidatorUtils;
 import com.dragon.admin.common.validator.group.AliyunGroup;
@@ -30,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -118,6 +120,26 @@ public class SysOssController {
 		sysOssService.save(ossEntity);
 
 		return Result.ok().put("url", url);
+	}
+
+	/**
+	 * 保存文件
+	 */
+	@PostMapping("/saveFile")
+	@RequiresPermissions("sys:oss:all")
+	public Result saveFile(@RequestParam("files") String files) {
+		//保存文件信息
+		Map<String, String> fileMap = (Map<String, String>) JSON.parse(files);
+		try {
+			boolean isSuccess = sysOssService.saveBatchFile(fileMap);
+			if(isSuccess){
+				return Result.ok();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Result.error("保存数据失败");
+		}
+		return Result.error("保存数据失败");
 	}
 
 

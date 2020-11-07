@@ -27,6 +27,13 @@
         label="ID">
       </el-table-column>
       <el-table-column
+        prop="fileName"
+        header-align="center"
+        align="center"
+        width="100"
+        label="文件名称">
+      </el-table-column>
+      <el-table-column
         prop="url"
         header-align="center"
         align="center"

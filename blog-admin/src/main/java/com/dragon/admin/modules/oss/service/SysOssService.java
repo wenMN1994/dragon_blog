@@ -22,4 +22,11 @@ import java.util.Map;
 public interface SysOssService extends IService<SysOssEntity> {
 
 	PageUtils queryPage(Map<String, Object> params);
+
+	/**
+	 * 批量保存文件
+	 * @param fileMap
+	 * @return
+	 */
+	boolean saveBatchFile(Map<String, String> fileMap);
 }

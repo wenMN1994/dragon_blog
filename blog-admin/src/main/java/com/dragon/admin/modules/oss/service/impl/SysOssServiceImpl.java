@@ -17,6 +17,9 @@ import com.dragon.admin.common.utils.PageUtils;
 import com.dragon.admin.common.utils.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 
@@ -31,5 +34,18 @@ public class SysOssServiceImpl extends ServiceImpl<SysOssDao, SysOssEntity> impl
 
 		return new PageUtils(page);
 	}
-	
+
+	@Override
+	public boolean saveBatchFile(Map<String, String> fileMap) {
+		List<SysOssEntity> ossEntityList = new ArrayList<>();
+		for (String key : fileMap.keySet()) {
+			SysOssEntity ossEntity = new SysOssEntity();
+			ossEntity.setFileName(key);
+			ossEntity.setUrl(fileMap.get(key));
+			ossEntity.setCreateDate(new Date());
+			ossEntityList.add(ossEntity);
+		}
+		return this.saveBatch(ossEntityList);
+	}
+
 }
