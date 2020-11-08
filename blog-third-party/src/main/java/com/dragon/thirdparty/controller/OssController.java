@@ -103,6 +103,8 @@ public class OssController {
     @RequestMapping("/oss/delete")
     public Result delete(@RequestParam("fileName")String fileName){
         try {
+            String[] split = fileName.split("/");
+            fileName = split[3] + "/"+ split[4];
             // 创建OSSClient实例。
             OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
             // 删除文件。如需删除文件夹，请将ObjectName设置为对应的文件夹名称。如果文件夹非空，则需要将文件夹下的所有object删除后才能删除该文件夹。
@@ -110,8 +112,10 @@ public class OssController {
 
         } catch (OSSException e) {
             e.printStackTrace();
+            return Result.error();
         } catch (ClientException e) {
             e.printStackTrace();
+            return Result.error();
         } finally {
             // 关闭OSSClient。
             ossClient.shutdown();

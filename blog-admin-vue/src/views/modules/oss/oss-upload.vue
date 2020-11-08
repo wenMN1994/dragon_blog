@@ -10,6 +10,7 @@
       :before-upload="beforeUpload"
       :on-success="handleUploadSuccess"
       :on-preview="handlePreview"
+      :before-remove="beforeRemove"
       :on-remove="handleRemove"
       :file-list="fileList"
       list-type="picture"
@@ -25,7 +26,7 @@
 </template>
 
 <script>
-  import { policy } from '@/components/upload/policy'
+  import { policy,deleteOssFile } from '@/components/upload/policy'
   import { getUUID } from '@/utils'
   export default {
     data () {
@@ -48,9 +49,42 @@
       init (id) {
         this.visible = true
       },
+      beforeRemove (file, fileList) {
+        this.$confirm('是否删除已上传的文件?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          let fileUrl = this.imageList[this.fileList.indexOf(file)].url
+          console.log('将要删除的文件名',fileUrl)
+          console.log('阿里云删除前',this.imageList)
+          return new Promise((resolve, reject) => {
+            deleteOssFile(fileUrl).then(response => {
+              console.log('服务器响应数据',response)
+              if (response.data && response.data.code === 0) {
+                this.fileList.splice(this.fileList.indexOf(file), 1)
+                this.imageList.splice(this.fileList.indexOf(file), 1)
+                console.log('阿里云删除后imageList',this.imageList)
+                console.log('阿里云删除后fileList',this.fileList)
+                this.$message({
+                  message: '删除成功！',
+                  type: 'success'
+                })
+              } else {
+                this.$message.error('删除失败！')
+              }
+              resolve(true)
+            }).catch(err => {
+              reject(new Error(false))
+            })
+          })
+        }).catch(() => {
+
+        })
+        return false
+      },
       handleRemove (file, fileList) {
-        this.fileList.splice(this.fileList.indexOf(file), 1)
-        this.imageList.splice(this.fileList.indexOf(file), 1)
+        console.log(file)
       },
       handlePreview (file) {
         console.log(file)
@@ -99,12 +133,12 @@
           })
         }).then(({data}) => {
           if (data && data.code === 0) {
-              this.fileList = []
-              this.imageList = []
-              this.visible = false
-            } else {
-              this.$message.error(data.msg)
-            }
+            this.fileList = []
+            this.imageList = []
+            this.visible = false
+          } else {
+            this.$message.error(data.msg)
+          }
         })
       },
       // 点击取消
