@@ -52,7 +52,7 @@
         width="150"
         label="操作">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">删除</el-button>
+          <el-button type="text" size="small" @click="deleteHandle(scope.row.id,scope.row.url)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -139,10 +139,15 @@
         })
       },
       // 删除
-      deleteHandle (id) {
+      deleteHandle (id, url) {
         var ids = id ? [id] : this.dataListSelections.map(item => {
           return item.id
         })
+        console.log('将要删除的id',ids)
+        var fileNames = url ? [url] : this.dataListSelections.map(item => {
+          return item.url
+        })
+        console.log('将要删除的url',fileNames)
         this.$confirm(`确定对[id=${ids.join(',')}]进行[${id ? '删除' : '批量删除'}]操作?`, '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -151,7 +156,13 @@
           this.$http({
             url: this.$http.adornUrl('/sys/oss/delete'),
             method: 'post',
-            data: this.$http.adornData(ids, false)
+            data: this.$http.adornData(
+              {
+                'ids': ids, 
+                'fileNames': fileNames
+              },
+              false
+            )
           }).then(({data}) => {
             if (data && data.code === 0) {
               this.$message({

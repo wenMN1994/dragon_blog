@@ -29,4 +29,10 @@ public interface SysOssService extends IService<SysOssEntity> {
 	 * @return
 	 */
 	boolean saveBatchFile(Map<String, String> fileMap);
+
+	/**
+	 * 从数据库中删除文件并删除阿里云oss文件
+	 * @param data
+	 */
+	void removeFileByIds(Map<String, Object> data);
 }

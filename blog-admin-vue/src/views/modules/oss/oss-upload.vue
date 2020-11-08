@@ -61,7 +61,7 @@
           return new Promise((resolve, reject) => {
             deleteOssFile(fileUrl).then(response => {
               console.log('服务器响应数据',response)
-              if (response.data && response.data.code === 0) {
+              if (response.code === 0) {
                 this.fileList.splice(this.fileList.indexOf(file), 1)
                 this.imageList.splice(this.fileList.indexOf(file), 1)
                 console.log('阿里云删除后imageList',this.imageList)

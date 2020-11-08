@@ -67,8 +67,8 @@ public class SysOssController {
 	 */
 	@PostMapping("/delete")
 	@RequiresPermissions("sys:oss:all")
-	public Result delete(@RequestBody Long[] ids){
-		sysOssService.removeByIds(Arrays.asList(ids));
+	public Result delete(@RequestBody Map<String, Object> data){
+		sysOssService.removeFileByIds(data);
 
 		return Result.ok();
 	}

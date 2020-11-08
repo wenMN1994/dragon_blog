@@ -8,6 +8,7 @@
 
 package com.dragon.admin.modules.oss.service.impl;
 
+import com.dragon.admin.feign.ThirdPartyFeignService;
 import com.dragon.admin.modules.oss.dao.SysOssDao;
 import com.dragon.admin.modules.oss.entity.SysOssEntity;
 import com.dragon.admin.modules.oss.service.SysOssService;
@@ -15,6 +16,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.dragon.admin.common.utils.PageUtils;
 import com.dragon.admin.common.utils.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,6 +27,9 @@ import java.util.Map;
 
 @Service("sysOssService")
 public class SysOssServiceImpl extends ServiceImpl<SysOssDao, SysOssEntity> implements SysOssService {
+
+	@Autowired
+	ThirdPartyFeignService thirdPartyFeignService;
 
 	@Override
 	public PageUtils queryPage(Map<String, Object> params) {
@@ -46,6 +51,14 @@ public class SysOssServiceImpl extends ServiceImpl<SysOssDao, SysOssEntity> impl
 			ossEntityList.add(ossEntity);
 		}
 		return this.saveBatch(ossEntityList);
+	}
+
+	@Override
+	public void removeFileByIds(Map<String, Object> data) {
+		List ids = (List) data.get("ids");
+		List url = (List) data.get("fileNames");
+
+
 	}
 
 }

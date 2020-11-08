@@ -5,19 +5,20 @@ import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.common.utils.BinaryUtil;
+import com.aliyun.oss.model.DeleteObjectsRequest;
+import com.aliyun.oss.model.DeleteObjectsResult;
 import com.aliyun.oss.model.MatchMode;
 import com.aliyun.oss.model.PolicyConditions;
 import com.dragon.common.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author：Dragon Wen
@@ -100,8 +101,13 @@ public class OssController {
         return Result.ok().put("data", respMap);
     }
 
+    /**
+     * 删除阿里云oss上的文件
+     * @param fileName
+     * @return
+     */
     @RequestMapping("/oss/delete")
-    public Result delete(@RequestParam("fileName")String fileName){
+    public Result delete(@RequestParam("fileName") String fileName){
         try {
             String[] split = fileName.split("/");
             fileName = split[3] + "/"+ split[4];
@@ -110,6 +116,34 @@ public class OssController {
             // 删除文件。如需删除文件夹，请将ObjectName设置为对应的文件夹名称。如果文件夹非空，则需要将文件夹下的所有object删除后才能删除该文件夹。
             ossClient.deleteObject(bucket, fileName);
 
+        } catch (OSSException e) {
+            e.printStackTrace();
+            return Result.error();
+        } catch (ClientException e) {
+            e.printStackTrace();
+            return Result.error();
+        } finally {
+            // 关闭OSSClient。
+            ossClient.shutdown();
+        }
+        return Result.ok();
+    }
+
+    /**
+     * 批量删除阿里云oss上的文件
+     * @param fileName
+     * @return
+     */
+    @RequestMapping("/oss/deleteBatch")
+    public Result deleteBatch(@RequestBody() List<String> fileName){
+        try {
+            List<String> FileNameList = new ArrayList<String>();
+            for (String file : fileName) {
+                String[] split = file.split("/");
+                String deleteFileName = split[3] + "/"+ split[4];
+                FileNameList.add(deleteFileName);
+            }
+            ossClient.deleteObjects(new DeleteObjectsRequest(bucket).withKeys(FileNameList));
         } catch (OSSException e) {
             e.printStackTrace();
             return Result.error();
