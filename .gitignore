@@ -29,3 +29,5 @@ target
 
 dragon_blog.iml
 /blog-common/blog-common.iml
+/blog-gateway/blog-gateway.iml
+/blog-third-party/blog-third-party.iml
