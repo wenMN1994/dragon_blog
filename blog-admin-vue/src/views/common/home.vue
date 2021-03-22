@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-editor-container">
     <!-- 右上角github图标 -->
-    <el-tooltip content="Github源码" effect="dark" placement="bottom">
+    <el-tooltip content="Gitee源码" effect="dark" placement="bottom">
       <github-corner style="position: absolute; top: 0px; border: 0; right: 0;"></github-corner>
     </el-tooltip>
 
