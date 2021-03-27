@@ -22,14 +22,14 @@
         prop="id"
         header-align="center"
         align="center"
-        width="80"
+        width="100"
         label="ID">
       </el-table-column>
       <el-table-column
         prop="fileName"
         header-align="center"
         align="center"
-        width="100"
+        width="200"
         label="文件名称">
       </el-table-column>
       <el-table-column
@@ -37,19 +37,22 @@
         header-align="center"
         align="center"
         label="URL地址">
+        <template slot-scope="scope">
+          <img :src="scope.row.url" width="50" height="50"/>
+        </template>
       </el-table-column>
       <el-table-column
         prop="createDate"
         header-align="center"
         align="center"
-        width="180"
+        width="200"
         label="创建时间">
       </el-table-column>
       <el-table-column
         fixed="right"
         header-align="center"
         align="center"
-        width="150"
+        width="200"
         label="操作">
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="deleteHandle(scope.row.id,scope.row.url)">删除</el-button>

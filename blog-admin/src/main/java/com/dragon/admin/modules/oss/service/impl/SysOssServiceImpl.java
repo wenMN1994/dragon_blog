@@ -25,6 +25,9 @@ import java.util.List;
 import java.util.Map;
 
 
+/**
+ * @author DragonWen
+ */
 @Service("sysOssService")
 public class SysOssServiceImpl extends ServiceImpl<SysOssDao, SysOssEntity> implements SysOssService {
 
