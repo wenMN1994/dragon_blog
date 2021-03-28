@@ -14,7 +14,8 @@
       :on-remove="handleRemove"
       :file-list="fileList"
       list-type="picture"
-      style="text-align: center;">
+      style="text-align: center;"
+      multiple>
       <el-button size="small" type="primary">点击上传</el-button>
       <div class="el-upload__tip" slot="tip">只支持jpg、png、gif格式的图片！</div>
     </el-upload>
