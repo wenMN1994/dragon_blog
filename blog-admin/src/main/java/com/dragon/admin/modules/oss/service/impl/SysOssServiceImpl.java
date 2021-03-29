@@ -8,6 +8,8 @@
 
 package com.dragon.admin.modules.oss.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dragon.admin.feign.ThirdPartyFeignService;
 import com.dragon.admin.modules.oss.dao.SysOssDao;
 import com.dragon.admin.modules.oss.entity.SysOssEntity;
@@ -36,10 +38,11 @@ public class SysOssServiceImpl extends ServiceImpl<SysOssDao, SysOssEntity> impl
 
 	@Override
 	public PageUtils queryPage(Map<String, Object> params) {
+		QueryWrapper<SysOssEntity> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("status","1");
 		IPage<SysOssEntity> page = this.page(
-			new Query<SysOssEntity>().getPage(params)
+			new Query<SysOssEntity>().getPage(params),queryWrapper
 		);
-
 		return new PageUtils(page);
 	}
 
@@ -60,8 +63,15 @@ public class SysOssServiceImpl extends ServiceImpl<SysOssDao, SysOssEntity> impl
 	public void removeFileByIds(Map<String, Object> data) {
 		List ids = (List) data.get("ids");
 		List url = (List) data.get("fileNames");
-
-
+		List<SysOssEntity> ossEntityList = new ArrayList<>();
+		for (Object id : ids) {
+			SysOssEntity sysOssEntity = new SysOssEntity();
+			sysOssEntity.setId(Long.valueOf(String.valueOf(id)));
+			sysOssEntity.setStatus("0");
+			sysOssEntity.setModifyDate(new Date());
+			ossEntityList.add(sysOssEntity);
+		}
+		this.updateBatchById(ossEntityList);
 	}
 
 }

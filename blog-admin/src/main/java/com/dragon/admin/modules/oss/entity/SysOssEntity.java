@@ -28,11 +28,29 @@ public class SysOssEntity implements Serializable {
 	
 	@TableId
 	private Long id;
-	//文件名称
+	/**
+	 * 文件名称
+	 */
 	private String fileName;
-	//URL地址
+	/**
+	 * URL地址
+	 */
 	private String url;
-	//创建时间
+	/**
+	 * 状态
+	 */
+	private String status;
+	/**
+	 * 创建者ID
+	 */
+	private Long createUserId;
+	/**
+	 * 创建时间
+	 */
 	private Date createDate;
+	/**
+	 * 修改时间
+	 */
+	private Date modifyDate;
 
 }
