@@ -19,6 +19,14 @@
         width="50">
       </el-table-column>
       <el-table-column
+        type="index"
+        header-align="center"
+        align="center"
+        width="100"
+        label="序号">
+      </el-table-column>
+      <el-table-column
+        v-if="showID"
         prop="id"
         header-align="center"
         align="center"
@@ -55,7 +63,10 @@
         width="200"
         label="操作">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="deleteHandle(scope.row.id,scope.row.url)">删除</el-button>
+          <el-button 
+            type="danger" 
+            size="small" 
+            @click="deleteHandle(scope.row.id,scope.row.url)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -79,6 +90,7 @@
   export default {
     data () {
       return {
+        showID: false,
         dataForm: {},
         dataList: [],
         pageIndex: 1,
