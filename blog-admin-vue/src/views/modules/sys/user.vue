@@ -23,6 +23,14 @@
         width="50">
       </el-table-column>
       <el-table-column
+        type="index"
+        header-align="center"
+        align="center"
+        width="80"
+        label="序号">
+      </el-table-column>
+      <el-table-column
+        v-if="showId"
         prop="userId"
         header-align="center"
         align="center"
@@ -95,6 +103,7 @@
   export default {
     data () {
       return {
+        showId: false,
         dataForm: {
           userName: ''
         },
