@@ -53,7 +53,7 @@ public class SysOssServiceImpl extends ServiceImpl<SysOssDao, SysOssEntity> impl
 			SysOssEntity ossEntity = new SysOssEntity();
 			ossEntity.setFileName(key);
 			ossEntity.setUrl(fileMap.get(key));
-			ossEntity.setCreateDate(new Date());
+			ossEntity.setCreateTime(new Date());
 			ossEntityList.add(ossEntity);
 		}
 		return this.saveBatch(ossEntityList);
@@ -68,7 +68,7 @@ public class SysOssServiceImpl extends ServiceImpl<SysOssDao, SysOssEntity> impl
 			SysOssEntity sysOssEntity = new SysOssEntity();
 			sysOssEntity.setId(Long.valueOf(String.valueOf(id)));
 			sysOssEntity.setStatus("0");
-			sysOssEntity.setModifyDate(new Date());
+			sysOssEntity.setUpdateTime(new Date());
 			ossEntityList.add(sysOssEntity);
 		}
 		this.updateBatchById(ossEntityList);

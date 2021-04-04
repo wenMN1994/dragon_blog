@@ -1,13 +1,19 @@
 <template>
   <div class="mod-config">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
-      <el-form-item>
-        <el-input v-model="dataForm.paramKey" placeholder="参数名" clearable></el-input>
+      <el-form-item label="所属系统">
+        <el-input v-model="dataForm.paramBelongToSystem" placeholder="所属系统" clearable></el-input>
+      </el-form-item>
+      <el-form-item label="应用功能">
+        <el-input v-model="dataForm.paramFunction" placeholder="应用功能" clearable></el-input>
+      </el-form-item>
+      <el-form-item label="备注">
+        <el-input v-model="dataForm.remark" placeholder="备注" clearable></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="getDataList()">查询</el-button>
-        <el-button type="primary" @click="addOrUpdateHandle()">新增</el-button>
-        <el-button type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
+        <el-button icon="el-icon-search" @click="getDataList()">查询</el-button>
+        <el-button icon="el-icon-plus" type="primary" @click="addOrUpdateHandle()">新增</el-button>
+        <el-button icon="el-icon-delete" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
       </el-form-item>
     </el-form>
     <el-table
@@ -23,6 +29,14 @@
         width="50">
       </el-table-column>
       <el-table-column
+        type="index"
+        header-align="center"
+        align="center"
+        width="80"
+        label="序号">
+      </el-table-column>
+      <el-table-column
+        v-if="showId"
         prop="id"
         header-align="center"
         align="center"
@@ -30,16 +44,34 @@
         label="ID">
       </el-table-column>
       <el-table-column
+        prop="paramBelongToSystem"
+        header-align="center"
+        align="center"
+        label="所属系统">
+      </el-table-column>
+      <el-table-column
+        prop="paramFunction"
+        header-align="center"
+        align="center"
+        label="应用功能">
+      </el-table-column>
+      <el-table-column
         prop="paramKey"
         header-align="center"
         align="center"
-        label="参数名">
+        label="参数键">
       </el-table-column>
       <el-table-column
         prop="paramValue"
         header-align="center"
         align="center"
         label="参数值">
+      </el-table-column>
+      <el-table-column
+        prop="parentParamKey"
+        header-align="center"
+        align="center"
+        label="应用父级键">
       </el-table-column>
       <el-table-column
         prop="remark"
@@ -78,6 +110,7 @@
   export default {
     data () {
       return {
+        showId: false,
         dataForm: {
           paramKey: ''
         },
@@ -106,7 +139,9 @@
           params: this.$http.adornParams({
             'page': this.pageIndex,
             'limit': this.pageSize,
-            'paramKey': this.dataForm.paramKey
+            'paramBelongToSystem': this.dataForm.paramBelongToSystem,
+            'paramFunction': this.dataForm.paramFunction,
+            'remark': this.dataForm.remark
           })
         }).then(({data}) => {
           if (data && data.code === 0) {

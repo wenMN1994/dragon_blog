@@ -5,7 +5,7 @@
         <el-input v-model="dataForm.key" placeholder="用户名／用户操作" clearable></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="getDataList()">查询</el-button>
+        <el-button icon="el-icon-search" @click="getDataList()">查询</el-button>
       </el-form-item>
     </el-form>
     <el-table

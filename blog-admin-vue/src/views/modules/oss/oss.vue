@@ -2,8 +2,8 @@
   <div class="mod-oss">
     <el-form :inline="true" :model="dataForm">
       <el-form-item>
-        <el-button type="primary" @click="uploadHandle()">上传文件</el-button>
-        <el-button type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
+        <el-button icon="el-icon-upload" type="primary" @click="uploadHandle()">上传文件</el-button>
+        <el-button icon="el-icon-delete" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
       </el-form-item>
     </el-form>
     <el-table
@@ -44,13 +44,13 @@
         prop="url"
         header-align="center"
         align="center"
-        label="URL地址">
+        label="图片">
         <template slot-scope="scope">
           <img :src="scope.row.url" width="50" height="50"/>
         </template>
       </el-table-column>
       <el-table-column
-        prop="createDate"
+        prop="createTime"
         header-align="center"
         align="center"
         width="200"

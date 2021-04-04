@@ -43,14 +43,14 @@ public class SysOssEntity implements Serializable {
 	/**
 	 * 创建者ID
 	 */
-	private Long createUserId;
+	private Long createBy;
 	/**
 	 * 创建时间
 	 */
-	private Date createDate;
+	private Date createTime;
 	/**
 	 * 修改时间
 	 */
-	private Date modifyDate;
+	private Date updateTime;
 
 }

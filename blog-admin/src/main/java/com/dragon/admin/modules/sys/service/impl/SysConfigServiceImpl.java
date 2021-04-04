@@ -27,6 +27,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Arrays;
 import java.util.Map;
 
+/**
+ * @author DragonWen
+ */
 @Service("sysConfigService")
 public class SysConfigServiceImpl extends ServiceImpl<SysConfigDao, SysConfigEntity> implements SysConfigService {
 	@Autowired
@@ -34,12 +37,16 @@ public class SysConfigServiceImpl extends ServiceImpl<SysConfigDao, SysConfigEnt
 
 	@Override
 	public PageUtils queryPage(Map<String, Object> params) {
-		String paramKey = (String)params.get("paramKey");
+		String paramBelongToSystem = (String)params.get("paramBelongToSystem");
+		String paramFunction = (String)params.get("paramFunction");
+		String remark = (String)params.get("remark");
 
 		IPage<SysConfigEntity> page = this.page(
 			new Query<SysConfigEntity>().getPage(params),
 			new QueryWrapper<SysConfigEntity>()
-				.like(StringUtils.isNotBlank(paramKey),"param_key", paramKey)
+				.like(StringUtils.isNotBlank(paramBelongToSystem),"param_belong_to_system", paramBelongToSystem)
+				.like(StringUtils.isNotBlank(paramFunction),"param_function", paramFunction)
+				.like(StringUtils.isNotBlank(remark),"remark", remark)
 				.eq("status", 1)
 		);
 
