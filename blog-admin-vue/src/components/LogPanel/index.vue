@@ -1,33 +1,37 @@
 <template>
   <div style="height: 400px;width: 100%">
     <el-tabs v-model="activeName" @tab-click="tabChange" style="height: 300px">
-      <el-tab-pane style="height: 230px;overflow: auto" label="访问日志" name="visitLogTab" :loading="true">
+      <el-tab-pane class="tablePane" label="访问日志" name="visitLogTab" :loading="true">
         <ul class="list" v-infinite-scroll="getVisitLog">
-          <li v-for="item in visitLog.data" class="list-item" v-html="item">{{ item }}</li>
+          <li v-for="item in visitLog.data" v-bind:key="item" class="list-item" v-html="item">{{ item }}</li>
+          <p v-if="visitLog.loading" class="list-item">加载中...</p>
+          <p v-if="visitLog.noMore" class="list-item">没有更多了</p>
         </ul>
-        <p v-if="visitLog.loading">加载中...</p>
-        <p v-if="visitLog.noMore">没有更多了</p>
       </el-tab-pane>
-      <el-tab-pane style="height: 230px;overflow: auto" label="登录日志" name="loginLogTab">
+      <el-tab-pane class="tablePane" label="登录日志" name="loginLogTab">
         <ul class="list" v-infinite-scroll="getLoginLog">
-          <li v-for="item in loginLog.data" class="list-item" v-html="item">{{ item }}</li>
+          <li v-for="item in loginLog.data" v-bind:key="item" class="list-item" v-html="item">{{ item }}</li>
+          <p v-if="loginLog.loading" class="list-item">加载中...</p>
+          <p v-if="loginLog.noMore" class="list-item">没有更多了</p>
         </ul>
-        <p v-if="loginLog.loading">加载中...</p>
-        <p v-if="loginLog.noMore">没有更多了</p>
       </el-tab-pane>
-      <el-tab-pane style="height: 230px;overflow: auto" label="操作日志" name="operateLogTab">
+      <el-tab-pane class="tablePane" label="操作日志" name="operateLogTab">
         <ul class="list" v-infinite-scroll="getOperateLog">
-          <li v-for="item in operateLog.data" class="list-item" v-html="item">{{ item }}</li>
+          <li v-for="item in operateLog.data" v-bind:key="item" class="list-item">
+            <span class="list-item-left">{{item.username}}</span>
+            <span class="list-item-center">{{item.operation}}</span>
+            <span class="list-item-right">{{item.createTime}}</span>
+          </li>
+          <li v-if="operateLog.loading" class="list-item">加载中...</li>
+          <li v-if="operateLog.noMore" class="list-item">没有更多了</li>
         </ul>
-        <p v-if="operateLog.loading">加载中...</p>
-        <p v-if="operateLog.noMore">没有更多了</p>
       </el-tab-pane>
-      <el-tab-pane style="height: 230px;overflow: auto" label="任务日志" name="taskLogTab">
+      <el-tab-pane class="tablePane" label="任务日志" name="taskLogTab">
         <ul class="list" v-infinite-scroll="getTaskLog">
-          <li v-for="item in taskLog.data" class="list-item" v-html="item">{{ item }}</li>
+          <li v-for="item in taskLog.data" v-bind:key="item" class="list-item" v-html="item">{{ item }}</li>
+          <p v-if="taskLog.loading" class="list-item">加载中...</p>
+          <p v-if="taskLog.noMore" class="list-item">没有更多了</p>
         </ul>
-        <p v-if="taskLog.loading">加载中...</p>
-        <p v-if="taskLog.noMore">没有更多了</p>
       </el-tab-pane>
     </el-tabs>
 
@@ -53,8 +57,8 @@
           queryParams: {
             pageNum: 0,
             pageSize: 10,
-            orderByColumn: 'createTime',
-            isAsc: 'desc'
+            orderByColumn: 'CREATE_TIME',
+            isAsc: 'DESC'
           }
         },
         loginLog: {
@@ -65,8 +69,8 @@
           queryParams: {
             pageNum: 0,
             pageSize: 10,
-            orderByColumn: 'createTime',
-            isAsc: 'desc'
+            orderByColumn: 'CREATE_TIME',
+            isAsc: 'DESC'
           }
         },
         operateLog: {
@@ -76,9 +80,10 @@
           loading: false,
           queryParams: {
             pageNum: 0,
-            pageSize: 10,
-            orderByColumn: 'createTime',
-            isAsc: 'desc'
+            pageSize: 20,
+            logType: '1',
+            orderByColumn: 'CREATE_TIME',
+            isAsc: 'DESC'
           }
         },
         taskLog: {
@@ -89,8 +94,8 @@
           queryParams: {
             pageNum: 0,
             pageSize: 10,
-            orderByColumn: 'createTime',
-            isAsc: 'desc'
+            orderByColumn: 'CREATE_TIME',
+            isAsc: 'DESC'
           }
         }
       }
@@ -140,9 +145,21 @@
         setTimeout(() => {
           this.operateLog.queryParams.pageNum++
           listOperateLog(this.operateLog.queryParams).then(response => {
+            debugger
             this.operateLog.handle = true
-            this.operateLog.data.push(...response.rows)
-            if (response.total === this.operateLog.data.length) {
+            response.data.page.list.forEach(element => {
+              let operateLogData = {
+                username: '',
+                operation: '',
+                createTime: ''
+              }
+              operateLogData.username = element.username
+              operateLogData.operation = element.operation
+              operateLogData.createTime = element.createTime
+              this.operateLog.data.push(operateLogData)
+            });
+
+            if (response.data.page.totalCount === this.operateLog.data.length) {
               this.operateLog.noMore = true
             }
             this.operateLog.loading = false
@@ -188,7 +205,14 @@
 </script>
 
 <style scoped>
+  .tablePane {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 330px;
+  }
+
   .list {
+    width: 100%;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -196,5 +220,17 @@
 
   .list-item {
     margin: 10px;
+  }
+
+  .list-item-left {
+    width: 20%;
+  }
+
+  .list-item-center {
+    width: 50%;
+  }
+
+  .list-item-right {
+    width: 30%;
   }
 </style>

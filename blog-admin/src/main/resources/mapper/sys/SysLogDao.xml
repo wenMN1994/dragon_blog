@@ -2,5 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dragon.admin.modules.sys.dao.SysLogDao">
+    <select id="getLog" resultType="com.dragon.admin.modules.sys.entity.SysLogEntity">
+        SELECT
+            ID,
+            USERNAME,
+            OPERATION,
+            METHOD,
+            PARAMS,
+            TIME,
+            IP,
+            LOG_TYPE,
+            CREATE_TIME
+        FROM
+            SYS_LOG
+        WHERE 1 = 1
+        <if test="type != null and type != ''">
+            AND LOG_TYPE = #{type}
+        </if>
 
+        <if test="orderByColumn != null and isAsc != null and orderByColumn != '' and isAsc != ''">
+            ORDER BY ${orderByColumn} ${isAsc}
+        </if>
+    </select>
 </mapper>

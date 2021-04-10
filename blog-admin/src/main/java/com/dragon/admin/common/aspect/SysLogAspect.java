@@ -94,7 +94,7 @@ public class SysLogAspect {
 		sysLog.setUsername(username);
 
 		sysLog.setTime(time);
-		sysLog.setCreateDate(new Date());
+		sysLog.setCreateTime(new Date());
 		//保存系统日志
 		sysLogService.save(sysLog);
 	}

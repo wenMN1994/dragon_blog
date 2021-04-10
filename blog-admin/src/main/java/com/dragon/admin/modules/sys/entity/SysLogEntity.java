@@ -40,6 +40,6 @@ public class SysLogEntity implements Serializable {
 	//IP地址
 	private String ip;
 	//创建时间
-	private Date createDate;
+	private Date createTime;
 
 }

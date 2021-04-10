@@ -25,4 +25,10 @@ public interface SysLogService extends IService<SysLogEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
 
+    /**
+     * 获取登录日志
+     * @param params
+     * @return
+     */
+    PageUtils getLog(Map<String, Object> params);
 }

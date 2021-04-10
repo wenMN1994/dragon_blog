@@ -70,7 +70,7 @@
         label="IP地址">
       </el-table-column>
       <el-table-column
-        prop="createDate"
+        prop="createTime"
         header-align="center"
         align="center"
         width="180"
