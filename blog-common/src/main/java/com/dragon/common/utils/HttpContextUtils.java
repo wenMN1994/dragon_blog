@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.dragon.admin.common.utils;
+package com.dragon.common.utils;
 
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;

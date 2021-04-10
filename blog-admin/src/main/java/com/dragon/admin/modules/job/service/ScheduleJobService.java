@@ -10,7 +10,7 @@ package com.dragon.admin.modules.job.service;
 
 import com.dragon.admin.modules.job.entity.ScheduleJobEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.dragon.admin.common.utils.PageUtils;
+import com.dragon.common.utils.PageUtils;
 
 import java.util.Map;
 

@@ -9,9 +9,9 @@
 package com.dragon.admin.modules.oss.cloud;
 
 
-import com.dragon.admin.common.utils.ConfigConstant;
-import com.dragon.admin.common.utils.Constant;
-import com.dragon.admin.common.utils.SpringContextUtils;
+import com.dragon.common.utils.ConfigConstant;
+import com.dragon.common.utils.Constant;
+import com.dragon.common.utils.SpringContextUtils;
 import com.dragon.admin.modules.sys.service.SysConfigService;
 
 /**

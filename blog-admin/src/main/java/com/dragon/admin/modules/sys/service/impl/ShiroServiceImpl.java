@@ -15,7 +15,7 @@ import com.dragon.admin.modules.sys.entity.SysMenuEntity;
 import com.dragon.admin.modules.sys.entity.SysUserEntity;
 import com.dragon.admin.modules.sys.entity.SysUserTokenEntity;
 import com.dragon.admin.modules.sys.service.ShiroService;
-import com.dragon.admin.common.utils.Constant;
+import com.dragon.common.utils.Constant;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

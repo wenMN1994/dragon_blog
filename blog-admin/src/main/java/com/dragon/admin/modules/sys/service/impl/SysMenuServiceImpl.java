@@ -15,8 +15,8 @@ import com.dragon.admin.modules.sys.service.SysMenuService;
 import com.dragon.admin.modules.sys.service.SysRoleMenuService;
 import com.dragon.admin.modules.sys.service.SysUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.dragon.admin.common.utils.Constant;
-import com.dragon.admin.common.utils.MapUtils;
+import com.dragon.common.utils.Constant;
+import com.dragon.common.utils.MapUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

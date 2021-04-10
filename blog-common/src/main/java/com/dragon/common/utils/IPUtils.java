@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.dragon.admin.common.utils;
+package com.dragon.common.utils;
 
 import com.alibaba.druid.util.StringUtils;
 import org.slf4j.Logger;

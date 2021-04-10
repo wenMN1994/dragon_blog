@@ -16,7 +16,7 @@ import com.dragon.admin.modules.sys.service.SysCaptchaService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.code.kaptcha.Producer;
-import com.dragon.admin.common.utils.DateUtils;
+import com.dragon.common.utils.DateUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

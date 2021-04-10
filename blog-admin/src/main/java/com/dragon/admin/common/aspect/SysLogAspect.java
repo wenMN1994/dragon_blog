@@ -9,8 +9,8 @@
 package com.dragon.admin.common.aspect;
 
 import com.dragon.admin.common.annotation.SysLog;
-import com.dragon.admin.common.utils.HttpContextUtils;
-import com.dragon.admin.common.utils.IPUtils;
+import com.dragon.common.utils.HttpContextUtils;
+import com.dragon.common.utils.IPUtils;
 import com.dragon.admin.modules.sys.entity.SysLogEntity;
 import com.dragon.admin.modules.sys.entity.SysUserEntity;
 import com.dragon.admin.modules.sys.service.SysLogService;

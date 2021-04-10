@@ -12,7 +12,7 @@ import com.dragon.admin.common.annotation.SysLog;
 import com.dragon.admin.common.validator.ValidatorUtils;
 import com.dragon.admin.modules.job.entity.ScheduleJobEntity;
 import com.dragon.admin.modules.job.service.ScheduleJobService;
-import com.dragon.admin.common.utils.PageUtils;
+import com.dragon.common.utils.PageUtils;
 import com.dragon.common.utils.Result;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;

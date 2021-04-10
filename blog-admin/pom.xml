@@ -18,10 +18,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<mssql.version>4.0</mssql.version>
-		<oracle.version>11.2.0.3</oracle.version>
-		<druid.version>1.1.13</druid.version>
-
 		<!--wagon plugin 配置-->
 		<service-path>/work/dragon</service-path>
 		<pack-name>${project.artifactId}-${project.version}.jar</pack-name>
@@ -56,11 +52,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid-spring-boot-starter</artifactId>
-			<version>${druid.version}</version>
 		</dependency>
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.boot</groupId>-->

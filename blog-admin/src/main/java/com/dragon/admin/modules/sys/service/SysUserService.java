@@ -9,7 +9,7 @@
 package com.dragon.admin.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.dragon.admin.common.utils.PageUtils;
+import com.dragon.common.utils.PageUtils;
 import com.dragon.admin.modules.sys.entity.SysUserEntity;
 
 import java.util.List;

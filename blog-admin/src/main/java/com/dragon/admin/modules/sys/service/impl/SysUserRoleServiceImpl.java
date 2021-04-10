@@ -12,7 +12,7 @@ import com.dragon.admin.modules.sys.dao.SysUserRoleDao;
 import com.dragon.admin.modules.sys.entity.SysUserRoleEntity;
 import com.dragon.admin.modules.sys.service.SysUserRoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.dragon.admin.common.utils.MapUtils;
+import com.dragon.common.utils.MapUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

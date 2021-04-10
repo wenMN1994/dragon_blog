@@ -8,7 +8,7 @@
 
 package com.dragon.admin.modules.job.utils;
 
-import com.dragon.admin.common.utils.SpringContextUtils;
+import com.dragon.common.utils.SpringContextUtils;
 import com.dragon.admin.modules.job.entity.ScheduleJobEntity;
 import com.dragon.admin.modules.job.entity.ScheduleJobLogEntity;
 import com.dragon.admin.modules.job.service.ScheduleJobLogService;

@@ -8,7 +8,7 @@
 
 package com.dragon.admin.modules.oss.cloud;
 
-import com.dragon.admin.common.utils.DateUtils;
+import com.dragon.common.utils.DateUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.InputStream;

@@ -13,7 +13,7 @@ import com.dragon.admin.common.exception.RRException;
 import com.dragon.admin.modules.sys.entity.SysMenuEntity;
 import com.dragon.admin.modules.sys.service.ShiroService;
 import com.dragon.admin.modules.sys.service.SysMenuService;
-import com.dragon.admin.common.utils.Constant;
+import com.dragon.common.utils.Constant;
 import com.dragon.common.utils.Result;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

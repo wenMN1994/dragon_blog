@@ -9,7 +9,7 @@
 package com.dragon.admin.modules.sys.oauth2;
 
 import com.google.gson.Gson;
-import com.dragon.admin.common.utils.HttpContextUtils;
+import com.dragon.common.utils.HttpContextUtils;
 import com.dragon.common.utils.Result;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpStatus;

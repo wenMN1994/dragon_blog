@@ -9,7 +9,7 @@
 package com.dragon.admin.modules.job.utils;
 
 import com.dragon.admin.common.exception.RRException;
-import com.dragon.admin.common.utils.Constant;
+import com.dragon.common.utils.Constant;
 import com.dragon.admin.modules.job.entity.ScheduleJobEntity;
 import org.quartz.*;
 

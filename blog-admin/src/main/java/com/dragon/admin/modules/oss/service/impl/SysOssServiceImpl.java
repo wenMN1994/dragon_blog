@@ -8,7 +8,6 @@
 
 package com.dragon.admin.modules.oss.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dragon.admin.feign.ThirdPartyFeignService;
 import com.dragon.admin.modules.oss.dao.SysOssDao;
@@ -16,7 +15,7 @@ import com.dragon.admin.modules.oss.entity.SysOssEntity;
 import com.dragon.admin.modules.oss.service.SysOssService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.dragon.admin.common.utils.PageUtils;
+import com.dragon.common.utils.PageUtils;
 import com.dragon.admin.common.utils.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
