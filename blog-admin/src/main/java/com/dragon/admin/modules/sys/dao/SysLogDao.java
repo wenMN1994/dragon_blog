@@ -26,10 +26,13 @@ public interface SysLogDao extends BaseMapper<SysLogEntity> {
 
     /**
      * 获取日志
+     *
+     * @param userName 用户名
+     * @param operation 用户操作
      * @param type 日志类型
-     * @param orderByColumn
-     * @param isAsc
+     * @param orderByColumn 排序字段
+     * @param isAsc 排序方式
      * @return
      */
-    IPage<SysLogEntity> getLog(@Param("page") Page<?> page, @Param("type") String type, @Param("orderByColumn") String orderByColumn, @Param("isAsc") String isAsc);
+    IPage<SysLogEntity> getLog(@Param("page") Page<?> page, @Param("userName") String userName, @Param("operation") String operation, @Param("type") String type, @Param("orderByColumn") String orderByColumn, @Param("isAsc") String isAsc);
 }

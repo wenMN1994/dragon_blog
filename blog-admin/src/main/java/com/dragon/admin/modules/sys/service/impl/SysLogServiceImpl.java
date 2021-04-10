@@ -12,12 +12,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dragon.admin.modules.sys.dao.SysLogDao;
 import com.dragon.admin.modules.sys.entity.SysLogEntity;
 import com.dragon.admin.modules.sys.service.SysLogService;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.dragon.common.utils.PageUtils;
-import com.dragon.admin.common.utils.Query;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,14 +32,15 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogDao, SysLogEntity> impl
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
-        String key = (String)params.get("key");
-
-        IPage<SysLogEntity> page = this.page(
-            new Query<SysLogEntity>().getPage(params),
-            new QueryWrapper<SysLogEntity>().like(StringUtils.isNotBlank(key),"username", key)
-        );
-
-        return new PageUtils(page);
+        String userName = (String)params.get("userName");
+        String operation = (String)params.get("operation");
+        Long pageNum = Long.parseLong((String) params.get("pageNum"));
+        Long pageSize = Long.parseLong((String) params.get("pageSize"));
+        Page<SysLogEntity> page = new Page<SysLogEntity>();
+        page.setSize(pageSize);
+        page.setCurrent(pageNum);
+        IPage<SysLogEntity> result = sysLogDao.getLog(page, userName, operation,"", "", "");
+        return new PageUtils(result);
     }
 
     @Override
@@ -53,7 +51,7 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogDao, SysLogEntity> impl
         Page<SysLogEntity> page = new Page<SysLogEntity>();
         Long pageSize = Long.parseLong((String) params.get("pageSize"));
         page.setSize(pageSize);
-        IPage<SysLogEntity> result = sysLogDao.getLog(page, type, orderByColumn, isAsc);
+        IPage<SysLogEntity> result = sysLogDao.getLog(page, "", "", type, orderByColumn, isAsc);
         return new PageUtils(result);
     }
 }

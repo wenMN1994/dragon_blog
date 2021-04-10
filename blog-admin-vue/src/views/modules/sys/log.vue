@@ -1,8 +1,11 @@
 <template>
   <div class="mod-log">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
-      <el-form-item>
-        <el-input v-model="dataForm.key" placeholder="用户名／用户操作" clearable></el-input>
+      <el-form-item label="用户名">
+        <el-input v-model="dataForm.userName" placeholder="用户名" clearable></el-input>
+      </el-form-item>
+      <el-form-item label="用户操作">
+        <el-input v-model="dataForm.operation" placeholder="用户操作" clearable></el-input>
       </el-form-item>
       <el-form-item>
         <el-button icon="el-icon-search" @click="getDataList()">查询</el-button>
@@ -95,7 +98,8 @@
       return {
         showId: false,
         dataForm: {
-          key: ''
+          userName: '',
+          operation: ''
         },
         dataList: [],
         pageIndex: 1,
@@ -116,9 +120,10 @@
           url: this.$http.adornUrl('/sys/log/list'),
           method: 'get',
           params: this.$http.adornParams({
-            'page': this.pageIndex,
-            'limit': this.pageSize,
-            'key': this.dataForm.key
+            'pageNum': this.pageIndex,
+            'pageSize': this.pageSize,
+            'userName': this.dataForm.userName,
+            'operation': this.dataForm.operation
           })
         }).then(({data}) => {
           if (data && data.code === 0) {

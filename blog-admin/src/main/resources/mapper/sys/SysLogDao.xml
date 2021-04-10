@@ -16,12 +16,19 @@
         FROM
             SYS_LOG
         WHERE 1 = 1
+        <if test="userName != null and userName != ''">
+            AND USERNAME LIKE CONCAT('%', #{userName}, '%')
+        </if>
+        <if test="operation != null and operation != ''">
+            AND OPERATION LIKE CONCAT('%', #{operation}, '%')
+        </if>
         <if test="type != null and type != ''">
             AND LOG_TYPE = #{type}
         </if>
-
+        ORDER BY
         <if test="orderByColumn != null and isAsc != null and orderByColumn != '' and isAsc != ''">
-            ORDER BY ${orderByColumn} ${isAsc}
+            ${orderByColumn} ${isAsc},
         </if>
+        CREATE_TIME DESC
     </select>
 </mapper>

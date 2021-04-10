@@ -47,36 +47,42 @@
         prop="paramBelongToSystem"
         header-align="center"
         align="center"
+        :show-overflow-tooltip="true"
         label="所属系统">
       </el-table-column>
       <el-table-column
         prop="paramFunction"
         header-align="center"
         align="center"
+        :show-overflow-tooltip="true"
         label="应用功能">
       </el-table-column>
       <el-table-column
         prop="paramKey"
         header-align="center"
         align="center"
+        :show-overflow-tooltip="true"
         label="参数键">
       </el-table-column>
       <el-table-column
         prop="paramValue"
         header-align="center"
         align="center"
+        :show-overflow-tooltip="true"
         label="参数值">
       </el-table-column>
       <el-table-column
         prop="parentParamKey"
         header-align="center"
         align="center"
+        :show-overflow-tooltip="true"
         label="应用父级键">
       </el-table-column>
       <el-table-column
         prop="remark"
         header-align="center"
         align="center"
+        :show-overflow-tooltip="true"
         label="备注">
       </el-table-column>
       <el-table-column
