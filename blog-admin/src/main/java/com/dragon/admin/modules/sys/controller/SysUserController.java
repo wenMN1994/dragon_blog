@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.dragon.admin.modules.sys.controller;
 
 import com.dragon.admin.common.annotation.SysLog;
@@ -32,7 +24,7 @@ import java.util.Map;
 /**
  * 系统用户
  *
- * @author Mark sunlightcs@gmail.com
+ * @author Dragon Wen
  */
 @RestController
 @RequestMapping("/sys/user")
@@ -69,7 +61,7 @@ public class SysUserController extends AbstractController {
 	/**
 	 * 修改登录用户密码
 	 */
-	@SysLog("修改密码")
+	@SysLog(operation = "修改密码")
 	@PostMapping("/password")
 	public Result password(@RequestBody PasswordForm form){
 		Assert.isBlank(form.getNewPassword(), "新密码不为能空");
@@ -106,7 +98,7 @@ public class SysUserController extends AbstractController {
 	/**
 	 * 保存用户
 	 */
-	@SysLog("保存用户")
+	@SysLog(operation = "保存用户")
 	@PostMapping("/save")
 	@RequiresPermissions("sys:user:save")
 	public Result save(@RequestBody SysUserEntity user){
@@ -121,7 +113,7 @@ public class SysUserController extends AbstractController {
 	/**
 	 * 修改用户
 	 */
-	@SysLog("修改用户")
+	@SysLog(operation = "修改用户")
 	@PostMapping("/update")
 	@RequiresPermissions("sys:user:update")
 	public Result update(@RequestBody SysUserEntity user){
@@ -136,7 +128,7 @@ public class SysUserController extends AbstractController {
 	/**
 	 * 删除用户
 	 */
-	@SysLog("删除用户")
+	@SysLog(operation = "删除用户")
 	@PostMapping("/delete")
 	@RequiresPermissions("sys:user:delete")
 	public Result delete(@RequestBody Long[] userIds){

@@ -3,14 +3,22 @@
     <el-tabs v-model="activeName" @tab-click="tabChange" style="height: 300px">
       <el-tab-pane class="tablePane" label="访问日志" name="visitLogTab" :loading="true">
         <ul class="list" v-infinite-scroll="getVisitLog">
-          <li v-for="item in visitLog.data" v-bind:key="item" class="list-item" v-html="item">{{ item }}</li>
+          <li v-for="item in visitLog.data" v-bind:key="item" class="list-item">
+            <span class="list-item-left" v-html="item.username">{{item.username}}</span>
+            <span class="list-item-center" v-html="item.operation">{{item.operation}}</span>
+            <span class="list-item-right" v-html="item.createTime">{{item.createTime}}</span>
+          </li>
           <p v-if="visitLog.loading" class="list-item">加载中...</p>
           <p v-if="visitLog.noMore" class="list-item">没有更多了</p>
         </ul>
       </el-tab-pane>
       <el-tab-pane class="tablePane" label="登录日志" name="loginLogTab">
         <ul class="list" v-infinite-scroll="getLoginLog">
-          <li v-for="item in loginLog.data" v-bind:key="item" class="list-item" v-html="item">{{ item }}</li>
+          <li v-for="item in loginLog.data" v-bind:key="item" class="list-item">
+            <span class="list-item-left" v-html="item.username">{{item.username}}</span>
+            <span class="list-item-center" v-html="item.operation">{{item.operation}}</span>
+            <span class="list-item-right" v-html="item.createTime">{{item.createTime}}</span>
+          </li>
           <p v-if="loginLog.loading" class="list-item">加载中...</p>
           <p v-if="loginLog.noMore" class="list-item">没有更多了</p>
         </ul>
@@ -65,6 +73,7 @@
           queryParams: {
             pageNum: 0,
             pageSize: 10,
+            logType: '2',
             orderByColumn: 'CREATE_TIME',
             isAsc: 'DESC'
           }
@@ -77,6 +86,7 @@
           queryParams: {
             pageNum: 0,
             pageSize: 10,
+            logType: '0',
             orderByColumn: 'CREATE_TIME',
             isAsc: 'DESC'
           }
@@ -137,8 +147,18 @@
           this.visitLog.queryParams.pageNum++
           listVisitLog(this.visitLog.queryParams).then(response => {
             this.visitLog.handle = true
-            this.visitLog.data.push(...response.rows)
-            if (response.total === this.visitLog.data.length) {
+            response.data.page.list.forEach(element => {
+              let visitLogData = {
+                username: '',
+                operation: '',
+                createTime: ''
+              }
+              visitLogData.username = element.username
+              visitLogData.operation = element.operation
+              visitLogData.createTime = element.createTime
+              this.visitLog.data.push(visitLogData)
+            });
+            if (response.data.page.totalCount === this.visitLog.data.length) {
               this.visitLog.noMore = true
             }
             this.visitLog.loading = false
@@ -182,8 +202,18 @@
           this.loginLog.queryParams.pageNum++
           listLoginLog(this.loginLog.queryParams).then(response => {
             this.loginLog.handle = true
-            this.loginLog.data.push(...response.rows)
-            if (response.total === this.loginLog.data.length) {
+            response.data.page.list.forEach(element => {
+              let loginLogData = {
+                username: '',
+                operation: '',
+                createTime: ''
+              }
+              loginLogData.username = element.username
+              loginLogData.operation = element.operation
+              loginLogData.createTime = element.createTime
+              this.loginLog.data.push(loginLogData)
+            });
+            if (response.data.page.totalCount === this.loginLog.data.length) {
               this.loginLog.noMore = true
             }
             this.loginLog.loading = false
@@ -213,7 +243,6 @@
               taskLogData.createTime = element.createTime
               this.taskLog.data.push(taskLogData)
             });
-            // this.taskLog.data.push(...response.rows)
             if (response.data.page.totalCount === this.taskLog.data.length) {
               this.taskLog.noMore = true
             }

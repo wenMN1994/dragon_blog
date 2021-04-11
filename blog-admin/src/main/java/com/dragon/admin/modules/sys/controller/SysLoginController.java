@@ -1,13 +1,6 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.dragon.admin.modules.sys.controller;
 
+import com.dragon.admin.common.annotation.SysLog;
 import com.dragon.admin.modules.sys.entity.SysUserEntity;
 import com.dragon.admin.modules.sys.form.SysLoginForm;
 import com.dragon.admin.modules.sys.service.SysCaptchaService;
@@ -32,7 +25,7 @@ import java.util.Map;
 /**
  * 登录相关
  *
- * @author Mark sunlightcs@gmail.com
+ * @author
  */
 @RestController
 public class SysLoginController extends AbstractController {
@@ -62,6 +55,7 @@ public class SysLoginController extends AbstractController {
 	/**
 	 * 登录
 	 */
+	@SysLog(operation = "用户登录", logType = "0")
 	@PostMapping("/sys/login")
 	public Map<String, Object> login(@RequestBody SysLoginForm form)throws IOException {
 		boolean captcha = sysCaptchaService.validate(form.getUuid(), form.getCaptcha());

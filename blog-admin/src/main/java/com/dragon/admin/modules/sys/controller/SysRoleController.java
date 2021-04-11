@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.dragon.admin.modules.sys.controller;
 
 import com.dragon.admin.common.annotation.SysLog;
@@ -27,7 +19,7 @@ import java.util.Map;
 /**
  * 角色管理
  *
- * @author Mark sunlightcs@gmail.com
+ * @author Dragon Wen
  */
 @RestController
 @RequestMapping("/sys/role")
@@ -88,7 +80,7 @@ public class SysRoleController extends AbstractController {
 	/**
 	 * 保存角色
 	 */
-	@SysLog("保存角色")
+	@SysLog(operation = "保存角色")
 	@PostMapping("/save")
 	@RequiresPermissions("sys:role:save")
 	public Result save(@RequestBody SysRoleEntity role){
@@ -103,7 +95,7 @@ public class SysRoleController extends AbstractController {
 	/**
 	 * 修改角色
 	 */
-	@SysLog("修改角色")
+	@SysLog(operation = "修改角色")
 	@PostMapping("/update")
 	@RequiresPermissions("sys:role:update")
 	public Result update(@RequestBody SysRoleEntity role){
@@ -118,7 +110,7 @@ public class SysRoleController extends AbstractController {
 	/**
 	 * 删除角色
 	 */
-	@SysLog("删除角色")
+	@SysLog(operation = "删除角色")
 	@PostMapping("/delete")
 	@RequiresPermissions("sys:role:delete")
 	public Result delete(@RequestBody Long[] roleIds){

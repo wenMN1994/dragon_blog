@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.dragon.admin.modules.app.resolver;
 
 import com.dragon.admin.modules.app.entity.UserEntity;
@@ -24,7 +16,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 /**
  * 有@LoginUser注解的方法参数，注入当前登录用户
  *
- * @author Mark sunlightcs@gmail.com
+ * @author Dragon Wen
  */
 @Component
 public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {

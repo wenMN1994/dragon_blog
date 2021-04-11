@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.dragon.admin.modules.sys.controller;
 
 import com.dragon.admin.common.annotation.SysLog;
@@ -26,7 +18,7 @@ import java.util.Set;
 /**
  * 系统菜单
  *
- * @author Mark sunlightcs@gmail.com
+ * @author Dragon Wen
  */
 @RestController
 @RequestMapping("/sys/menu")
@@ -96,7 +88,7 @@ public class SysMenuController extends AbstractController {
 	/**
 	 * 保存
 	 */
-	@SysLog("保存菜单")
+	@SysLog(operation = "保存菜单")
 	@PostMapping("/save")
 	@RequiresPermissions("sys:menu:save")
 	public Result save(@RequestBody SysMenuEntity menu){
@@ -111,7 +103,7 @@ public class SysMenuController extends AbstractController {
 	/**
 	 * 修改
 	 */
-	@SysLog("修改菜单")
+	@SysLog(operation = "修改菜单")
 	@PostMapping("/update")
 	@RequiresPermissions("sys:menu:update")
 	public Result update(@RequestBody SysMenuEntity menu){
@@ -126,7 +118,7 @@ public class SysMenuController extends AbstractController {
 	/**
 	 * 删除
 	 */
-	@SysLog("删除菜单")
+	@SysLog(operation = "删除菜单")
 	@PostMapping("/delete/{menuId}")
 	@RequiresPermissions("sys:menu:delete")
 	public Result delete(@PathVariable("menuId") long menuId){

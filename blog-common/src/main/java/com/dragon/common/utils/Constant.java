@@ -1,17 +1,9 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.dragon.common.utils;
 
 /**
  * 常量
  *
- * @author Mark sunlightcs@gmail.com
+ * @author
  */
 public class Constant {
 	/** 超级管理员ID */
@@ -124,4 +116,16 @@ public class Constant {
         }
     }
 
+    /**
+     * 登录
+     */
+    public static final String SYS_LOG_TYPE_LOGIN = "0";
+    /**
+     * 操作
+     */
+    public static final String SYS_LOG_TYPE_CRUD = "1";
+    /**
+     * 访问
+     */
+    public static final String SYS_LOG_TYPE_VISIT = "2";
 }

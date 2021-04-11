@@ -31,6 +31,17 @@ public class SysIndexController {
     private ScheduleJobLogService scheduleJobLogService;
 
     /**
+     * 获取访问日志
+     * @param params
+     * @return
+     */
+    @GetMapping("/visitLog")
+    public Result getVisitLog(@RequestParam Map<String, Object> params){
+        PageUtils page = sysLogService.getLog(params);
+        return Result.ok().put("page", page);
+    }
+
+    /**
      * 获取登录日志
      * @param params
      * @return

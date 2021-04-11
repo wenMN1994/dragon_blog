@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.dragon.admin.modules.job.controller;
 
 import com.dragon.admin.common.annotation.SysLog;
@@ -23,7 +15,7 @@ import java.util.Map;
 /**
  * 定时任务
  *
- * @author Mark sunlightcs@gmail.com
+ * @author Dragon Wen
  */
 @RestController
 @RequestMapping("/sys/schedule")
@@ -56,7 +48,7 @@ public class ScheduleJobController {
 	/**
 	 * 保存定时任务
 	 */
-	@SysLog("保存定时任务")
+	@SysLog(operation = "保存定时任务")
 	@RequestMapping("/save")
 	@RequiresPermissions("sys:schedule:save")
 	public Result save(@RequestBody ScheduleJobEntity scheduleJob){
@@ -70,7 +62,7 @@ public class ScheduleJobController {
 	/**
 	 * 修改定时任务
 	 */
-	@SysLog("修改定时任务")
+	@SysLog(operation = "修改定时任务")
 	@RequestMapping("/update")
 	@RequiresPermissions("sys:schedule:update")
 	public Result update(@RequestBody ScheduleJobEntity scheduleJob){
@@ -84,7 +76,7 @@ public class ScheduleJobController {
 	/**
 	 * 删除定时任务
 	 */
-	@SysLog("删除定时任务")
+	@SysLog(operation = "删除定时任务")
 	@RequestMapping("/delete")
 	@RequiresPermissions("sys:schedule:delete")
 	public Result delete(@RequestBody Long[] jobIds){
@@ -96,7 +88,7 @@ public class ScheduleJobController {
 	/**
 	 * 立即执行任务
 	 */
-	@SysLog("立即执行任务")
+	@SysLog(operation = "立即执行任务")
 	@RequestMapping("/run")
 	@RequiresPermissions("sys:schedule:run")
 	public Result run(@RequestBody Long[] jobIds){
@@ -108,7 +100,7 @@ public class ScheduleJobController {
 	/**
 	 * 暂停定时任务
 	 */
-	@SysLog("暂停定时任务")
+	@SysLog(operation = "暂停定时任务")
 	@RequestMapping("/pause")
 	@RequiresPermissions("sys:schedule:pause")
 	public Result pause(@RequestBody Long[] jobIds){
@@ -120,7 +112,7 @@ public class ScheduleJobController {
 	/**
 	 * 恢复定时任务
 	 */
-	@SysLog("恢复定时任务")
+	@SysLog(operation = "恢复定时任务")
 	@RequestMapping("/resume")
 	@RequiresPermissions("sys:schedule:resume")
 	public Result resume(@RequestBody Long[] jobIds){

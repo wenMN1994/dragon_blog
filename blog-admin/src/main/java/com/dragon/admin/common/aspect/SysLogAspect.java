@@ -1,20 +1,15 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.dragon.admin.common.aspect;
 
 import com.dragon.admin.common.annotation.SysLog;
+import com.dragon.admin.modules.sys.form.SysLoginForm;
+import com.dragon.common.utils.Constant;
 import com.dragon.common.utils.HttpContextUtils;
 import com.dragon.common.utils.IPUtils;
 import com.dragon.admin.modules.sys.entity.SysLogEntity;
 import com.dragon.admin.modules.sys.entity.SysUserEntity;
 import com.dragon.admin.modules.sys.service.SysLogService;
 import com.google.gson.Gson;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -32,7 +27,7 @@ import java.util.Date;
 /**
  * 系统日志，切面处理类
  *
- * @author Mark sunlightcs@gmail.com
+ * @author
  */
 @Aspect
 @Component
@@ -67,7 +62,8 @@ public class SysLogAspect {
 		SysLog syslog = method.getAnnotation(SysLog.class);
 		if(syslog != null){
 			//注解上的描述
-			sysLog.setOperation(syslog.value());
+			sysLog.setOperation(syslog.operation());
+			sysLog.setLogType(syslog.logType());
 		}
 
 		//请求的方法名
@@ -90,8 +86,22 @@ public class SysLogAspect {
 		sysLog.setIp(IPUtils.getIpAddr(request));
 
 		//用户名
-		String username = ((SysUserEntity) SecurityUtils.getSubject().getPrincipal()).getUsername();
-		sysLog.setUsername(username);
+		if(!Constant.SYS_LOG_TYPE_LOGIN.equals(syslog.logType())){
+			String username = ((SysUserEntity) SecurityUtils.getSubject().getPrincipal()).getUsername();
+			sysLog.setUsername(username);
+		}else {
+			if(args != null &&  args.length > 0){
+				SysLoginForm sysLoginForm = (SysLoginForm) args[0];
+				if(sysLoginForm != null){
+					sysLog.setUsername(sysLoginForm.getUsername());
+				}else {
+					sysLog.setUsername("未知");
+				}
+			}else {
+				sysLog.setUsername("未知");
+			}
+
+		}
 
 		sysLog.setTime(time);
 		sysLog.setCreateTime(new Date());
