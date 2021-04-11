@@ -1,6 +1,7 @@
 package com.dragon.admin.modules.oss.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.dragon.admin.common.annotation.SysLog;
 import com.dragon.admin.modules.oss.service.SysOssService;
 import com.dragon.common.utils.Result;
 import com.dragon.common.utils.PageUtils;
@@ -35,6 +36,7 @@ public class SysOssController {
 	/**
 	 * 保存文件
 	 */
+	@SysLog(operation = "保存文件")
 	@PostMapping("/saveFile")
 	@RequiresPermissions("sys:oss:all")
 	public Result saveFile(@RequestParam("files") String files) {
@@ -56,6 +58,7 @@ public class SysOssController {
 	/**
 	 * 删除
 	 */
+	@SysLog(operation = "删除文件")
 	@PostMapping("/delete")
 	@RequiresPermissions("sys:oss:all")
 	public Result delete(@RequestBody Map<String, Object> data){

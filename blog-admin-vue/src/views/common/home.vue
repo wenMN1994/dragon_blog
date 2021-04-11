@@ -85,9 +85,7 @@
         </div>
       </el-col>
 
-      <el-col
-        :xs="24" :sm="24" :lg="8"
-      >
+      <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper" v-permission="'/todo/getList'">
           <LogPanel></LogPanel>
         </div>
@@ -112,12 +110,12 @@ import LineChart from '@/components/LineChart'
 export default {
   components: {
     GithubCorner,
-    CalendarChart,
     BarChart,
     PieChart,
     LogPanel,
     CountTo,
-    LineChart
+    LineChart,
+    CalendarChart
   },
   data () {
     return {

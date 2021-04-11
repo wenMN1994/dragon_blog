@@ -3,7 +3,7 @@
     <el-tabs v-model="activeName" @tab-click="tabChange" style="height: 300px">
       <el-tab-pane class="tablePane" label="访问日志" name="visitLogTab" :loading="true">
         <ul class="list" v-infinite-scroll="getVisitLog">
-          <li v-for="item in visitLog.data" v-bind:key="item" class="list-item">
+          <li v-for="item in visitLog.data" v-bind:key="item.index" class="list-item">
             <span class="list-item-left" v-html="item.username">{{item.username}}</span>
             <span class="list-item-center" v-html="item.operation">{{item.operation}}</span>
             <span class="list-item-right" v-html="item.createTime">{{item.createTime}}</span>
@@ -14,7 +14,7 @@
       </el-tab-pane>
       <el-tab-pane class="tablePane" label="登录日志" name="loginLogTab">
         <ul class="list" v-infinite-scroll="getLoginLog">
-          <li v-for="item in loginLog.data" v-bind:key="item" class="list-item">
+          <li v-for="item in loginLog.data" v-bind:key="item.index" class="list-item">
             <span class="list-item-left" v-html="item.username">{{item.username}}</span>
             <span class="list-item-center" v-html="item.operation">{{item.operation}}</span>
             <span class="list-item-right" v-html="item.createTime">{{item.createTime}}</span>
@@ -25,7 +25,7 @@
       </el-tab-pane>
       <el-tab-pane class="tablePane" label="操作日志" name="operateLogTab">
         <ul class="list" v-infinite-scroll="getOperateLog">
-          <li v-for="item in operateLog.data" v-bind:key="item" class="list-item">
+          <li v-for="item in operateLog.data" v-bind:key="item.index" class="list-item">
             <span class="list-item-left" v-html="item.username">{{item.username}}</span>
             <span class="list-item-center" v-html="item.operation">{{item.operation}}</span>
             <span class="list-item-right" v-html="item.createTime">{{item.createTime}}</span>
@@ -36,7 +36,7 @@
       </el-tab-pane>
       <el-tab-pane class="tablePane" label="任务日志" name="taskLogTab">
         <ul class="list" v-infinite-scroll="getTaskLog">
-          <li v-for="item in taskLog.data" v-bind:key="item" class="list-item">
+          <li v-for="item in taskLog.data" v-bind:key="item.index" class="list-item">
             <span style="display: none;" v-html="item.jobId">{{item.jobId}}</span>
             <span class="list-item-left" v-html="item.beanName">{{item.beanName}}</span>
             <span class="list-item-center">
@@ -230,7 +230,6 @@
           listTaskLog(this.taskLog.queryParams).then(response => {
             this.taskLog.handle = true
             response.data.page.list.forEach(element => {
-              debugger
               let taskLogData = {
                 jobId: '',
                 beanName: '',
@@ -255,6 +254,25 @@
 </script>
 
 <style scoped>
+  *::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 8px; /*高宽分别对应横竖滚动条的尺寸*/
+    height: 1px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块--纯色*/
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(193, 193, 193, 1);
+  }
+
+  *::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background: #ededed;
+  }
   .tablePane {
     overflow-y: auto;
     overflow-x: hidden;

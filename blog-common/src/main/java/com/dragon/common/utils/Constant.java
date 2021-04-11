@@ -28,7 +28,21 @@ public class Constant {
      *  升序
      */
     public static final String ASC = "asc";
-	/**
+
+    /**
+     * 登录
+     */
+    public static final String SYS_LOG_TYPE_LOGIN = "0";
+    /**
+     * 操作
+     */
+    public static final String SYS_LOG_TYPE_CRUD = "1";
+    /**
+     * 访问
+     */
+    public static final String SYS_LOG_TYPE_VISIT = "2";
+
+    /**
 	 * 菜单类型
 	 * 
 	 * @author chenshun
@@ -115,17 +129,4 @@ public class Constant {
             return value;
         }
     }
-
-    /**
-     * 登录
-     */
-    public static final String SYS_LOG_TYPE_LOGIN = "0";
-    /**
-     * 操作
-     */
-    public static final String SYS_LOG_TYPE_CRUD = "1";
-    /**
-     * 访问
-     */
-    public static final String SYS_LOG_TYPE_VISIT = "2";
 }
