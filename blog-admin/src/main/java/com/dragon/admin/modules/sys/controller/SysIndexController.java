@@ -1,5 +1,6 @@
 package com.dragon.admin.modules.sys.controller;
 
+import com.dragon.admin.modules.job.service.ScheduleJobLogService;
 import com.dragon.admin.modules.sys.service.SysLogService;
 import com.dragon.common.utils.PageUtils;
 import com.dragon.common.utils.Result;
@@ -26,6 +27,9 @@ public class SysIndexController {
     @Autowired
     private SysLogService sysLogService;
 
+    @Autowired
+    private ScheduleJobLogService scheduleJobLogService;
+
     /**
      * 获取登录日志
      * @param params
@@ -45,6 +49,17 @@ public class SysIndexController {
     @GetMapping("/operateLog")
     public Result getOperateLog(@RequestParam Map<String, Object> params){
         PageUtils page = sysLogService.getLog(params);
+        return Result.ok().put("page", page);
+    }
+
+    /**
+     * 获取任务日志
+     * @param params
+     * @return
+     */
+    @GetMapping("/jobLog")
+    public Result getJobLog(@RequestParam Map<String, Object> params){
+        PageUtils page = scheduleJobLogService.getJobLogList(params);
         return Result.ok().put("page", page);
     }
 }

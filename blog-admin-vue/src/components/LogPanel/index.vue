@@ -18,9 +18,9 @@
       <el-tab-pane class="tablePane" label="操作日志" name="operateLogTab">
         <ul class="list" v-infinite-scroll="getOperateLog">
           <li v-for="item in operateLog.data" v-bind:key="item" class="list-item">
-            <span class="list-item-left">{{item.username}}</span>
-            <span class="list-item-center">{{item.operation}}</span>
-            <span class="list-item-right">{{item.createTime}}</span>
+            <span class="list-item-left" v-html="item.username">{{item.username}}</span>
+            <span class="list-item-center" v-html="item.operation">{{item.operation}}</span>
+            <span class="list-item-right" v-html="item.createTime">{{item.createTime}}</span>
           </li>
           <li v-if="operateLog.loading" class="list-item">加载中...</li>
           <li v-if="operateLog.noMore" class="list-item">没有更多了</li>
@@ -28,7 +28,15 @@
       </el-tab-pane>
       <el-tab-pane class="tablePane" label="任务日志" name="taskLogTab">
         <ul class="list" v-infinite-scroll="getTaskLog">
-          <li v-for="item in taskLog.data" v-bind:key="item" class="list-item" v-html="item">{{ item }}</li>
+          <li v-for="item in taskLog.data" v-bind:key="item" class="list-item">
+            <span style="display: none;" v-html="item.jobId">{{item.jobId}}</span>
+            <span class="list-item-left" v-html="item.beanName">{{item.beanName}}</span>
+            <span class="list-item-center">
+              <el-tag v-if="item.status === 0" size="small">成功</el-tag>
+              <el-tag v-else size="small" type="danger" style="cursor: pointer;">失败</el-tag>
+            </span>
+            <span class="list-item-right" v-html="item.createTime">{{item.createTime}}</span>
+          </li>
           <p v-if="taskLog.loading" class="list-item">加载中...</p>
           <p v-if="taskLog.noMore" class="list-item">没有更多了</p>
         </ul>
@@ -93,7 +101,7 @@
           loading: false,
           queryParams: {
             pageNum: 0,
-            pageSize: 10,
+            pageSize: 20,
             orderByColumn: 'CREATE_TIME',
             isAsc: 'DESC'
           }
@@ -145,7 +153,6 @@
         setTimeout(() => {
           this.operateLog.queryParams.pageNum++
           listOperateLog(this.operateLog.queryParams).then(response => {
-            debugger
             this.operateLog.handle = true
             response.data.page.list.forEach(element => {
               let operateLogData = {
@@ -192,8 +199,22 @@
           this.taskLog.queryParams.pageNum++
           listTaskLog(this.taskLog.queryParams).then(response => {
             this.taskLog.handle = true
-            this.taskLog.data.push(...response.rows)
-            if (response.total === this.taskLog.data.length) {
+            response.data.page.list.forEach(element => {
+              debugger
+              let taskLogData = {
+                jobId: '',
+                beanName: '',
+                status: '',
+                createTime: ''
+              }
+              taskLogData.jobId = element.jobId
+              taskLogData.beanName = element.beanName
+              taskLogData.status = element.status
+              taskLogData.createTime = element.createTime
+              this.taskLog.data.push(taskLogData)
+            });
+            // this.taskLog.data.push(...response.rows)
+            if (response.data.page.totalCount === this.taskLog.data.length) {
               this.taskLog.noMore = true
             }
             this.taskLog.loading = false

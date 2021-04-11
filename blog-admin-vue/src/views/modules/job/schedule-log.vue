@@ -107,9 +107,11 @@
           url: this.$http.adornUrl('/sys/scheduleLog/list'),
           method: 'get',
           params: this.$http.adornParams({
-            'page': this.pageIndex,
-            'limit': this.pageSize,
-            'jobId': this.dataForm.id
+            'pageNum': this.pageIndex,
+            'pageSize': this.pageSize,
+            'jobId': this.dataForm.id,
+            'orderByColumn': 'CREATE_TIME',
+            'isAsc': 'DESC'
           })
         }).then(({data}) => {
           if (data && data.code === 0) {

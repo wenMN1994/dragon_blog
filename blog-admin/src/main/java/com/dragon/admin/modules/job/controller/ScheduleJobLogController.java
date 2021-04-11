@@ -38,7 +38,7 @@ public class ScheduleJobLogController {
 	@RequestMapping("/list")
 	@RequiresPermissions("sys:schedule:log")
 	public Result list(@RequestParam Map<String, Object> params){
-		PageUtils page = scheduleJobLogService.queryPage(params);
+		PageUtils page = scheduleJobLogService.getJobLogList(params);
 		
 		return Result.ok().put("page", page);
 	}

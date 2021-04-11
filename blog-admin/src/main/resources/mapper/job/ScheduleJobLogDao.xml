@@ -3,4 +3,24 @@
 
 <mapper namespace="com.dragon.admin.modules.job.dao.ScheduleJobLogDao">
 
+    <select id="getJobLogList" resultType="com.dragon.admin.modules.job.entity.ScheduleJobLogEntity">
+        SELECT
+            LOG_ID,
+            JOB_ID,
+            BEAN_NAME,
+            PARAMS,
+            STATUS,
+            ERROR,
+            TIMES,
+            CREATE_TIME FROM SCHEDULE_JOB_LOG
+        WHERE 1 = 1
+        <if test="jobId != null and jobId != ''">
+            AND JOB_ID LIKE CONCAT('%', #{jobId}, '%')
+        </if>
+        ORDER BY
+        <if test="orderByColumn != null and orderByColumn != '' and isAsc != null and isAsc != ''">
+            ${orderByColumn} ${isAsc},
+        </if>
+        CREATE_TIME DESC
+    </select>
 </mapper>

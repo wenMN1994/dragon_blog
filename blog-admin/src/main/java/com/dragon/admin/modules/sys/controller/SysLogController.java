@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.dragon.admin.modules.sys.controller;
 
 import com.dragon.admin.modules.sys.service.SysLogService;
@@ -25,7 +17,7 @@ import java.util.Map;
 /**
  * 系统日志
  *
- * @author Mark sunlightcs@gmail.com
+ * @author Dragon Wen
  */
 @Controller
 @RequestMapping("/sys/log")
@@ -40,7 +32,7 @@ public class SysLogController {
 	@GetMapping("/list")
 	@RequiresPermissions("sys:log:list")
 	public Result list(@RequestParam Map<String, Object> params){
-		PageUtils page = sysLogService.queryPage(params);
+		PageUtils page = sysLogService.getLog(params);
 
 		return Result.ok().put("page", page);
 	}
