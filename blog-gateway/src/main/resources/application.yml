@@ -7,19 +7,19 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-    # 前端项目 /api
+    # 前端项目 /dev-api
     gateway:
       routes:
         - id: third_party_route
           uri: lb://blog-third-party
           predicates:
-            - Path=/api/thirdparty/**
+            - Path=/dev-api/thirdparty/**
           filters:
-            - RewritePath=/api/thirdparty/(?<segment>/?.*), /$\{segment}
+            - RewritePath=/dev-api/thirdparty/(?<segment>/?.*), /$\{segment}
 
         - id: admin_route
           uri: lb://blog-admin
           predicates:
-            - Path=/api/**
+            - Path=/dev-api/**
           filters:
-            - RewritePath=/api/(?<segment>/?.*), /blog-admin/$\{segment}
+            - RewritePath=/dev-api/(?<segment>/?.*), /blog-admin/$\{segment}

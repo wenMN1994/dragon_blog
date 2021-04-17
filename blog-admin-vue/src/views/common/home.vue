@@ -86,7 +86,7 @@
       </el-col>
 
       <el-col :xs="24" :sm="24" :lg="8">
-        <div class="chart-wrapper" v-permission="'/todo/getList'">
+        <div class="chart-wrapper">
           <LogPanel></LogPanel>
         </div>
       </el-col>

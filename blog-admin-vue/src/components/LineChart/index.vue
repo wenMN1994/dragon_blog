@@ -3,9 +3,9 @@
 </template>
 
 <script>
-import { debounce } from '@/utils'
 import echarts from 'echarts'
 require('echarts/theme/macarons') // echarts theme
+import { debounce } from '@/utils'
 
 export default {
   props: {

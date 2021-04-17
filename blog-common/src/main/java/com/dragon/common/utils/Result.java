@@ -1,7 +1,6 @@
 package com.dragon.common.utils;
 
-import org.apache.http.HttpStatus;
-
+import com.dragon.common.constant.HttpStatus;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,11 +18,11 @@ public class Result extends HashMap<String, Object> {
 	}
 	
 	public static Result error() {
-		return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "未知异常，请联系管理员");
+		return error(HttpStatus.ERROR, "未知异常，请联系管理员");
 	}
 	
 	public static Result error(String msg) {
-		return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, msg);
+		return error(HttpStatus.ERROR, msg);
 	}
 	
 	public static Result error(int code, String msg) {
