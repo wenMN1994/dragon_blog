@@ -34,6 +34,7 @@
         <jwt.version>0.9.1</jwt.version>
         <aliyun.oss.version>3.1.0</aliyun.oss.version>
         <spring.cloud-version>Hoxton.SR9</spring.cloud-version>
+        <joda.time.version>2.9.9</joda.time.version>
     </properties>
 
     <!-- 依赖声明 -->
@@ -198,6 +199,13 @@
                 <version>${spring.cloud-version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!--日期处理工具Joda-Time-->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda.time.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
