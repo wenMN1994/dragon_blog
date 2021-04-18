@@ -25,8 +25,7 @@ import java.util.concurrent.TimeUnit;
  * @author DragonWen
  */
 @RestController
-public class CaptchaController
-{
+public class CaptchaController {
     @Resource(name = "captchaProducer")
     private Producer captchaProducer;
 
@@ -35,8 +34,10 @@ public class CaptchaController
 
     @Autowired
     private RedisCache redisCache;
-    
-    // 验证码类型
+
+    /**
+     * 验证码类型
+     */
     @Value("${dragon.captchaType}")
     private String captchaType;
 
@@ -44,8 +45,7 @@ public class CaptchaController
      * 生成验证码
      */
     @GetMapping("/captchaImage")
-    public AjaxResult getCode(HttpServletResponse response) throws IOException
-    {
+    public AjaxResult getCode(HttpServletResponse response) throws IOException {
         // 保存验证码信息
         String uuid = IdUtils.simpleUUID();
         String verifyKey = Constants.CAPTCHA_CODE_KEY + uuid;
@@ -54,15 +54,12 @@ public class CaptchaController
         BufferedImage image = null;
 
         // 生成验证码
-        if ("math".equals(captchaType))
-        {
+        if (Constants.CAPTCHA_MATH_TYPE.equals(captchaType)) {
             String capText = captchaProducerMath.createText();
             capStr = capText.substring(0, capText.lastIndexOf("@"));
             code = capText.substring(capText.lastIndexOf("@") + 1);
             image = captchaProducerMath.createImage(capStr);
-        }
-        else if ("char".equals(captchaType))
-        {
+        } else if (Constants.CAPTCHA_CHAR_TYPE.equals(captchaType)) {
             capStr = code = captchaProducer.createText();
             image = captchaProducer.createImage(capStr);
         }
@@ -70,12 +67,9 @@ public class CaptchaController
         redisCache.setCacheObject(verifyKey, code, Constants.CAPTCHA_EXPIRATION, TimeUnit.MINUTES);
         // 转换流信息写出
         FastByteArrayOutputStream os = new FastByteArrayOutputStream();
-        try
-        {
+        try {
             ImageIO.write(image, "jpg", os);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             return AjaxResult.error(e.getMessage());
         }
 

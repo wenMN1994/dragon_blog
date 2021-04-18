@@ -57,6 +57,14 @@ public class Constants {
     public static final String CAPTCHA_CODE_KEY = "captcha_codes:";
 
     /**
+     * 验证码显示方式
+     * math：数学
+     * char：字符
+     */
+    public static final String CAPTCHA_MATH_TYPE = "math";
+    public static final String CAPTCHA_CHAR_TYPE = "char";
+
+    /**
      * 登录用户 redis key
      */
     public static final String LOGIN_TOKEN_KEY = "login_tokens:";
