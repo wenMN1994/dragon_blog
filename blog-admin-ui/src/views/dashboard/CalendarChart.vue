@@ -1,5 +1,5 @@
 <template>
-  <div id="container" style=" width: 100%; height: 300px;"></div>
+  <div :class="className" :style="{height:height,width:width}" />
 </template>
 
 <script>
@@ -9,19 +9,42 @@
   import { getBlogContributeCount } from '@/api/system/index'
 
   export default {
-    mounted () {
-      this.initDate()
+    mixins: [resize],
+    props: {
+      className: {
+        type: String,
+        default: 'container'
+      },
+      width: {
+        type: String,
+        default: '100%'
+      },
+      height: {
+        type: String,
+        default: '300px'
+      }
     },
-    data () {
+    data() {
       return {
+        chart: null,
         contributeDate: [],
         blogContributeCount: []
       }
     },
-    created () {
+    mounted () {
+      this.$nextTick(() => {
+        this.initChart()
+      })
+    },
+    beforeDestroy() {
+      if (!this.chart) {
+        return
+      }
+      this.chart.dispose()
+      this.chart = null
     },
     methods: {
-      initDate: function() {
+      initChart: function() {
 
         getBlogContributeCount().then(response => {
           if(response.code == "0") {
@@ -29,7 +52,7 @@
 
             var blogContributeCount = response.data.blogContributeCount
 
-            let chart = echarts.init(document.getElementById('container'))
+            let chart = echarts.init(this.$el, 'container')
 
             let option = {
 
@@ -125,10 +148,10 @@
                   }
                 }
               ]
-            };
-            chart.setOption(option);
+            }
+            chart.setOption(option)
           }
-        });
+        })
       }
     }
   }
