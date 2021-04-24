@@ -21,7 +21,7 @@
       </el-col>
       <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper">
-          <bar-chart />
+          <LogPanel></LogPanel>
         </div>
       </el-col>
     </el-row>
@@ -40,6 +40,7 @@ import RaddarChart from './dashboard/RaddarChart'
 import PieChart from './dashboard/PieChart'
 import BarChart from './dashboard/BarChart'
 import CalendarChart from './dashboard/CalendarChart'
+import LogPanel from './dashboard/LogPanel'
 
 const lineChartData = {
   newVisitis: {
@@ -68,7 +69,8 @@ export default {
     RaddarChart,
     PieChart,
     BarChart,
-    CalendarChart
+    CalendarChart,
+    LogPanel,
   },
   data() {
     return {

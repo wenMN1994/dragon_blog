@@ -57,4 +57,48 @@ public class SysIndexController {
         resultMap.put("blogContributeCount", resultList);
         return Result.ok().put("data", resultMap);
     }
+
+    /**
+     * 获取访问日志
+     * @param params
+     * @return
+     */
+    @GetMapping("/visitLog")
+    public Result getVisitLog(@RequestParam Map<String, Object> params){
+
+        return Result.ok().put("data", "");
+    }
+
+    /**
+     * 获取登录日志
+     * @param params
+     * @return
+     */
+    @GetMapping("/loginLog")
+    public Result getLoginLog(@RequestParam Map<String, Object> params){
+
+        return Result.ok().put("data", "");
+    }
+
+    /**
+     * 获取操作日志
+     * @param params
+     * @return
+     */
+    @GetMapping("/operateLog")
+    public Result getOperateLog(@RequestParam Map<String, Object> params){
+
+        return Result.ok().put("data", "");
+    }
+
+    /**
+     * 获取任务日志
+     * @param params
+     * @return
+     */
+    @GetMapping("/jobLog")
+    public Result getJobLog(@RequestParam Map<String, Object> params){
+
+        return Result.ok().put("data", "");
+    }
 }
