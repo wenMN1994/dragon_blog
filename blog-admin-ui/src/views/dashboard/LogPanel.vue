@@ -215,7 +215,6 @@
               loginLogData.loginTime = element.loginTime
               this.loginLog.data.push(loginLogData)
             });
-            let temp = this.loginLog.data.length
             if (response.total === this.loginLog.data.length) {
               this.loginLog.noMore = true
             }
@@ -233,6 +232,9 @@
           listTaskLog(this.taskLog.queryParams).then(response => {
             this.taskLog.handle = true
             response.rows.forEach(element => {
+              if (response.total === this.taskLog.data.length) {
+                return
+              }
               let taskLogData = {
                 jobLogId: '',
                 jobName: '',
@@ -299,6 +301,7 @@
 
   .list-item-center {
     width: 50%;
+    margin: 0px 5px;
   }
 
   .list-item-right {

@@ -22,6 +22,10 @@
       height: {
         type: String,
         default: '300px'
+      },
+      autoResize: {
+        type: Boolean,
+        default: true
       }
     },
     data() {
@@ -48,11 +52,11 @@
 
         getBlogContributeCount().then(response => {
           if(response.code == "0") {
-            var contributeDate = response.data.contributeDate
+            this.contributeDate = response.data.contributeDate
 
-            var blogContributeCount = response.data.blogContributeCount
+            this.blogContributeCount = response.data.blogContributeCount
 
-            let chart = echarts.init(this.$el, 'container')
+            this.chart = echarts.init(this.$el, 'container')
 
             let option = {
 
@@ -86,7 +90,7 @@
               calendar: [{
                 top: 100,
                 left: 'center',
-                range: contributeDate,
+                range: this.contributeDate,
                 splitLine: {
                   show: true,
                   lineStyle: {
@@ -127,7 +131,7 @@
                   name: '文章数',
                   type: 'scatter',
                   coordinateSystem: 'calendar',
-                  data: blogContributeCount,
+                  data: this.blogContributeCount,
                   // 根据值设置原点大小
                   symbolSize: function (val) {
                     if(val[1] == 0) {
@@ -149,7 +153,7 @@
                 }
               ]
             }
-            chart.setOption(option)
+            this.chart.setOption(option)
           }
         })
       }
