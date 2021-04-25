@@ -11,7 +11,7 @@
  Target Server Version : 50728
  File Encoding         : 65001
 
- Date: 18/04/2021 21:57:18
+ Date: 25/04/2021 21:56:39
 */
 
 SET NAMES utf8mb4;
@@ -119,9 +119,6 @@ CREATE TABLE `qrtz_cron_triggers`  (
 INSERT INTO `qrtz_cron_triggers` VALUES ('BlogScheduler', 'TASK_CLASS_NAME1', 'DEFAULT', '0/10 * * * * ?', 'Asia/Shanghai');
 INSERT INTO `qrtz_cron_triggers` VALUES ('BlogScheduler', 'TASK_CLASS_NAME2', 'DEFAULT', '0/15 * * * * ?', 'Asia/Shanghai');
 INSERT INTO `qrtz_cron_triggers` VALUES ('BlogScheduler', 'TASK_CLASS_NAME3', 'DEFAULT', '0/20 * * * * ?', 'Asia/Shanghai');
-INSERT INTO `qrtz_cron_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME1', 'DEFAULT', '0/10 * * * * ?', 'Asia/Shanghai');
-INSERT INTO `qrtz_cron_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME2', 'DEFAULT', '0/15 * * * * ?', 'Asia/Shanghai');
-INSERT INTO `qrtz_cron_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME3', 'DEFAULT', '0/20 * * * * ?', 'Asia/Shanghai');
 
 -- ----------------------------
 -- Table structure for qrtz_fired_triggers
@@ -168,9 +165,6 @@ CREATE TABLE `qrtz_job_details`  (
 INSERT INTO `qrtz_job_details` VALUES ('BlogScheduler', 'TASK_CLASS_NAME1', 'DEFAULT', NULL, 'com.dragon.admin.quartz.util.QuartzDisallowConcurrentExecution', '0', '1', '0', '0', 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000F5441534B5F50524F5045525449455373720025636F6D2E647261676F6E2E61646D696E2E71756172747A2E646F6D61696E2E5379734A6F6200000000000000010200084C000A636F6E63757272656E747400124C6A6176612F6C616E672F537472696E673B4C000E63726F6E45787072657373696F6E71007E00094C000C696E766F6B6554617267657471007E00094C00086A6F6247726F757071007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C00076A6F624E616D6571007E00094C000D6D697366697265506F6C69637971007E00094C000673746174757371007E000978720028636F6D2E647261676F6E2E636F6D6D6F6E2E636F72652E646F6D61696E2E42617365456E7469747900000000000000010200074C0008637265617465427971007E00094C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C0006706172616D7371007E00034C000672656D61726B71007E00094C000B73656172636856616C756571007E00094C0008757064617465427971007E00094C000A75706461746554696D6571007E000C787074000561646D696E7372000E6A6176612E7574696C2E44617465686A81014B5974190300007870770800000178DC59F02878707400007070707400013174000E302F3130202A202A202A202A203F740019647261676F6E5461736B2E647261676F6E4E6F506172616D7374000744454641554C547372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000000000001740018E7B3BBE7BB9FE9BB98E8AEA4EFBC88E697A0E58F82EFBC8974000133740001317800);
 INSERT INTO `qrtz_job_details` VALUES ('BlogScheduler', 'TASK_CLASS_NAME2', 'DEFAULT', NULL, 'com.dragon.admin.quartz.util.QuartzDisallowConcurrentExecution', '0', '1', '0', '0', 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000F5441534B5F50524F5045525449455373720025636F6D2E647261676F6E2E61646D696E2E71756172747A2E646F6D61696E2E5379734A6F6200000000000000010200084C000A636F6E63757272656E747400124C6A6176612F6C616E672F537472696E673B4C000E63726F6E45787072657373696F6E71007E00094C000C696E766F6B6554617267657471007E00094C00086A6F6247726F757071007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C00076A6F624E616D6571007E00094C000D6D697366697265506F6C69637971007E00094C000673746174757371007E000978720028636F6D2E647261676F6E2E636F6D6D6F6E2E636F72652E646F6D61696E2E42617365456E7469747900000000000000010200074C0008637265617465427971007E00094C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C0006706172616D7371007E00034C000672656D61726B71007E00094C000B73656172636856616C756571007E00094C0008757064617465427971007E00094C000A75706461746554696D6571007E000C787074000561646D696E7372000E6A6176612E7574696C2E44617465686A81014B5974190300007870770800000178DC59F02878707400007070707400013174000E302F3135202A202A202A202A203F740021647261676F6E5461736B2E647261676F6E506172616D732827647261676F6E272974000744454641554C547372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000000000002740018E7B3BBE7BB9FE9BB98E8AEA4EFBC88E69C89E58F82EFBC8974000133740001317800);
 INSERT INTO `qrtz_job_details` VALUES ('BlogScheduler', 'TASK_CLASS_NAME3', 'DEFAULT', NULL, 'com.dragon.admin.quartz.util.QuartzDisallowConcurrentExecution', '0', '1', '0', '0', 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000F5441534B5F50524F5045525449455373720025636F6D2E647261676F6E2E61646D696E2E71756172747A2E646F6D61696E2E5379734A6F6200000000000000010200084C000A636F6E63757272656E747400124C6A6176612F6C616E672F537472696E673B4C000E63726F6E45787072657373696F6E71007E00094C000C696E766F6B6554617267657471007E00094C00086A6F6247726F757071007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C00076A6F624E616D6571007E00094C000D6D697366697265506F6C69637971007E00094C000673746174757371007E000978720028636F6D2E647261676F6E2E636F6D6D6F6E2E636F72652E646F6D61696E2E42617365456E7469747900000000000000010200074C0008637265617465427971007E00094C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C0006706172616D7371007E00034C000672656D61726B71007E00094C000B73656172636856616C756571007E00094C0008757064617465427971007E00094C000A75706461746554696D6571007E000C787074000561646D696E7372000E6A6176612E7574696C2E44617465686A81014B5974190300007870770800000178DC59F02878707400007070707400013174000E302F3230202A202A202A202A203F740040647261676F6E5461736B2E647261676F6E4D756C7469706C65506172616D7328277279272C20747275652C20323030304C2C203331362E3530442C203130302974000744454641554C547372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000000000003740018E7B3BBE7BB9FE9BB98E8AEA4EFBC88E5A49AE58F82EFBC8974000133740001317800);
-INSERT INTO `qrtz_job_details` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME1', 'DEFAULT', NULL, 'com.dragon.admin.quartz.util.QuartzDisallowConcurrentExecution', '0', '1', '0', '0', 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000F5441534B5F50524F5045525449455373720025636F6D2E647261676F6E2E61646D696E2E71756172747A2E646F6D61696E2E5379734A6F6200000000000000010200084C000A636F6E63757272656E747400124C6A6176612F6C616E672F537472696E673B4C000E63726F6E45787072657373696F6E71007E00094C000C696E766F6B6554617267657471007E00094C00086A6F6247726F757071007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C00076A6F624E616D6571007E00094C000D6D697366697265506F6C69637971007E00094C000673746174757371007E000978720028636F6D2E647261676F6E2E636F6D6D6F6E2E636F72652E646F6D61696E2E42617365456E7469747900000000000000010200074C0008637265617465427971007E00094C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C0006706172616D7371007E00034C000672656D61726B71007E00094C000B73656172636856616C756571007E00094C0008757064617465427971007E00094C000A75706461746554696D6571007E000C787074000561646D696E7372000E6A6176612E7574696C2E44617465686A81014B5974190300007870770800000178DC59F02878707400007070707400013174000E302F3130202A202A202A202A203F74001172795461736B2E72794E6F506172616D7374000744454641554C547372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000000000001740018E7B3BBE7BB9FE9BB98E8AEA4EFBC88E697A0E58F82EFBC8974000133740001317800);
-INSERT INTO `qrtz_job_details` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME2', 'DEFAULT', NULL, 'com.dragon.admin.quartz.util.QuartzDisallowConcurrentExecution', '0', '1', '0', '0', 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000F5441534B5F50524F5045525449455373720025636F6D2E647261676F6E2E61646D696E2E71756172747A2E646F6D61696E2E5379734A6F6200000000000000010200084C000A636F6E63757272656E747400124C6A6176612F6C616E672F537472696E673B4C000E63726F6E45787072657373696F6E71007E00094C000C696E766F6B6554617267657471007E00094C00086A6F6247726F757071007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C00076A6F624E616D6571007E00094C000D6D697366697265506F6C69637971007E00094C000673746174757371007E000978720028636F6D2E647261676F6E2E636F6D6D6F6E2E636F72652E646F6D61696E2E42617365456E7469747900000000000000010200074C0008637265617465427971007E00094C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C0006706172616D7371007E00034C000672656D61726B71007E00094C000B73656172636856616C756571007E00094C0008757064617465427971007E00094C000A75706461746554696D6571007E000C787074000561646D696E7372000E6A6176612E7574696C2E44617465686A81014B5974190300007870770800000178DC59F02878707400007070707400013174000E302F3135202A202A202A202A203F74001572795461736B2E7279506172616D7328277279272974000744454641554C547372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000000000002740018E7B3BBE7BB9FE9BB98E8AEA4EFBC88E69C89E58F82EFBC8974000133740001317800);
-INSERT INTO `qrtz_job_details` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME3', 'DEFAULT', NULL, 'com.dragon.admin.quartz.util.QuartzDisallowConcurrentExecution', '0', '1', '0', '0', 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000F5441534B5F50524F5045525449455373720025636F6D2E647261676F6E2E61646D696E2E71756172747A2E646F6D61696E2E5379734A6F6200000000000000010200084C000A636F6E63757272656E747400124C6A6176612F6C616E672F537472696E673B4C000E63726F6E45787072657373696F6E71007E00094C000C696E766F6B6554617267657471007E00094C00086A6F6247726F757071007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C00076A6F624E616D6571007E00094C000D6D697366697265506F6C69637971007E00094C000673746174757371007E000978720028636F6D2E647261676F6E2E636F6D6D6F6E2E636F72652E646F6D61696E2E42617365456E7469747900000000000000010200074C0008637265617465427971007E00094C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C0006706172616D7371007E00034C000672656D61726B71007E00094C000B73656172636856616C756571007E00094C0008757064617465427971007E00094C000A75706461746554696D6571007E000C787074000561646D696E7372000E6A6176612E7574696C2E44617465686A81014B5974190300007870770800000178DC59F02878707400007070707400013174000E302F3230202A202A202A202A203F74003872795461736B2E72794D756C7469706C65506172616D7328277279272C20747275652C20323030304C2C203331362E3530442C203130302974000744454641554C547372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000000000003740018E7B3BBE7BB9FE9BB98E8AEA4EFBC88E5A49AE58F82EFBC8974000133740001317800);
 
 -- ----------------------------
 -- Table structure for qrtz_locks
@@ -187,8 +181,6 @@ CREATE TABLE `qrtz_locks`  (
 -- ----------------------------
 INSERT INTO `qrtz_locks` VALUES ('BlogScheduler', 'STATE_ACCESS');
 INSERT INTO `qrtz_locks` VALUES ('BlogScheduler', 'TRIGGER_ACCESS');
-INSERT INTO `qrtz_locks` VALUES ('RuoyiScheduler', 'STATE_ACCESS');
-INSERT INTO `qrtz_locks` VALUES ('RuoyiScheduler', 'TRIGGER_ACCESS');
 
 -- ----------------------------
 -- Table structure for qrtz_paused_trigger_grps
@@ -215,8 +207,7 @@ CREATE TABLE `qrtz_scheduler_state`  (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
-INSERT INTO `qrtz_scheduler_state` VALUES ('BlogScheduler', 'LAPTOP-GHVKEMRU1618738109374', 1618754233899, 15000);
-INSERT INTO `qrtz_scheduler_state` VALUES ('RuoyiScheduler', 'LAPTOP-GHVKEMRU1618633652922', 1618660236119, 15000);
+INSERT INTO `qrtz_scheduler_state` VALUES ('BlogScheduler', 'LAPTOP-GHVKEMRU1619332528798', 1619358991377, 15000);
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -285,12 +276,9 @@ CREATE TABLE `qrtz_triggers`  (
 -- ----------------------------
 -- Records of qrtz_triggers
 -- ----------------------------
-INSERT INTO `qrtz_triggers` VALUES ('BlogScheduler', 'TASK_CLASS_NAME1', 'DEFAULT', 'TASK_CLASS_NAME1', 'DEFAULT', NULL, 1618738110000, -1, 5, 'PAUSED', 'CRON', 1618738109000, 0, NULL, 2, '');
-INSERT INTO `qrtz_triggers` VALUES ('BlogScheduler', 'TASK_CLASS_NAME2', 'DEFAULT', 'TASK_CLASS_NAME2', 'DEFAULT', NULL, 1618738110000, -1, 5, 'PAUSED', 'CRON', 1618738109000, 0, NULL, 2, '');
-INSERT INTO `qrtz_triggers` VALUES ('BlogScheduler', 'TASK_CLASS_NAME3', 'DEFAULT', 'TASK_CLASS_NAME3', 'DEFAULT', NULL, 1618738120000, -1, 5, 'PAUSED', 'CRON', 1618738109000, 0, NULL, 2, '');
-INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME1', 'DEFAULT', 'TASK_CLASS_NAME1', 'DEFAULT', NULL, 1618666100000, -1, 5, 'PAUSED', 'CRON', 1618666093000, 0, NULL, 2, '');
-INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME2', 'DEFAULT', 'TASK_CLASS_NAME2', 'DEFAULT', NULL, 1618666095000, -1, 5, 'PAUSED', 'CRON', 1618666093000, 0, NULL, 2, '');
-INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME3', 'DEFAULT', 'TASK_CLASS_NAME3', 'DEFAULT', NULL, 1618666100000, -1, 5, 'PAUSED', 'CRON', 1618666093000, 0, NULL, 2, '');
+INSERT INTO `qrtz_triggers` VALUES ('BlogScheduler', 'TASK_CLASS_NAME1', 'DEFAULT', 'TASK_CLASS_NAME1', 'DEFAULT', NULL, 1619332530000, -1, 5, 'PAUSED', 'CRON', 1619332528000, 0, NULL, 2, '');
+INSERT INTO `qrtz_triggers` VALUES ('BlogScheduler', 'TASK_CLASS_NAME2', 'DEFAULT', 'TASK_CLASS_NAME2', 'DEFAULT', NULL, 1619332530000, -1, 5, 'PAUSED', 'CRON', 1619332529000, 0, NULL, 2, '');
+INSERT INTO `qrtz_triggers` VALUES ('BlogScheduler', 'TASK_CLASS_NAME3', 'DEFAULT', 'TASK_CLASS_NAME3', 'DEFAULT', NULL, 1619332540000, -1, 5, 'PAUSED', 'CRON', 1619332529000, 0, NULL, 2, '');
 
 -- ----------------------------
 -- Table structure for sys_config
@@ -440,6 +428,41 @@ INSERT INTO `sys_dict_type` VALUES (9, '操作类型', 'sys_oper_type', '0', 'ad
 INSERT INTO `sys_dict_type` VALUES (10, '系统状态', 'sys_common_status', '0', 'admin', '2021-04-17 04:23:05', '', NULL, '登录状态列表');
 
 -- ----------------------------
+-- Table structure for sys_file
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_file`;
+CREATE TABLE `sys_file`  (
+  `file_id` int(20) NOT NULL AUTO_INCREMENT COMMENT '文件ID',
+  `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文件名称',
+  `file_size` double NULL DEFAULT NULL COMMENT '文件大小',
+  `file_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '文件类型',
+  `file_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文件地址',
+  `oss_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'oss ID',
+  `category_id` int(4) NULL DEFAULT NULL COMMENT '分类ID',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '状态（0正常 1删除）',
+  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建者',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改者',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`file_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文件信息表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for sys_file_category
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_file_category`;
+CREATE TABLE `sys_file_category`  (
+  `category_id` int(4) NOT NULL AUTO_INCREMENT COMMENT '文件分类ID',
+  `category_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文件分类名称',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '状态（0正常 1删除）',
+  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建者',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新者',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`category_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文件分类表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for sys_job
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_job`;
@@ -481,7 +504,14 @@ CREATE TABLE `sys_job_log`  (
   `exception_info` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '异常信息',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`job_log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_job_log
+-- ----------------------------
+INSERT INTO `sys_job_log` VALUES (1, '系统默认（无参）', 'DEFAULT', 'dragonTask.dragonNoParams', '系统默认（无参） 总共耗时：2毫秒', '0', '', '2021-04-25 14:45:34');
+INSERT INTO `sys_job_log` VALUES (2, '系统默认（有参）', 'DEFAULT', 'dragonTask.dragonParams(\'dragon\')', '系统默认（有参） 总共耗时：0毫秒', '0', '', '2021-04-25 14:45:34');
+INSERT INTO `sys_job_log` VALUES (3, '系统默认（多参）', 'DEFAULT', 'dragonTask.dragonMultipleParams(\'ry\', true, 2000L, 316.50D, 100)', '系统默认（多参） 总共耗时：3毫秒', '0', '', '2021-04-25 14:45:36');
 
 -- ----------------------------
 -- Table structure for sys_logininfor
@@ -498,7 +528,7 @@ CREATE TABLE `sys_logininfor`  (
   `msg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '提示消息',
   `login_time` datetime(0) NULL DEFAULT NULL COMMENT '访问时间',
   PRIMARY KEY (`info_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 108 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 117 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -511,6 +541,15 @@ INSERT INTO `sys_logininfor` VALUES (104, 'admin', '127.0.0.1,127.0.0.1', '内�
 INSERT INTO `sys_logininfor` VALUES (105, 'admin', '127.0.0.1,127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-04-18 17:30:03');
 INSERT INTO `sys_logininfor` VALUES (106, 'admin', '127.0.0.1,127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-04-18 19:35:15');
 INSERT INTO `sys_logininfor` VALUES (107, 'admin', '127.0.0.1,127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-04-18 20:36:22');
+INSERT INTO `sys_logininfor` VALUES (108, 'admin', '127.0.0.1,127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '1', '验证码已失效', '2021-04-24 22:28:13');
+INSERT INTO `sys_logininfor` VALUES (109, 'admin', '127.0.0.1,127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-04-24 22:28:18');
+INSERT INTO `sys_logininfor` VALUES (110, 'admin', '127.0.0.1,127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-04-24 23:25:13');
+INSERT INTO `sys_logininfor` VALUES (111, 'admin', '127.0.0.1,127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-04-25 12:32:49');
+INSERT INTO `sys_logininfor` VALUES (112, 'admin', '127.0.0.1,127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-04-25 14:32:30');
+INSERT INTO `sys_logininfor` VALUES (113, 'admin', '127.0.0.1,127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-04-25 17:05:14');
+INSERT INTO `sys_logininfor` VALUES (114, 'admin', '127.0.0.1,127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-04-25 19:17:01');
+INSERT INTO `sys_logininfor` VALUES (115, 'admin', '127.0.0.1,127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '1', '验证码错误', '2021-04-25 21:38:43');
+INSERT INTO `sys_logininfor` VALUES (116, 'admin', '127.0.0.1,127.0.0.1', '内网IP', 'Chrome 9', 'Windows 10', '0', '登录成功', '2021-04-25 21:38:47');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -536,7 +575,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1061 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1065 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -544,7 +583,7 @@ CREATE TABLE `sys_menu`  (
 INSERT INTO `sys_menu` VALUES (1, '系统管理', 0, 1, 'system', NULL, 1, 0, 'M', '0', '0', '', 'system', 'admin', '2021-04-17 04:23:05', '', NULL, '系统管理目录');
 INSERT INTO `sys_menu` VALUES (2, '系统监控', 0, 2, 'monitor', NULL, 1, 0, 'M', '0', '0', '', 'monitor', 'admin', '2021-04-17 04:23:05', '', NULL, '系统监控目录');
 INSERT INTO `sys_menu` VALUES (3, '系统工具', 0, 3, 'tool', NULL, 1, 0, 'M', '0', '0', '', 'tool', 'admin', '2021-04-17 04:23:05', '', NULL, '系统工具目录');
-INSERT INTO `sys_menu` VALUES (4, '博客官网', 0, 4, 'http://dragonwen.cn', NULL, 0, 0, 'M', '0', '0', '', 'guide', 'admin', '2021-04-17 04:23:05', 'admin', '2021-04-18 16:03:55', '若依官网地址');
+INSERT INTO `sys_menu` VALUES (4, '博客官网', 0, 4, 'http://dragonwen.cn', NULL, 0, 0, 'M', '0', '0', '', 'guide', 'admin', '2021-04-17 04:23:05', 'admin', '2021-04-18 16:03:55', '博客官网地址');
 INSERT INTO `sys_menu` VALUES (100, '用户管理', 1, 1, 'user', 'system/user/index', 1, 0, 'C', '0', '0', 'system:user:list', 'user', 'admin', '2021-04-17 04:23:05', '', NULL, '用户管理菜单');
 INSERT INTO `sys_menu` VALUES (101, '角色管理', 1, 2, 'role', 'system/role/index', 1, 0, 'C', '0', '0', 'system:role:list', 'peoples', 'admin', '2021-04-17 04:23:05', '', NULL, '角色管理菜单');
 INSERT INTO `sys_menu` VALUES (102, '菜单管理', 1, 3, 'menu', 'system/menu/index', 1, 0, 'C', '0', '0', 'system:menu:list', 'tree-table', 'admin', '2021-04-17 04:23:05', '', NULL, '菜单管理菜单');
@@ -553,7 +592,7 @@ INSERT INTO `sys_menu` VALUES (104, '岗位管理', 1, 5, 'post', 'system/post/i
 INSERT INTO `sys_menu` VALUES (105, '字典管理', 1, 6, 'dict', 'system/dict/index', 1, 0, 'C', '0', '0', 'system:dict:list', 'dict', 'admin', '2021-04-17 04:23:05', '', NULL, '字典管理菜单');
 INSERT INTO `sys_menu` VALUES (106, '参数设置', 1, 7, 'config', 'system/config/index', 1, 0, 'C', '0', '0', 'system:config:list', 'edit', 'admin', '2021-04-17 04:23:05', '', NULL, '参数设置菜单');
 INSERT INTO `sys_menu` VALUES (107, '通知公告', 1, 8, 'notice', 'system/notice/index', 1, 0, 'C', '0', '0', 'system:notice:list', 'message', 'admin', '2021-04-17 04:23:05', '', NULL, '通知公告菜单');
-INSERT INTO `sys_menu` VALUES (108, '日志管理', 1, 9, 'log', '', 1, 0, 'M', '0', '0', '', 'log', 'admin', '2021-04-17 04:23:05', '', NULL, '日志管理菜单');
+INSERT INTO `sys_menu` VALUES (108, '日志管理', 1, 10, 'log', '', 1, 0, 'M', '0', '0', '', 'log', 'admin', '2021-04-17 04:23:05', 'admin', '2021-04-25 19:42:43', '日志管理菜单');
 INSERT INTO `sys_menu` VALUES (109, '在线用户', 2, 1, 'online', 'monitor/online/index', 1, 0, 'C', '0', '0', 'monitor:online:list', 'online', 'admin', '2021-04-17 04:23:05', '', NULL, '在线用户菜单');
 INSERT INTO `sys_menu` VALUES (110, '定时任务', 2, 2, 'job', 'monitor/job/index', 1, 0, 'C', '0', '0', 'monitor:job:list', 'job', 'admin', '2021-04-17 04:23:05', '', NULL, '定时任务菜单');
 INSERT INTO `sys_menu` VALUES (111, '数据监控', 2, 3, 'druid', 'monitor/druid/index', 1, 0, 'C', '0', '0', 'monitor:druid:list', 'druid', 'admin', '2021-04-17 04:23:05', '', NULL, '数据监控菜单');
@@ -624,6 +663,9 @@ INSERT INTO `sys_menu` VALUES (1057, '生成删除', 115, 3, '#', '', 1, 0, 'F',
 INSERT INTO `sys_menu` VALUES (1058, '导入代码', 115, 2, '#', '', 1, 0, 'F', '0', '0', 'tool:gen:import', '#', 'admin', '2021-04-17 04:23:05', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1059, '预览代码', 115, 4, '#', '', 1, 0, 'F', '0', '0', 'tool:gen:preview', '#', 'admin', '2021-04-17 04:23:05', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1060, '生成代码', 115, 5, '#', '', 1, 0, 'F', '0', '0', 'tool:gen:code', '#', 'admin', '2021-04-17 04:23:05', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (1062, '文件管理', 1, 9, 'file', NULL, 1, 0, 'M', '0', '0', '', 'upload', 'admin', '2021-04-25 19:42:32', 'admin', '2021-04-25 19:44:26', '');
+INSERT INTO `sys_menu` VALUES (1063, '文件分类', 1062, 1, 'fileCategory', 'system/fileCategory/index', 1, 0, 'C', '0', '0', 'system:file:category:list', 'zip', 'admin', '2021-04-25 19:46:46', 'admin', '2021-04-25 21:54:24', '');
+INSERT INTO `sys_menu` VALUES (1064, '文件管理', 1062, 2, 'fileManager', 'system/fileManager/index', 1, 0, 'C', '0', '0', 'system:file:list', 'documentation', 'admin', '2021-04-25 19:51:27', 'admin', '2021-04-25 19:58:35', '');
 
 -- ----------------------------
 -- Table structure for sys_notice
@@ -671,7 +713,7 @@ CREATE TABLE `sys_oper_log`  (
   `error_msg` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '错误消息',
   `oper_time` datetime(0) NULL DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`oper_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -685,6 +727,24 @@ INSERT INTO `sys_oper_log` VALUES (6, '通知公告', 2, 'com.dragon.admin.web.c
 INSERT INTO `sys_oper_log` VALUES (7, '定时任务', 2, 'com.dragon.admin.quartz.controller.SysJobController.edit()', 'PUT', 1, 'admin', NULL, '/blog-admin/monitor/job', '127.0.0.1,127.0.0.1', '内网IP', '{\"jobName\":\"系统默认（无参）\",\"concurrent\":\"1\",\"remark\":\"\",\"jobGroup\":\"DEFAULT\",\"params\":{},\"cronExpression\":\"0/10 * * * * ?\",\"jobId\":1,\"createBy\":\"admin\",\"nextValidTime\":1618733990000,\"createTime\":1618604585000,\"updateBy\":\"admin\",\"invokeTarget\":\"dragonTask.dragonNoParams\",\"misfirePolicy\":\"3\",\"status\":\"1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-18 16:19:42');
 INSERT INTO `sys_oper_log` VALUES (8, '定时任务', 2, 'com.dragon.admin.quartz.controller.SysJobController.edit()', 'PUT', 1, 'admin', NULL, '/blog-admin/monitor/job', '127.0.0.1,127.0.0.1', '内网IP', '{\"jobName\":\"系统默认（有参）\",\"concurrent\":\"1\",\"remark\":\"\",\"jobGroup\":\"DEFAULT\",\"params\":{},\"cronExpression\":\"0/15 * * * * ?\",\"jobId\":2,\"createBy\":\"admin\",\"nextValidTime\":1618734015000,\"createTime\":1618604585000,\"updateBy\":\"admin\",\"invokeTarget\":\"dragonTask.dragonParams(\'dragon\')\",\"misfirePolicy\":\"3\",\"status\":\"1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-18 16:20:10');
 INSERT INTO `sys_oper_log` VALUES (9, '定时任务', 2, 'com.dragon.admin.quartz.controller.SysJobController.edit()', 'PUT', 1, 'admin', NULL, '/blog-admin/monitor/job', '127.0.0.1,127.0.0.1', '内网IP', '{\"jobName\":\"系统默认（多参）\",\"concurrent\":\"1\",\"remark\":\"\",\"jobGroup\":\"DEFAULT\",\"params\":{},\"cronExpression\":\"0/20 * * * * ?\",\"jobId\":3,\"createBy\":\"admin\",\"nextValidTime\":1618734040000,\"createTime\":1618604585000,\"updateBy\":\"admin\",\"invokeTarget\":\"dragonTask.dragonMultipleParams(\'ry\', true, 2000L, 316.50D, 100)\",\"misfirePolicy\":\"3\",\"status\":\"1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-18 16:20:29');
+INSERT INTO `sys_oper_log` VALUES (10, '定时任务', 2, 'com.dragon.admin.quartz.controller.SysJobController.run()', 'PUT', 1, 'admin', NULL, '/blog-admin/monitor/job/run', '127.0.0.1,127.0.0.1', '内网IP', '{\"jobGroup\":\"DEFAULT\",\"params\":{},\"jobId\":1,\"misfirePolicy\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 14:45:30');
+INSERT INTO `sys_oper_log` VALUES (11, '定时任务', 2, 'com.dragon.admin.quartz.controller.SysJobController.run()', 'PUT', 1, 'admin', NULL, '/blog-admin/monitor/job/run', '127.0.0.1,127.0.0.1', '内网IP', '{\"jobGroup\":\"DEFAULT\",\"params\":{},\"jobId\":2,\"misfirePolicy\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 14:45:34');
+INSERT INTO `sys_oper_log` VALUES (12, '定时任务', 2, 'com.dragon.admin.quartz.controller.SysJobController.run()', 'PUT', 1, 'admin', NULL, '/blog-admin/monitor/job/run', '127.0.0.1,127.0.0.1', '内网IP', '{\"jobGroup\":\"DEFAULT\",\"params\":{},\"jobId\":3,\"misfirePolicy\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 14:45:36');
+INSERT INTO `sys_oper_log` VALUES (13, '菜单管理', 1, 'com.dragon.admin.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"upload\",\"orderNum\":\"9\",\"menuName\":\"文件管理\",\"params\":{},\"parentId\":0,\"isCache\":\"0\",\"path\":\"/system/file\",\"createBy\":\"admin\",\"children\":[],\"isFrame\":\"1\",\"menuType\":\"C\",\"perms\":\"\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 19:31:05');
+INSERT INTO `sys_oper_log` VALUES (14, '菜单管理', 3, 'com.dragon.admin.web.controller.system.SysMenuController.remove()', 'DELETE', 1, 'admin', NULL, '/blog-admin/system/menu/1061', '127.0.0.1,127.0.0.1', '内网IP', '{menuId=1061}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 19:31:40');
+INSERT INTO `sys_oper_log` VALUES (15, '菜单管理', 1, 'com.dragon.admin.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"upload\",\"orderNum\":\"9\",\"menuName\":\"文件管理\",\"params\":{},\"parentId\":1,\"isCache\":\"0\",\"path\":\"/system/file\",\"createBy\":\"admin\",\"children\":[],\"isFrame\":\"1\",\"menuType\":\"C\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 19:42:32');
+INSERT INTO `sys_oper_log` VALUES (16, '菜单管理', 2, 'com.dragon.admin.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"log\",\"orderNum\":\"10\",\"menuName\":\"日志管理\",\"params\":{},\"parentId\":1,\"isCache\":\"0\",\"path\":\"log\",\"component\":\"\",\"children\":[],\"createTime\":1618604585000,\"updateBy\":\"admin\",\"isFrame\":\"1\",\"menuId\":108,\"menuType\":\"M\",\"perms\":\"\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 19:42:43');
+INSERT INTO `sys_oper_log` VALUES (17, '菜单管理', 2, 'com.dragon.admin.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"upload\",\"orderNum\":\"9\",\"menuName\":\"文件管理\",\"params\":{},\"parentId\":1,\"isCache\":\"0\",\"path\":\"file\",\"children\":[],\"createTime\":1619350952000,\"updateBy\":\"admin\",\"isFrame\":\"1\",\"menuId\":1062,\"menuType\":\"M\",\"perms\":\"\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 19:44:26');
+INSERT INTO `sys_oper_log` VALUES (18, '菜单管理', 1, 'com.dragon.admin.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"zip\",\"orderNum\":\"1\",\"menuName\":\"文件分类\",\"params\":{},\"parentId\":1062,\"isCache\":\"0\",\"path\":\"/system/fileCategory\",\"createBy\":\"admin\",\"children\":[],\"isFrame\":\"1\",\"menuType\":\"C\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 19:46:46');
+INSERT INTO `sys_oper_log` VALUES (19, '菜单管理', 2, 'com.dragon.admin.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"zip\",\"orderNum\":\"1\",\"menuName\":\"文件分类\",\"params\":{},\"parentId\":1062,\"isCache\":\"0\",\"path\":\"/system/fileCategory\",\"component\":\"/system/file/fileCategory\",\"children\":[],\"createTime\":1619351206000,\"updateBy\":\"admin\",\"isFrame\":\"1\",\"menuId\":1063,\"menuType\":\"C\",\"perms\":\"system:file:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 19:48:46');
+INSERT INTO `sys_oper_log` VALUES (20, '菜单管理', 1, 'com.dragon.admin.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"documentation\",\"orderNum\":\"2\",\"menuName\":\"文件管理\",\"params\":{},\"parentId\":1063,\"isCache\":\"0\",\"path\":\"fileManager\",\"component\":\"system/file/fileManager\",\"createBy\":\"admin\",\"children\":[],\"isFrame\":\"1\",\"menuType\":\"C\",\"perms\":\"system:file:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 19:51:27');
+INSERT INTO `sys_oper_log` VALUES (21, '菜单管理', 2, 'com.dragon.admin.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"documentation\",\"orderNum\":\"2\",\"menuName\":\"文件管理\",\"params\":{},\"parentId\":1064,\"isCache\":\"0\",\"path\":\"fileManager\",\"component\":\"system/file/fileManager\",\"children\":[],\"createTime\":1619351487000,\"isFrame\":\"1\",\"menuId\":1064,\"menuType\":\"C\",\"perms\":\"system:file:list\",\"status\":\"0\"}', '{\"msg\":\"修改菜单\'文件管理\'失败，上级菜单不能选择自己\",\"code\":500}', 0, NULL, '2021-04-25 19:52:16');
+INSERT INTO `sys_oper_log` VALUES (22, '菜单管理', 2, 'com.dragon.admin.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"documentation\",\"orderNum\":\"2\",\"menuName\":\"文件管理\",\"params\":{},\"parentId\":1062,\"isCache\":\"0\",\"path\":\"fileManager\",\"component\":\"system/file/fileManager\",\"children\":[],\"createTime\":1619351487000,\"updateBy\":\"admin\",\"isFrame\":\"1\",\"menuId\":1064,\"menuType\":\"C\",\"perms\":\"system:file:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 19:52:38');
+INSERT INTO `sys_oper_log` VALUES (23, '菜单管理', 2, 'com.dragon.admin.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"zip\",\"orderNum\":\"1\",\"menuName\":\"文件分类\",\"params\":{},\"parentId\":1062,\"isCache\":\"0\",\"path\":\"fileCategory\",\"component\":\"/system/file/fileCategory\",\"children\":[],\"createTime\":1619351206000,\"updateBy\":\"admin\",\"isFrame\":\"1\",\"menuId\":1063,\"menuType\":\"C\",\"perms\":\"system:file:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 19:53:13');
+INSERT INTO `sys_oper_log` VALUES (24, '菜单管理', 2, 'com.dragon.admin.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"zip\",\"orderNum\":\"1\",\"menuName\":\"文件分类\",\"params\":{},\"parentId\":1062,\"isCache\":\"0\",\"path\":\"fileCategory\",\"component\":\"system/file/fileCategory\",\"children\":[],\"createTime\":1619351206000,\"updateBy\":\"admin\",\"isFrame\":\"1\",\"menuId\":1063,\"menuType\":\"C\",\"perms\":\"system:file:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 19:53:36');
+INSERT INTO `sys_oper_log` VALUES (25, '菜单管理', 2, 'com.dragon.admin.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"zip\",\"orderNum\":\"1\",\"menuName\":\"文件分类\",\"params\":{},\"parentId\":1062,\"isCache\":\"0\",\"path\":\"fileCategory\",\"component\":\"system/fileCategory/index\",\"children\":[],\"createTime\":1619351206000,\"updateBy\":\"admin\",\"isFrame\":\"1\",\"menuId\":1063,\"menuType\":\"C\",\"perms\":\"system:file:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 19:58:09');
+INSERT INTO `sys_oper_log` VALUES (26, '菜单管理', 2, 'com.dragon.admin.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"documentation\",\"orderNum\":\"2\",\"menuName\":\"文件管理\",\"params\":{},\"parentId\":1062,\"isCache\":\"0\",\"path\":\"fileManager\",\"component\":\"system/fileManager/index\",\"children\":[],\"createTime\":1619351487000,\"updateBy\":\"admin\",\"isFrame\":\"1\",\"menuId\":1064,\"menuType\":\"C\",\"perms\":\"system:file:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 19:58:35');
+INSERT INTO `sys_oper_log` VALUES (27, '菜单管理', 2, 'com.dragon.admin.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'admin', NULL, '/blog-admin/system/menu', '127.0.0.1,127.0.0.1', '内网IP', '{\"visible\":\"0\",\"icon\":\"zip\",\"orderNum\":\"1\",\"menuName\":\"文件分类\",\"params\":{},\"parentId\":1062,\"isCache\":\"0\",\"path\":\"fileCategory\",\"component\":\"system/fileCategory/index\",\"children\":[],\"createTime\":1619351206000,\"updateBy\":\"admin\",\"isFrame\":\"1\",\"menuId\":1063,\"menuType\":\"C\",\"perms\":\"system:file:category:list\",\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2021-04-25 21:54:24');
 
 -- ----------------------------
 -- Table structure for sys_post
