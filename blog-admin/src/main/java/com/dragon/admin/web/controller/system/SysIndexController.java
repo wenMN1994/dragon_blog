@@ -1,7 +1,16 @@
 package com.dragon.admin.web.controller.system;
 
+import com.dragon.admin.quartz.domain.SysJobLog;
+import com.dragon.admin.quartz.service.ISysJobLogService;
+import com.dragon.admin.system.domain.SysLogininfor;
+import com.dragon.admin.system.domain.SysOperLog;
+import com.dragon.admin.system.service.ISysLogininforService;
+import com.dragon.admin.system.service.ISysOperLogService;
+import com.dragon.common.core.controller.BaseController;
+import com.dragon.common.core.page.TableDataInfo;
 import com.dragon.common.utils.DateUtils;
 import com.dragon.common.utils.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +28,16 @@ import java.util.*;
  */
 @RestController
 @RequestMapping("/system/index")
-public class SysIndexController {
+public class SysIndexController extends BaseController {
+
+    @Autowired
+    private ISysLogininforService logininforService;
+
+    @Autowired
+    private ISysOperLogService operLogService;
+
+    @Autowired
+    private ISysJobLogService jobLogService;
 
     /**
      * 获取一年内博客提交的数量
@@ -60,13 +78,13 @@ public class SysIndexController {
 
     /**
      * 获取访问日志
-     * @param params
+     * @param
      * @return
      */
     @GetMapping("/visitLog")
-    public Result getVisitLog(@RequestParam Map<String, Object> params){
-
-        return Result.ok().put("data", "");
+    public TableDataInfo getVisitLog(){
+        List list = new ArrayList();
+        return getDataTable(list);
     }
 
     /**
@@ -75,30 +93,34 @@ public class SysIndexController {
      * @return
      */
     @GetMapping("/loginLog")
-    public Result getLoginLog(@RequestParam Map<String, Object> params){
-
-        return Result.ok().put("data", "");
+    public TableDataInfo getLoginLog(@RequestParam Map<String, Object> params){
+        startPage();
+        SysLogininfor loginInfo = new SysLogininfor();
+        List<SysLogininfor> list = logininforService.selectLogininforList(loginInfo);
+        return getDataTable(list);
     }
 
     /**
      * 获取操作日志
-     * @param params
+     * @param operLog
      * @return
      */
     @GetMapping("/operateLog")
-    public Result getOperateLog(@RequestParam Map<String, Object> params){
-
-        return Result.ok().put("data", "");
+    public TableDataInfo getOperateLog(SysOperLog operLog){
+        startPage();
+        List<SysOperLog> list = operLogService.selectOperLogList(operLog);
+        return getDataTable(list);
     }
 
     /**
      * 获取任务日志
-     * @param params
+     * @param sysJobLog
      * @return
      */
     @GetMapping("/jobLog")
-    public Result getJobLog(@RequestParam Map<String, Object> params){
-
-        return Result.ok().put("data", "");
+    public TableDataInfo list(SysJobLog sysJobLog) {
+        startPage();
+        List<SysJobLog> list = jobLogService.selectJobLogList(sysJobLog);
+        return getDataTable(list);
     }
 }

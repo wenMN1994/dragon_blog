@@ -15,9 +15,9 @@
       <el-tab-pane class="tablePane" label="登录日志" name="loginLogTab">
         <ul class="list" v-infinite-scroll="getLoginLog">
           <li v-for="item in loginLog.data" v-bind:key="item.index" class="list-item">
-            <span class="list-item-left" v-html="item.username">{{item.username}}</span>
-            <span class="list-item-center" v-html="item.operation">{{item.operation}}</span>
-            <span class="list-item-right" v-html="item.createTime">{{item.createTime}}</span>
+            <span class="list-item-left" v-html="item.userName">{{item.userName}}</span>
+            <span class="list-item-center" v-html="item.msg">{{item.msg}}</span>
+            <span class="list-item-right" v-html="item.loginTime">{{item.loginTime}}</span>
           </li>
           <p v-if="loginLog.loading" class="list-item">加载中...</p>
           <p v-if="loginLog.noMore" class="list-item">没有更多了</p>
@@ -27,7 +27,12 @@
         <ul class="list" v-infinite-scroll="getOperateLog">
           <li v-for="item in operateLog.data" v-bind:key="item.index" class="list-item">
             <span class="list-item-left" v-html="item.username">{{item.username}}</span>
-            <span class="list-item-center" v-html="item.operation">{{item.operation}}</span>
+            <span class="list-item-center">
+              <el-tag v-if="item.operation == 0" size="small">其他</el-tag>
+              <el-tag v-if="item.operation == 1" size="small" type="danger" style="cursor: pointer;">新增</el-tag>
+              <el-tag v-if="item.operation == 2" size="small" type="danger" style="cursor: pointer;">修改</el-tag>
+              <el-tag v-if="item.operation == 3" size="small" type="danger" style="cursor: pointer;">删除</el-tag>
+            </span>
             <span class="list-item-right" v-html="item.createTime">{{item.createTime}}</span>
           </li>
           <li v-if="operateLog.loading" class="list-item">加载中...</li>
@@ -37,10 +42,10 @@
       <el-tab-pane class="tablePane" label="任务日志" name="taskLogTab">
         <ul class="list" v-infinite-scroll="getTaskLog">
           <li v-for="item in taskLog.data" v-bind:key="item.index" class="list-item">
-            <span style="display: none;" v-html="item.jobId">{{item.jobId}}</span>
-            <span class="list-item-left" v-html="item.beanName">{{item.beanName}}</span>
+            <span style="display: none;" v-html="item.jobLogId">{{item.jobLogId}}</span>
+            <span class="list-item-left" v-html="item.jobName">{{item.jobName}}</span>
             <span class="list-item-center">
-              <el-tag v-if="item.status === 0" size="small">成功</el-tag>
+              <el-tag v-if="item.status == 0" size="small">成功</el-tag>
               <el-tag v-else size="small" type="danger" style="cursor: pointer;">失败</el-tag>
             </span>
             <span class="list-item-right" v-html="item.createTime">{{item.createTime}}</span>
@@ -73,7 +78,6 @@
           queryParams: {
             pageNum: 0,
             pageSize: 10,
-            logType: '2',
             orderByColumn: 'CREATE_TIME',
             isAsc: 'DESC'
           }
@@ -86,9 +90,8 @@
           queryParams: {
             pageNum: 0,
             pageSize: 10,
-            logType: '0',
-            orderByColumn: 'CREATE_TIME',
-            isAsc: 'DESC'
+            orderByColumn: 'login_time',
+            isAsc: 'desc'
           }
         },
         operateLog: {
@@ -98,10 +101,9 @@
           loading: false,
           queryParams: {
             pageNum: 0,
-            pageSize: 20,
-            logType: '1',
-            orderByColumn: 'CREATE_TIME',
-            isAsc: 'DESC'
+            pageSize: 10,
+            orderByColumn: 'oper_time',
+            isAsc: 'desc'
           }
         },
         taskLog: {
@@ -110,10 +112,10 @@
           noMore: false,
           loading: false,
           queryParams: {
-            pageNum: 0,
-            pageSize: 20,
-            orderByColumn: 'CREATE_TIME',
-            isAsc: 'DESC'
+            pageNum: 1,
+            pageSize: 10,
+            orderByColumn: 'create_time',
+            isAsc: 'desc'
           }
         }
       }
@@ -147,7 +149,7 @@
           this.visitLog.queryParams.pageNum++
           listVisitLog(this.visitLog.queryParams).then(response => {
             this.visitLog.handle = true
-            response.data.page.list.forEach(element => {
+            response.rows.forEach(element => {
               let visitLogData = {
                 username: '',
                 operation: '',
@@ -158,7 +160,7 @@
               visitLogData.createTime = element.createTime
               this.visitLog.data.push(visitLogData)
             });
-            if (response.data.page.totalCount === this.visitLog.data.length) {
+            if (response.total === this.visitLog.data.length) {
               this.visitLog.noMore = true
             }
             this.visitLog.loading = false
@@ -174,19 +176,19 @@
           this.operateLog.queryParams.pageNum++
           listOperateLog(this.operateLog.queryParams).then(response => {
             this.operateLog.handle = true
-            response.data.page.list.forEach(element => {
+            response.rows.forEach(element => {
               let operateLogData = {
                 username: '',
                 operation: '',
                 createTime: ''
               }
-              operateLogData.username = element.username
-              operateLogData.operation = element.operation
-              operateLogData.createTime = element.createTime
+              operateLogData.username = element.operName
+              operateLogData.operation = element.businessType
+              operateLogData.createTime = element.operTime
               this.operateLog.data.push(operateLogData)
             });
 
-            if (response.data.page.totalCount === this.operateLog.data.length) {
+            if (response.total === this.operateLog.data.length) {
               this.operateLog.noMore = true
             }
             this.operateLog.loading = false
@@ -202,18 +204,19 @@
           this.loginLog.queryParams.pageNum++
           listLoginLog(this.loginLog.queryParams).then(response => {
             this.loginLog.handle = true
-            response.data.page.list.forEach(element => {
+            response.rows.forEach(element => {
               let loginLogData = {
-                username: '',
-                operation: '',
-                createTime: ''
+                userName: '',
+                msg: '',
+                loginTime: ''
               }
-              loginLogData.username = element.username
-              loginLogData.operation = element.operation
-              loginLogData.createTime = element.createTime
+              loginLogData.userName = element.userName
+              loginLogData.msg = element.msg
+              loginLogData.loginTime = element.loginTime
               this.loginLog.data.push(loginLogData)
             });
-            if (response.data.page.totalCount === this.loginLog.data.length) {
+            let temp = this.loginLog.data.length
+            if (response.total === this.loginLog.data.length) {
               this.loginLog.noMore = true
             }
             this.loginLog.loading = false
@@ -229,20 +232,20 @@
           this.taskLog.queryParams.pageNum++
           listTaskLog(this.taskLog.queryParams).then(response => {
             this.taskLog.handle = true
-            response.data.page.list.forEach(element => {
+            response.rows.forEach(element => {
               let taskLogData = {
-                jobId: '',
-                beanName: '',
+                jobLogId: '',
+                jobName: '',
                 status: '',
                 createTime: ''
               }
-              taskLogData.jobId = element.jobId
-              taskLogData.beanName = element.beanName
+              taskLogData.jobLogId = element.jobLogId
+              taskLogData.jobName = element.jobName
               taskLogData.status = element.status
               taskLogData.createTime = element.createTime
               this.taskLog.data.push(taskLogData)
             });
-            if (response.data.page.totalCount === this.taskLog.data.length) {
+            if (response.total === this.taskLog.data.length) {
               this.taskLog.noMore = true
             }
             this.taskLog.loading = false
@@ -276,7 +279,7 @@
   .tablePane {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 330px;
+    height: 230px;
   }
 
   .list {

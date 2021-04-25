@@ -11,7 +11,7 @@ export function getBlogContributeCount () {
 // 获取访问日志
 export function listVisitLog (params) {
   return request({
-    url: '/sys/index/visitLog',
+    url: '/system/index/visitLog',
     method: 'get',
     params: params
   })
@@ -20,7 +20,7 @@ export function listVisitLog (params) {
 // 获取操作日志
 export function listOperateLog (params) {
   return request({
-    url: '/sys/index/operateLog',
+    url: '/system/index/operateLog',
     method: 'get',
     params: params
   })
@@ -29,7 +29,7 @@ export function listOperateLog (params) {
 // 获取任务日志
 export function listTaskLog (params) {
   return request({
-    url: '/sys/index/jobLog',
+    url: '/system/index/jobLog',
     method: 'get',
     params: params
   })
@@ -38,7 +38,7 @@ export function listTaskLog (params) {
 // 获取登录日志
 export function listLoginLog (params) {
   return request({
-    url: '/sys/index/loginLog',
+    url: '/system/index/loginLog',
     method: 'get',
     params: params
   })
