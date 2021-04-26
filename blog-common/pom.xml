@@ -22,7 +22,7 @@
         <apache.httpcomponents.version>4.4.12</apache.httpcomponents.version>
         <quartz.version>2.3.2</quartz.version>
         <commons.fileupload.version>1.3.3</commons.fileupload.version>
-        <commons.io.version>2.5</commons.io.version>
+        <commons.io.version>2.7</commons.io.version>
         <commons.codec.version>1.10</commons.codec.version>
         <commons.configuration.version>1.10</commons.configuration.version>
         <shiro.version>1.6.0</shiro.version>
