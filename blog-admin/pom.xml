@@ -107,6 +107,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!--velocity代码生成使用模板 -->
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
