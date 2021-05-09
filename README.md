@@ -1,1 +1,1 @@
-# 该版本正在开发中，如需下载请选择Releases中的my_blog版
+# 该版本正在开发中，如需下载请移步到https://gitee.com/wenMN1994/dragon_blog
