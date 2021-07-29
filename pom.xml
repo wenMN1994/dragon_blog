@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <groupId>com.dragon</groupId>
-	<artifactId>DragonBlog</artifactId>
+	<artifactId>dragon_blog</artifactId>
 	<version>2.0.0</version>
 	<packaging>pom</packaging>
 
-	<name>DragonBlog</name>
+	<name>dragon_blog</name>
 	<url>http://www.dragonwen.cn</url>
 	<description>DragonWen的个人博客-聚合服务</description>
 
